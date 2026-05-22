@@ -1,0 +1,17 @@
+# Môi trường ảo
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# File cấu hình và bảo mật
+.env
+config.json
+
+# Thư mục log và dữ liệu lớn
+*.log
+data/
+.ipynb_checkpoints/
+
+db.sqlite3

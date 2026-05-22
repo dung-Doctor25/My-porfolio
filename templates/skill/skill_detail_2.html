@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="max-w-6xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
+        
+        <div class="mb-8">
+            <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors group">
+                <svg class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                {% if current_lang == 'en' %}Back to Core Capabilities{% else %}Quay lại Năng lực chuyên môn{% endif %}
+            </a>
+        </div>
+
+        <div class="mb-12 pb-6 border-b border-slate-200">
+            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Data Analytics Depth</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+                {% if current_lang == 'en' %}Data Visualization & Business Intelligence (BI){% else %}Trực quan hóa dữ liệu & Business Intelligence (BI){% endif %}
+            </h1>
+            <p class="text-slate-500 mt-3 max-w-2xl text-base leading-relaxed">
+                {% if current_lang == 'en' %}
+                    Interactive dashboards and tailored visualization solutions transforming raw operational and financial metrics into high-impact visual stories.
+                {% else %}
+                    Các báo cáo phân tích thông minh, tương tác cao giúp chuyển hóa dữ liệu vận hành và tài chính phức tạp thành câu chuyện trực quan có giá trị chiến lược.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="space-y-8">
+
+            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-50 text-orange-600 border border-orange-100 tracking-wider">Tableau Desktop</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                        {% if current_lang == 'en' %}Interactive Enterprise Analytics Dashboard{% else %}Báo cáo Phân tích Doanh nghiệp Tương tác Cao{% endif %}
+                    </h3>
+                    <p class="text-slate-500 text-sm mt-1">
+                        {% if current_lang == 'en' %}Live interactive dashboard embedded directly from Tableau Public for real-time market deep-dives.{% else %}Báo cáo trực quan tương tác trực tiếp nhúng từ Tableau Public phục vụ phân tích chuyên sâu thị trường.{% endif %}
+                    </p>
+                </div>
+                
+                <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
+                    <div class="w-full overflow-auto rounded-lg shadow-inner bg-white">
+                        <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto;'>
+                            <noscript>
+                                <a href='#'><img alt='Dashboard 1_N ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1_rss.png' style='border: none' /></a>
+                            </noscript>
+                            <object class='tableauViz' style='display:none;'>
+                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                                <param name='embed_code_version' value='3' /> 
+                                <param name='site_root' value='' />
+                                <param name='name' value='Data_Viz_17495813142900&#47;Dashboard1_N' />
+                                <param name='tabs' value='no' />
+                                <param name='toolbar' value='yes' />
+                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1.png' /> 
+                                <param name='animate_transition' value='yes' />
+                                <param name='display_static_image' value='yes' />
+                                <param name='display_spinner' value='yes' />
+                                <param name='display_overlay' value='yes' />
+                                <param name='display_count' value='yes' />
+                                <param name='language' value='en-US' />
+                            </object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-yellow-50 text-yellow-600 border border-yellow-100 tracking-wider">Microsoft Power BI</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                        {% if current_lang == 'en' %}Financial Performance & Operations Monitor{% else %}Hệ thống Giám sát Hiệu suất Tài chính & Vận hành{% endif %}
+                    </h3>
+                    <p class="text-slate-500 text-sm mt-1">
+                        {% if current_lang == 'en' %}Comprehensive data modeling using DAX and Power Query to optimize dynamic profit margins.{% else %}Mô hình hóa dữ liệu chuyên sâu bằng DAX và Power Query tối ưu hóa biên lợi nhuận động.{% endif %}
+                    </p>
+                </div>
+                <div class="p-4 bg-slate-50 border-t border-slate-100 group/img">
+                    <div class="relative overflow-hidden rounded-lg border border-slate-200 bg-white">
+                        <img src="{% static 'images/powerbi_dashboard.png' %}" alt="Power BI Dashboard" class="w-full h-auto object-cover max-h-[500px] transition-transform duration-500 group-hover/img:scale-[1.01]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-600 border border-blue-100 tracking-wider">Google Looker Studio</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                        {% if current_lang == 'en' %}Marketing ROI & BigQuery Big Data Dashboard{% else %}Báo cáo Tối ưu ROI Marketing & BigData BigQuery{% endif %}
+                    </h3>
+                    <p class="text-slate-500 text-sm mt-1">
+                        {% if current_lang == 'en' %}Connected directly with Google BigQuery to track advertising conversion funnels asynchronously.{% else %}Kết nối trực tiếp kho dữ liệu BigQuery xử lý bất đồng bộ phễu chuyển đổi chiến dịch quảng cáo.{% endif %}
+                    </p>
+                </div>
+                <div class="p-4 bg-slate-50 border-t border-slate-100 group/img">
+                    <div class="relative overflow-hidden rounded-lg border border-slate-200 bg-white">
+                        <img src="{% static 'images/looker_dashboard.png' %}" alt="Looker Studio Dashboard" class="w-full h-auto object-cover max-h-[500px] transition-transform duration-500 group-hover/img:scale-[1.01]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300 flex flex-col justify-between">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-teal-50 text-teal-600 border border-teal-100 tracking-wider">Python Data Science</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 tracking-tight">
+                            {% if current_lang == 'en' %}Exploratory Data Analysis (EDA) & Financial Indicators{% else %}Phân tích Khám phá Dữ liệu (EDA) & Chỉ báo Tài chính{% endif %}
+                        </h3>
+                        <p class="text-slate-500 text-xs mt-1">
+                            {% if current_lang == 'en' %}Statistical distributions, heatmaps, and rolling averages (MACD/RSI) programmed via Matplotlib.{% else %}Trực quan phân phối thống kê, biểu đồ nhiệt và đường trung bình động (MACD/RSI) bằng mã Python.{% endif %}
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex-grow flex items-center justify-center">
+                        <img src="{% static 'images/matplotlib_chart.png' %}" alt="Matplotlib Financial Analysis" class="rounded-lg border border-slate-200 bg-white max-h-[300px] w-full object-contain">
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300 flex flex-col justify-between">
+                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-50 text-purple-600 border border-purple-100 tracking-wider">Web-based Custom Viz</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 tracking-tight">
+                            {% if current_lang == 'en' %}Custom Dynamic Web Charts (D3.js){% else %}Biểu đồ Web Tùy biến Động (D3.js){% endif %}
+                        </h3>
+                        <p class="text-slate-500 text-xs mt-1">
+                            {% if current_lang == 'en' %}SVG-driven interactive data binding for customized interactive web network hierarchies.{% else %}Ràng buộc dữ liệu DOM thông qua SVG, kiến tạo đồ thị mạng lưới phân tầng có tính tương tác cao.{% endif %}
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex-grow flex items-center justify-center">
+                        <img src="{% static 'images/d3_chart.png' %}" alt="D3.js Custom Visualization" class="rounded-lg border border-slate-200 bg-white max-h-[300px] w-full object-contain">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type='text/javascript'>                    
+        var divElement = document.getElementById('viz1779455382110');                    
+        var vizElement = divElement.getElementsByTagName('object')[0];                    
+        if ( divElement.offsetWidth > 800 ) { 
+            vizElement.style.width='100%';vizElement.style.height='650px';
+        } else if ( divElement.offsetWidth > 500 ) { 
+            vizElement.style.width='100%';vizElement.style.height='550px';
+        } else { 
+            vizElement.style.width='100%';vizElement.style.height='450px';
+        }                     
+        var scriptElement = document.createElement('script');                    
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+{% endblock %}

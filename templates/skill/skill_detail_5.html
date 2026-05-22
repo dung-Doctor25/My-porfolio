@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article class="max-w-3xl mx-auto px-4 py-16">
+        <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm text-slate-500 hover:text-blue-600 mb-8 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            {% if current_lang == 'en' %}Back to Skills{% else %}Quay lại Kỹ năng{% endif %}
+        </a>
+        
+        <header class="mb-10">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">
+                {% if current_lang == 'en' %}Developing skill{% else %}Kỹ năng đang phát triển{% endif %}
+            </h1>
+            <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
+        </header>
+
+        <div class="prose prose-slate prose-lg max-w-none">
+            {% if current_lang == 'en' %}
+                <p>This is a completely custom static page for your Python Automation skills. You have total design freedom here.</p>
+                <h3>Core Frameworks & Tools</h3>
+                <ul>
+                    <li>Pandas & NumPy for data processing</li>
+                    <li>Docker for containerized deployment</li>
+                    <li>Automated web workflows and API handling</li>
+                </ul>
+            {% else %}
+                <p>Đây là trang chi tiết được thiết kế hoàn toàn bằng mã HTML tĩnh cho phần Tự động hóa Python. Bạn không còn bị ràng buộc bởi các ô nhập liệu từ Admin Django nữa.</p>
+                <h3>Các công nghệ & Công cụ cốt lõi</h3>
+                <ul>
+                    <li>Pandas & NumPy phục vụ xử lý và làm sạch dữ liệu lớn.</li>
+                    <li>Docker hỗ trợ đóng gói đường ống chạy tự động.</li>
+                    <li>Xây dựng công cụ thu thập và xử lý API tự động hóa công việc.</li>
+                </ul>
+            {% endif %}
+        </div>
+    </article>
+{% endblock %}
