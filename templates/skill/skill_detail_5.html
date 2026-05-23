@@ -1,37 +1,177 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-    <article class="max-w-3xl mx-auto px-4 py-16">
-        <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm text-slate-500 hover:text-blue-600 mb-8 transition-colors">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            {% if current_lang == 'en' %}Back to Skills{% else %}Quay lại Kỹ năng{% endif %}
+<div class="max-w-6xl mx-auto px-4 pt-28 pb-16">
+    <div class="mb-8">
+        <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors mb-4 group">
+            <svg class="w-4 h-4 mr-1.5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            {% if current_lang == 'en' %}Back to Skills{% else %}Quay lại trang năng lực{% endif %}
         </a>
-        
-        <header class="mb-10">
-            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">
-                {% if current_lang == 'en' %}Developing skill{% else %}Kỹ năng đang phát triển{% endif %}
-            </h1>
-            <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
-        </header>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            {% if current_lang == 'en' %}AI Financial Advisor Systems & Portfolio Simulation{% else %}Hệ thống Cố vấn AI & Giả lập Danh mục Tài chính{% endif %}
+        </h1>
+    </div>
 
-        <div class="prose prose-slate prose-lg max-w-none">
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
+            {% if current_lang == 'en' %}Project Overview{% else %}Tổng quan dự án{% endif %}
+        </h2>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
             {% if current_lang == 'en' %}
-                <p>This is a completely custom static page for your Python Automation skills. You have total design freedom here.</p>
-                <h3>Core Frameworks & Tools</h3>
-                <ul>
-                    <li>Pandas & NumPy for data processing</li>
-                    <li>Docker for containerized deployment</li>
-                    <li>Automated web workflows and API handling</li>
-                </ul>
+                An intelligent financial advisor system leveraging an orchestrator-agent framework to process complex market variables. From automated database ingestion (PostgreSQL) to building long-term memory structures (ChromaDB), the system transforms multi-dimensional inputs into actionable investment strategies with built-in capital protection rulebooks and robust historical backtesting frameworks.
             {% else %}
-                <p>Đây là trang chi tiết được thiết kế hoàn toàn bằng mã HTML tĩnh cho phần Tự động hóa Python. Bạn không còn bị ràng buộc bởi các ô nhập liệu từ Admin Django nữa.</p>
-                <h3>Các công nghệ & Công cụ cốt lõi</h3>
-                <ul>
-                    <li>Pandas & NumPy phục vụ xử lý và làm sạch dữ liệu lớn.</li>
-                    <li>Docker hỗ trợ đóng gói đường ống chạy tự động.</li>
-                    <li>Xây dựng công cụ thu thập và xử lý API tự động hóa công việc.</li>
-                </ul>
+                Hệ thống cố vấn tài chính thông minh ứng dụng kiến trúc Multi-Agent (Đa cấu trúc tác vụ) để xử lý các biến số thị trường phức tạp. Từ tự động hóa thu thập dữ liệu (PostgreSQL) đến thiết lập cấu trúc ký ức dài hạn (ChromaDB), hệ thống chuyển hóa các nguồn dữ liệu đa tầng thành quyết định đầu tư tối ưu, đi kèm cơ chế quản trị rủi ro nghiêm ngặt và giả lập danh mục (Backtesting).
             {% endif %}
+        </p>
+    </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            {% if current_lang == 'en' %}Overall System Architecture{% else %}Sơ đồ cấu trúc tổng thể hệ thống{% endif %}
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold">1</span>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base">Data & Ingestion (Back-end)</h3>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Thu thập dữ liệu thị trường, báo cáo tài chính, tin tức và cấu hình phân bổ vốn độc lập.</p>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>InvestmentSetup (Khởi tạo vốn)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>PostgreSQL (Lưu trữ quan hệ)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Threading (Bất đồng bộ ngầm)</li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                    <span class="text-[10px] uppercase tracking-wider font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Trigger $\rightarrow$ Pipeline</span>
+                </div>
+            </div>
+
+            <div class="bg-blue-50/40 border border-blue-200 rounded-lg p-5 flex flex-col justify-between relative">
+                <div class="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm">
+                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">2</span>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base">AI Core Engine (LLM Pipeline)</h3>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Chuỗi xử lý thông minh 4 tầng phối hợp RAG và thị giác máy tính giải mã dữ liệu.</p>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>ChromaDB (Vector Memory)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Gemini Vision (Đọc đồ thị kỹ thuật)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Structured JSON (Chuẩn hóa lệnh)</li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-4 border-t border-blue-200 text-center">
+                    <span class="text-[10px] uppercase tracking-wider font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Decision (BUY/SELL/HOLD)</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 flex flex-col justify-between relative">
+                <div class="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm">
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">3</span>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base">Execution & Portfolio (Front-end)</h3>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-4">Kiểm tra quy tắc an toàn vốn, khớp lệnh giả lập và hiển thị trực quan hóa dữ liệu.</p>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>PortfolioManager (Quy tắc an toàn)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>TradingDecision Snapshot (Lưu NAV)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Chart.js / Recharts (Vẽ đồ thị tăng trưởng)</li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
+                    <span class="text-[10px] uppercase tracking-wider font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Real-time Visualization</span>
+                </div>
+            </div>
         </div>
-    </article>
+    </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            {% if current_lang == 'en' %}4-Tier Multi-Agent & LLM Core Processing Flow{% else %}Quy trình xử lý cốt lõi của Module LLM 4 tầng{% endif %}
+        </h2>
+
+        <div class="space-y-4">
+            <div class="flex flex-col md:flex-row gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
+                <div class="md:w-1/4 flex items-center gap-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-8">Stage 1</span>
+                    <div class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded border border-blue-100 whitespace-nowrap">Market Intelligence</div>
+                </div>
+                <div class="md:w-3/4">
+                    <p class="text-xs font-medium text-slate-700 mb-1">Đọc hiểu vĩ mô và Quản lý Ký ức ngắn/dài hạn (LMI / PMI)</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">Hệ thống quét toàn bộ báo cáo tài chính doanh nghiệp, tin tức thị trường và dữ liệu lịch sử giá. Toàn bộ thông tin thô được nhúng (Embedding) và đẩy vào <strong>ChromaDB Vector DB</strong> làm cơ sở tri thức (RAG) phục vụ phân tích ngữ cảnh.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
+                <div class="md:w-1/4 flex items-center gap-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-8">Stage 2</span>
+                    <div class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded border border-indigo-100 whitespace-nowrap">Low-Level Reflection</div>
+                </div>
+                <div class="md:w-3/4">
+                    <p class="text-xs font-medium text-slate-700 mb-1">Phân tích Kỹ thuật chuyên sâu & Đồ thị trực quan (LLR)</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">Thư viện <code>mplfinance</code> tự động kết xuất đồ thị nến phiên giao dịch và chuyển tiếp sang <strong>Gemini Vision API</strong>. Module đồng thời tính toán các chỉ báo kỹ thuật cốt lõi: MACD, RSI, KDJ, Z-Score để chuyển hóa tín hiệu toán học thành nhận định xu hướng trực quan.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
+                <div class="md:w-1/4 flex items-center gap-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-8">Stage 3</span>
+                    <div class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded border border-purple-100 whitespace-nowrap">High-Level Reflection</div>
+                </div>
+                <div class="md:w-3/4">
+                    <p class="text-xs font-medium text-slate-700 mb-1">Phản tỉnh & Tự tối ưu hóa chiến thuật (HLR)</p>
+                    <p class="text-xs text-slate-500 leading-relaxed">Tác vụ AI thực hiện cơ chế đối chiếu: So sánh các quyết định giao dịch cũ với biến động thực tế của đường cong lợi nhuận tài sản. Agent tự rút ra bài học kinh nghiệm về các pha "Fomo" hoặc cắt lỗ muộn để tối ưu hóa trọng số cho các phiên kế tiếp.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 p-4 border border-slate-100 rounded-lg bg-blue-50/20 border-blue-100">
+                <div class="md:w-1/4 flex items-center gap-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-blue-500 w-8">Stage 4</span>
+                    <div class="px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded whitespace-nowrap shadow-sm">Decision Making</div>
+                </div>
+                <div class="md:w-3/4">
+                    <p class="text-xs font-semibold text-slate-800 mb-1">Bộ lọc Sức khỏe Tài chính & Ra lệnh Đóng gói JSON</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">Tổng hợp toàn diện dữ liệu từ 3 tầng trước phối hợp với mô hình đánh giá rủi ro tài chính doanh nghiệp <strong>Abarbanell & Bushee</strong>. Đầu ra ép cấu trúc nghiêm ngặt qua <strong>Structured Outputs JSON</strong> chứa định mức hành động <code>[BUY, SELL, HOLD]</code> và lý do lập luận chi tiết (final_reasoning).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
+            {% if current_lang == 'en' %}Frontend Integration & Endpoints{% else %}Luồng tương tác Frontend và Hệ thống API{% endif %}
+        </h2>
+        
+        <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+            <p>Ứng dụng Client tương tác khép kín với cụm máy chủ Back-end thông qua Django Rest Framework qua các bước:</p>
+            <ol class="list-decimal pl-5 space-y-3 text-xs md:text-sm">
+                <li>
+                    <strong>Thiết lập & Phân bổ vốn:</strong> Người dùng chỉ định cấu hình mã cổ phiếu và giới hạn ngân sách đầu tư thông qua phương thức 
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/investment-setups/</code>.
+                </li>
+                <li>
+                    <strong>Kích hoạt Pipeline AI bất đồng bộ:</strong> Khi bấm khởi chạy, Client gọi 
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/agent/run-demo/</code>. Hệ thống kích hoạt luồng <code>threading</code> chạy ngầm phân tích mà không gây nghẽn UI.
+                </li>
+                <li>
+                    <strong>Trực quan hóa Dashboard:</strong> Khi các Agent hoàn tất khớp lệnh, Client thực hiện lệnh gọi 
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/portfolios/</code> để tính toán ROI thực tế và 
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/decisions/</code> lấy mảng dữ liệu lịch sử biến động <code>snapshot_total_assets</code> đưa vào thư viện biểu đồ vẽ đường cong tăng trưởng NAV toàn diện.
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
 {% endblock %}
