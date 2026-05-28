@@ -30,19 +30,32 @@
 
             <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
                 <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-50 text-orange-600 border border-orange-100 tracking-wider">Tableau Desktop</span>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-50 text-orange-600 border border-orange-100 tracking-wider">Tableau Desktop</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                                {% if current_lang == 'en' %}Interactive Enterprise Analytics Dashboard{% else %}Báo cáo Phân tích Doanh nghiệp Tương tác Cao{% endif %}
+                            </h3>
+                            <p class="text-slate-500 text-sm mt-1">
+                                {% if current_lang == 'en' %}Live interactive dashboard embedded directly from Tableau Public for real-time market deep-dives.{% else %}Báo cáo trực quan tương tác trực tiếp nhúng từ Tableau Public phục vụ phân tích chuyên sâu.{% endif %}
+                            </p>
+                        </div>
+                        
+                        <div class="flex bg-slate-100 p-1 rounded-lg self-start sm:self-center border border-slate-200">
+                            <button onclick="switchTableau('market')" id="tab-market" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm">
+                                {% if current_lang == 'en' %}Market Analytics{% else %}Phân tích Thị trường{% endif %}
+                            </button>
+                            <button onclick="switchTableau('business')" id="tab-business" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900">
+                                {% if current_lang == 'en' %}Tea Business Sales{% else %}Kinh doanh Trà{% endif %}
+                            </button>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                        {% if current_lang == 'en' %}Interactive Enterprise Analytics Dashboard{% else %}Báo cáo Phân tích Doanh nghiệp Tương tác Cao{% endif %}
-                    </h3>
-                    <p class="text-slate-500 text-sm mt-1">
-                        {% if current_lang == 'en' %}Live interactive dashboard embedded directly from Tableau Public for real-time market deep-dives.{% else %}Báo cáo trực quan tương tác trực tiếp nhúng từ Tableau Public phục vụ phân tích chuyên sâu thị trường.{% endif %}
-                    </p>
                 </div>
                 
                 <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
-                    <div class="w-full overflow-auto rounded-lg shadow-inner bg-white">
+                    <div id="tableau-render-container" class="w-full overflow-auto rounded-lg shadow-inner bg-white">
                         <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto;'>
                             <noscript>
                                 <a href='#'><img alt='Dashboard 1_N ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1_rss.png' style='border: none' /></a>
@@ -146,18 +159,86 @@
         </div>
     </div>
 
-    <script type='text/javascript'>                    
-        var divElement = document.getElementById('viz1779455382110');                    
-        var vizElement = divElement.getElementsByTagName('object')[0];                    
-        if ( divElement.offsetWidth > 800 ) { 
-            vizElement.style.width='100%';vizElement.style.height='650px';
-        } else if ( divElement.offsetWidth > 500 ) { 
-            vizElement.style.width='100%';vizElement.style.height='550px';
-        } else { 
-            vizElement.style.width='100%';vizElement.style.height='450px';
-        }                     
-        var scriptElement = document.createElement('script');                    
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    <script type='text/javascript'>
+        // Lưu trữ chuỗi HTML gốc của 2 mã nhúng nhằm giữ nguyên vẹn cấu trúc ban đầu của bạn
+        const embeds = {
+            market: `
+                <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto;'>
+                    <noscript>
+                        <a href='#'><img alt='Dashboard 1_N ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1_rss.png' style='border: none' /></a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                        <param name='embed_code_version' value='3' /> 
+                        <param name='site_root' value='' />
+                        <param name='name' value='Data_Viz_17495813142900&#47;Dashboard1_N' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1.png' /> 
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                    </object>
+                </div>
+            `,
+            business: `
+                <div class='tableauPlaceholder' id='viz1779961811119' style='position: relative; margin: 0 auto;'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bt&#47;bttableu-Copy&#47;D1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='bttableu-Copy&#47;D1' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;bt&#47;bttableu-Copy&#47;D1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>
+            `
+        };
+
+        // Hàm thực thi chạy các script tính toán kích thước đi kèm của từng báo cáo
+        function executeTableauScript(type) {
+            if (type === 'market') {
+                var divElement = document.getElementById('viz1779455382110');                    
+                var vizElement = divElement.getElementsByTagName('object')[0];                    
+                if ( divElement.offsetWidth > 800 ) { 
+                    vizElement.style.width='100%';vizElement.style.height='650px';
+                } else if ( divElement.offsetWidth > 500 ) { 
+                    vizElement.style.width='100%';vizElement.style.height='550px';
+                } else { 
+                    vizElement.style.width='100%';vizElement.style.height='450px';
+                }                     
+                var scriptElement = document.createElement('script');                    
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            } 
+            else if (type === 'business') {
+                // GIỮ NGUYÊN GỐC TOÀN BỘ LOGIC TÍNH TOÁN CỦA DASHBOARD KINH DOANH TRÀ TRÁNH LỖI
+                var divElement = document.getElementById('viz1779961811119');                    
+                var vizElement = divElement.getElementsByTagName('object')[0];                    
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='3450px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     
+                var scriptElement = document.createElement('script');                    
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            }
+        }
+
+        // Khởi tạo chạy dashboard đầu tiên khi trang web vừa load xong
+        executeTableauScript('market');
+
+        // Hàm chuyển tab chủ động
+        function switchTableau(type) {
+            const tabMarket = document.getElementById('tab-market');
+            const tabBusiness = document.getElementById('tab-business');
+            const container = document.getElementById('tableau-render-container');
+
+            // 1. Thay thế nội dung HTML trống bằng mã nhúng được chọn
+            container.innerHTML = embeds[type];
+
+            // 2. Cập nhật giao diện nút bấm hoạt động
+            if(type === 'market') {
+                tabMarket.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm";
+                tabBusiness.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900";
+            } else {
+                tabBusiness.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm";
+                tabMarket.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900";
+            }
+
+            // 3. Kích hoạt chạy script tương ứng ngay khi mã vừa nạp vào khung hiển thị thực tế
+            executeTableauScript(type);
+        }
     </script>
 {% endblock %}
