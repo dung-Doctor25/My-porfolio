@@ -1,9 +1,9 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "Mô tả phần code bạn vừa chỉnh sửa"
+git commit -m "sửa lại skill 2 lỗi click bị di chuyển lên"
 git push origin main
 
 ### ở trên pythonanywhere
+source /home/dungwork/.virtualenvs/myenv/bin/activate
 cd My-porfolio
-source /home/My-porfolio/myenv/bin/activate
 git pull origin main

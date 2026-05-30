@@ -165,7 +165,7 @@
         </div>
     </div>
 
-    <script type='text/javascript'>
+   <script type='text/javascript'>
         // Lưu trữ chuỗi HTML gốc của 2 mã nhúng nhằm giữ nguyên vẹn cấu trúc ban đầu của bạn
         const embeds = {
             market: `
@@ -246,5 +246,61 @@
             // 3. Kích hoạt chạy script tương ứng ngay khi mã vừa nạp vào khung hiển thị thực tế
             executeTableauScript(type);
         }
+
+        // --- BỔ SUNG: XỬ LÝ CHỐNG GIẬT TRANG (SCROLL JUMP) CHO LOOKER STUDIO ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const lookerIframe = document.querySelector('iframe[src*="lookerstudio.google.com"]');
+            if (!lookerIframe) return;
+
+            let isOverIframe = false;
+            let isUserScrolling = false;
+            let scrollTimeout;
+            let currentScrollY = window.scrollY;
+
+            // 1. Theo dõi khi chuột nằm trong khu vực báo cáo
+            lookerIframe.addEventListener('mouseenter', () => {
+                isOverIframe = true;
+                currentScrollY = window.scrollY; // Chốt tọa độ hiện tại
+            });
+
+            lookerIframe.addEventListener('mouseleave', () => {
+                isOverIframe = false;
+            });
+
+            // 2. Hàm ghi nhận các thao tác CUỘN CHỦ ĐỘNG của người dùng
+            const userScrollHandler = () => {
+                isUserScrolling = true;
+                currentScrollY = window.scrollY; // Cập nhật tọa độ mới do người dùng tự cuộn
+                
+                clearTimeout(scrollTimeout);
+                // Reset trạng thái sau khi người dùng dừng cuộn 100ms
+                scrollTimeout = setTimeout(() => {
+                    isUserScrolling = false;
+                }, 100); 
+            };
+
+            // Lắng nghe lăn chuột, vuốt màn hình cảm ứng, hoặc dùng phím mũi tên
+            window.addEventListener('wheel', userScrollHandler, { passive: true });
+            window.addEventListener('touchmove', userScrollHandler, { passive: true });
+            window.addEventListener('keydown', (e) => {
+                // Các phím cuộn trang: Space, Page Up, Page Down, Up, Down
+                if ([32, 33, 34, 38, 40].includes(e.keyCode)) {
+                    userScrollHandler();
+                }
+            }, { passive: true });
+
+            // 3. Đánh chặn các lệnh cuộn "lén lút" từ Looker Studio
+            window.addEventListener('scroll', () => {
+                // Nếu chuột đang ở trong iframe MÀ người dùng KHÔNG hề lăn chuột/vuốt phím
+                // => Chắc chắn là Looker Studio đang cố tình giật trang!
+                if (isOverIframe && !isUserScrolling) {
+                    window.scrollTo(window.scrollX, currentScrollY); // Ép ghim cứng lại vị trí cũ
+                } else if (!isOverIframe) {
+                    // Cập nhật lại vị trí bình thường khi chuột nằm ngoài báo cáo
+                    currentScrollY = window.scrollY;
+                }
+            });
+        });
     </script>
+
 {% endblock %}
