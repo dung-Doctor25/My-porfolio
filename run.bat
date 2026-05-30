@@ -13,7 +13,7 @@ echo Django Server Starting...
 echo Press Ctrl + C to stop
 echo =========================
 
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000
 
 echo.
 echo Server stopped or crashed.
