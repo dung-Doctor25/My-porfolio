@@ -13,9 +13,9 @@
         </div>
 
         <div class="mb-12 pb-6 border-b border-slate-200">
-            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Data Engineering & Analytics Depth</span>
+            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Data Analytics Depth</span>
             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                {% if current_lang == 'en' %}Data Querying, Processing & Business Intelligence{% else %}Truy vấn, Xử lý dữ liệu & Business Intelligence (BI){% endif %}
+                {% if current_lang == 'en' %}Data Querying, Processing & Data Visualization{% else %}Truy vấn, Xử lý dữ liệu & Trực quan hóa Dữ liệu{% endif %}
             </h1>
             <p class="text-slate-500 mt-3 max-w-4xl text-base leading-relaxed">
                 {% if current_lang == 'en' %}
@@ -116,14 +116,14 @@ ORDER BY month;</code></pre>
                             <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
                             <div>
                                 <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Cleaning</strong>
-                                <span class="text-slate-500 text-xs md:text-sm">Xử lý giá trị khuyết thiếu (Imputation), loại bỏ dữ liệu trùng lặp và lọc bỏ nhiễu/ngoại lệ (Outliers).</span>
+                                <span class="text-slate-500 text-xs md:text-sm">{% if current_lang == 'en' %}Handling missing values (Imputation), removing duplicate data, and filtering out noise/outliers.{% else %}Xử lý giá trị khuyết thiếu (Imputation), loại bỏ dữ liệu trùng lặp và lọc bỏ nhiễu/ngoại lệ (Outliers).{% endif %}</span>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
                             <div>
                                 <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Transformation</strong>
-                                <span class="text-slate-500 text-xs md:text-sm">Trích xuất đặc trưng thời gian (Datetime extract), mã hóa biến phân loại (One-Hot Encoding) và ánh xạ danh mục.</span>
+                                <span class="text-slate-500 text-xs md:text-sm">{% if current_lang == 'en' %}Extracting time-based features (Datetime extract), encoding categorical variables (One-Hot Encoding), and mapping categories.{% else %}Trích xuất đặc trưng thời gian (Datetime extract), mã hóa biến phân loại (One-Hot Encoding) và ánh xạ danh mục.{% endif %}</span>
                             </div>
                         </div>
                     </div>
@@ -132,14 +132,14 @@ ORDER BY month;</code></pre>
                             <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
                             <div>
                                 <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Normalization</strong>
-                                <span class="text-slate-500 text-xs md:text-sm">Chuẩn hóa dữ liệu số (Min-Max Scaling, Z-score) đưa các chỉ số doanh số và sản lượng về cùng một thang đo.</span>
+                                <span class="text-slate-500 text-xs md:text-sm">{% if current_lang == 'en' %}Normalizing numerical data (Min-Max Scaling, Z-score) to bring sales metrics and product quantities to the same scale.{% else %}Chuẩn hóa dữ liệu số (Min-Max Scaling, Z-score) đưa các chỉ số doanh số và sản lượng về cùng một thang đo.{% endif %}</span>
                             </div>
                         </div>
                         <div class="flex items-start gap-3">
                             <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
                             <div>
                                 <strong class="text-slate-900 block font-semibold text-sm md:text-base">Dimensionality Reduction</strong>
-                                <span class="text-slate-500 text-xs md:text-sm">Giảm chiều dữ liệu hiệu quả, tối ưu hóa các cụm tính năng đặc trưng giúp mô hình hóa hành vi khách hàng nhanh chóng.</span>
+                                <span class="text-slate-500 text-xs md:text-sm">{% if current_lang == 'en' %}Efficient dimensionality reduction techniques to optimize feature clusters and accelerate customer behavior modeling.{% else %}Giảm chiều dữ liệu hiệu quả, tối ưu hóa các cụm tính năng đặc trưng giúp mô hình hóa hành vi khách hàng nhanh chóng.{% endif %}</span>
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ ORDER BY month;</code></pre>
                     <span class="text-xs font-bold text-orange-600 uppercase tracking-widest block mb-1">Step 03 / Downstream Delivery</span>
                     <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
                         <span class="w-2 h-6 bg-orange-500 rounded-full inline-block"></span>
-                        {% if current_lang == 'en' %}Data Visualization & Business Intelligence{% else %}Trực quan hóa dữ liệu & Hệ thống Báo cáo (BI){% endif %}
+                        {% if current_lang == 'en' %}Data Visualization & Business Intelligence{% else %}Hệ thống Trực quan hóa Dữ liệu{% endif %}
                     </h2>
                 </div>
 
@@ -249,14 +249,9 @@ ORDER BY month;</code></pre>
                         <div class="w-full rounded-lg shadow-inner bg-slate-800 overflow-hidden" style="height: 800px;">
                             <iframe 
                                 src="https://lookerstudio.google.com/embed/reporting/fd8d26d7-bf3f-4b79-a11e-6c2b2d30ca84" 
-                                loading="lazy"
-                                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox text/html"
+                                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                                 style="border:0; width:100%; height:750px;" 
-                                allowfullscreen 
-                                webkitallowfullscreen 
-                                mozallowfullscreen 
-                                oallowfullscreen 
-                                msallowfullscreen>
+                                allowfullscreen>
                             </iframe>
                         </div>
                     </div>
@@ -435,83 +430,63 @@ ORDER BY month;</code></pre>
 
             executeTableauScript(type);
         }
-
-        // --- GIẢI PHÁP CHỐNG TỰ ĐỘNG CUỘN DO IFRAME FOCUS ---
+        // --- BỨC TƯỜNG LỬA CHẶN IFRAME CƯỚP TRỤC CUỘN (BẢN CỰC ĐOAN) ---
         (function() {
-            // 1. Ép trình duyệt không tự khôi phục vị trí cuộn cũ khi ép F5
+            // 1. Ép trình duyệt không tự khôi phục vị trí cuộn cũ khi F5
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
-
-            let pageLoaded = false;
-            let userInteracted = false;
-
-            // Đưa trang về đầu vị trí 0 ngay lập tức khi load
             window.scrollTo(0, 0);
 
-            // Ghi nhận khi người dùng chủ động cuộn hoặc click chuột
-            const activateUserScroll = () => { userInteracted = true; };
-            window.addEventListener('wheel', activateUserScroll, { passive: true });
-            window.addEventListener('touchmove', activateUserScroll, { passive: true });
-            window.addEventListener('mousedown', activateUserScroll, { passive: true });
-            window.addEventListener('keydown', activateUserScroll, { passive: true });
+            let isUserInteracting = false;
+            let interactionTimer;
+            let lastSafeScrollY = window.scrollY;
+            let isMouseDown = false;
 
-            // Lắng nghe sự kiện cuộn của hệ thống
-            window.addEventListener('scroll', () => {
-                // Nếu người dùng chưa hề chạm vào màn hình mà trang tự cuộn -> Trình duyệt đang bị iframe kéo đi
-                if (!userInteracted && window.scrollY > 0) {
-                    window.scrollTo(window.scrollX, 0);
-                }
+            // Hàm xác nhận: "Người dùng đang tự tay điều khiển"
+            function userIsActive() {
+                isUserInteracting = true;
+                clearTimeout(interactionTimer);
+                // Duy trì trạng thái an toàn trong 500ms sau thao tác cuối
+                interactionTimer = setTimeout(() => {
+                    isUserInteracting = false;
+                }, 500); 
+            }
+
+            // 2. Lắng nghe MỌI tương tác vật lý từ người dùng
+            window.addEventListener('wheel', userIsActive, { passive: true });
+            window.addEventListener('touchmove', userIsActive, { passive: true });
+            window.addEventListener('keydown', userIsActive, { passive: true });
+            
+            // Xử lý riêng cho việc dùng chuột kéo thanh cuộn (scrollbar drag)
+            window.addEventListener('mousedown', () => { 
+                isMouseDown = true; 
+                userIsActive(); 
+            });
+            window.addEventListener('mouseup', () => { 
+                isMouseDown = false; 
+            });
+            window.addEventListener('mousemove', () => {
+                if (isMouseDown) userIsActive();
             });
 
-            window.addEventListener('load', () => {
-                pageLoaded = true;
-                // Trả lại trạng thái cuộn bình thường sau khi mọi thứ tải xong 500ms
-                setTimeout(() => {
-                    userInteracted = true;
-                }, 500);
+            // 3. Phán xét sự kiện cuộn
+            window.addEventListener('scroll', () => {
+                if (isUserInteracting || isMouseDown) {
+                    // Nếu người dùng đang cuộn, ghi nhận vị trí này là HỢP LỆ
+                    lastSafeScrollY = window.scrollY;
+                } else {
+                    // NẾU HỆ THỐNG TỰ CUỘN (Looker Studio dở trò) 
+                    // Ép khung hình giật ngược lại vị trí hợp lệ cuối cùng ngay lập tức!
+                    window.scrollTo({
+                        top: lastSafeScrollY,
+                        left: window.scrollX,
+                        behavior: 'instant' // Dùng 'instant' để màn hình không bị trượt (smooth) mà đứng im phăng phắc
+                    });
+                }
             });
         })();
-
-        // --- LOOKER STUDIO INTERACTION FIX ---
-        document.addEventListener("DOMContentLoaded", function() {
-            const lookerIframe = document.querySelector('iframe[src*="lookerstudio.google.com"]');
-            if (!lookerIframe) return;
-
-            let isOverIframe = false;
-            let isUserScrolling = false;
-            let scrollTimeout;
-            let currentScrollY = 0;
-
-            lookerIframe.addEventListener('mouseenter', () => {
-                isOverIframe = true;
-                currentScrollY = window.scrollY;
-            });
-
-            lookerIframe.addEventListener('mouseleave', () => {
-                isOverIframe = false;
-            });
-
-            const userScrollHandler = () => {
-                isUserScrolling = true;
-                currentScrollY = window.scrollY;
-                
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    isUserScrolling = false;
-                }, 100);
-            };
-
-            window.addEventListener('wheel', userScrollHandler, { passive: true });
-            window.addEventListener('touchmove', userScrollHandler, { passive: true });
-
-            window.addEventListener('scroll', () => {
-                if (isOverIframe && !isUserScrolling) {
-                    window.scrollTo(window.scrollX, currentScrollY);
-                }
-            });
-        });
-
+        
         function switchPythonViz(index) {
             const allImages = document.querySelectorAll('.python-gallery-img');
             allImages.forEach(img => {
@@ -535,5 +510,7 @@ ORDER BY month;</code></pre>
                 targetBtn.className = "python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-teal-600 text-white border-teal-600 shadow-sm";
             }
         }
+    
+
     </script>
 {% endblock %}

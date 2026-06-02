@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "sửa lại phần footer và phần năng lực chuyên môn"
+git commit -m "bản tạm chấp nhận của skill detail 1 và 2"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere

@@ -1,201 +1,172 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <section class="max-w-6xl mx-auto px-4 pt-28 pb-8">
-        <div class="border-b border-slate-200 pb-8">
-            <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors mb-6 group">
+    <section class="max-w-7xl mx-auto px-4 pt-28 pb-16">
+        <div class="border-b border-slate-200 pb-6 mb-10">
+            <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group">
                 <svg class="w-4 h-4 mr-1.5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
                 {% if current_lang == 'en' %}Back to Skills{% else %}Quay lại Danh mục Kỹ năng{% endif %}
             </a>
+        </div>
+
+        <div class="mb-16">
+            <div class="flex flex-wrap gap-2.5 mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-100">AI Agent</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100">RAG Architecture</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">Django Ecosystem</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-600 border border-purple-100">ChromaDB</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 leading-tight">
+                Ứng dụng Retrieval-Augmented Generation (RAG) <br class="hidden md:block">
+                <span class="text-blue-600">Xây dựng AI Agent</span>
+            </h1>
+            <h2 class="text-2xl font-semibold text-slate-700 mb-6">
+                Agent ra quyết định và thực thi đầu tư tự động
+            </h2>
             
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">
-                        {% if current_lang == 'en' %}Skill Details{% else %}Chi tiết kỹ năng{% endif %}
-                    </span>
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                        {% if current_lang == 'en' %}Database Systems{% else %}Xây dựng hệ thống CSDL{% endif %}
-                    </h1>
-                </div>
-                <div class="flex flex-wrap gap-1.5 h-fit">
-                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">PostgreSQL</span>
-                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">MongoDB</span>
-                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">Django ORM</span>
-                    <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200">Database Optimization</span>
+            <p class="text-lg text-slate-600 max-w-4xl leading-relaxed bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm">
+                AI agent kết hợp công nghệ <strong>Retrieval-Augmented Generation (RAG)</strong> giúp tích lũy kinh nghiệm đầu tư phục vụ cho các tác vụ đầu tư trong tương lai thêm chính xác. Agent được tích hợp chặt chẽ cùng với framework <strong>Django</strong>, tạo nên một hệ sinh thái hoàn chỉnh phục vụ cho khách hàng nhằm đưa ra những quyết định đầu tư sinh lời tối ưu nhất.
+            </p>
+        </div>
+
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                Kiến trúc tổng thể của Agent
+            </h3>
+            
+            <div class="w-full bg-white rounded-2xl border-2 border-slate-200 border-dashed p-2 shadow-sm hover:border-blue-400 transition-colors overflow-hidden group flex items-center justify-center min-h-[400px]">
+                <div class="text-center text-slate-400 group-hover:text-blue-500 transition-colors">
+                    <img src="{% static 'images/AI Agent flow diagram.png' %}" alt="Agent Architecture" class="mx-auto mb-4 max-w-full h-auto rounded-lg border border-slate-300 shadow-sm">
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="max-w-6xl mx-auto px-4 pb-12">
-        <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 rounded-2xl p-6 md:p-8 text-white shadow-xl">
-            <div class="max-w-3xl">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-4">
-                    {% if current_lang == 'en' %}Featured Showcase Project{% else %}Dự án thực nghiệm tiêu biểu{% endif %}
-                </span>
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-3">
-                    {% if current_lang == 'en' %}
-                        Sales & POS Management System with AI Chatbot Integration
-                    {% else %}
-                        Hệ thống Quản lý Bán hàng Đa nền tảng tích hợp Trợ lý ảo
-                    {% endif %}
-                </h2>
-                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-                    {% if current_lang == 'en' %}
-                        An enterprise-grade software architecture integrating full-scale CRUD capabilities, real-time synchronization, and ChatOps triggers, optimized through robust structural database models.
-                    {% else %}
-                        Hệ thống phần mềm quản lý toàn diện tích hợp trọn vẹn khả năng xử lý nghiệp vụ, đồng bộ dữ liệu thời gian thực và vận hành thông qua thực thi lệnh ChatOps trực tiếp trên nền tảng CSDL tối ưu.
-                    {% endif %}
-                </p>
-                <div class="flex items-center gap-2 border-t border-slate-700/50 pt-4 text-sm text-slate-400">
-                    <span class="font-semibold text-slate-200">{% if current_lang == 'en' %}Role:{% else %}Vai trò:{% endif %}</span>
-                    <span>{% if current_lang == 'en' %}Full-stack Developer / Backend Developer{% else %}Phát triển chính (Full-stack Developer / Backend Developer){% endif %}</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 pb-12">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200">
-            <div class="flex items-center gap-2.5 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path></svg>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 tracking-tight">
-                    {% if current_lang == 'en' %}Database Architecture & Schema Diagram{% else %}Cấu trúc thực thể & Sơ đồ Cơ sở dữ liệu{% endif %}
-                </h3>
-            </div>
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                Luồng thực thi đầu tư tự động (Cron Job)
+            </h3>
             
-            <div class="relative rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center min-h-[300px] md:min-h-[400px] hover:border-blue-400/50 transition-colors p-4 group">
-                <img src="" alt="Database Schema Diagram" class="max-w-full max-h-[500px] object-contain rounded-lg shadow-sm hidden group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:block">
+            <div class="relative">
+                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-blue-100 -translate-y-1/2 z-0"></div>
                 
-                <div class="text-center group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:hidden">
-                    <svg class="w-12 h-12 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <p class="text-sm font-medium text-slate-600">{% if current_lang == 'en' %}Database Schema Preview Placeholder{% else %}Khung hiển thị sơ đồ cấu trúc Cơ sở dữ liệu{% endif %}</p>
-                    <p class="text-xs text-slate-400 mt-1">{% if current_lang == 'en' %}Replace the img src attribute with your schema diagram path{% else %}Thay đổi thuộc tính src của thẻ img bằng đường dẫn ảnh của bạn{% endif %}</p>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 relative z-10">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">1</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Thu thập Dữ liệu</h4>
+                        <p class="text-sm text-slate-500">Kích hoạt tại khung giờ cố định hằng ngày để lấy dữ liệu tài chính mới nhất.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">2</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Phân tích Thị trường</h4>
+                        <p class="text-sm text-slate-500">Đánh giá bối cảnh và tình hình biến động chung của thị trường.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">3</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Mô hình hóa Mối quan hệ</h4>
+                        <p class="text-sm text-slate-500">Học và tìm ra quy luật giữa biến động giá cổ phiếu và thông tin thị trường.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">4</div>
+                        <h4 class="font-bold text-slate-800 mb-2">Truy xuất Kinh nghiệm</h4>
+                        <p class="text-sm text-slate-500">Học hỏi các bài học đầu tư từ quá khứ.</p>
+                    </div>
+
+                    <div class="bg-blue-600 p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-center text-white">
+                        <div class="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+                        <h4 class="font-bold mb-2">Quyết định Cuối cùng</h4>
+                        <p class="text-sm text-blue-100">Tổng hợp lý luận để đưa ra Action chuẩn xác: <br><strong>MUA - BÁN - GIỮ</strong>.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="max-w-6xl mx-auto px-4 pb-12">
-        <h3 class="text-xl font-bold text-slate-900 tracking-tight mb-6">
-            {% if current_lang == 'en' %}Key Implementation & Technical Competencies{% else %}Nghiệp vụ cốt lõi & Kỹ năng đạt được{% endif %}
-        </h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v6a2 2 0 012-2m14-0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">
-                    {% if current_lang == 'en' %}Core POS & ERP Framework{% else %}Xây dựng nghiệp vụ cốt lõi (Core POS & ERP){% endif %}
-                </h4>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {% if current_lang == 'en' %}
-                        Designed and deployed a rigorous CRUD system to handle complex entity architectures including Inventory Control (Products), Customer Relationship Management (CRM), and strict Order Management structures.
-                    {% else %}
-                        Thiết kế và triển khai trọn vẹn hệ thống CRUD (Thêm, Sửa, Xóa) quản lý các thực thể phức tạp bao gồm Sản phẩm (Inventory), Khách hàng (CRM) và Đơn hàng (Order Management).
-                    {% endif %}
-                </p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">
-                    {% if current_lang == 'en' %}Real-time Counter POS Systems{% else %}Phát triển tính năng Bán hàng tại quầy (POS){% endif %}
-                </h4>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {% if current_lang == 'en' %}
-                        Engineered intuitive user interfaces with heavily optimized invoice processing logic, automating cash-flow math and triggering instant, real-time inventory adjustments during direct sales transactions.
-                    {% else %}
-                        Thiết kế giao diện và tối ưu hóa logic xử lý hóa đơn, tính toán dòng tiền, cập nhật kho tự động theo thời gian thực (Real-time) phục vụ hiệu quả cho việc bán hàng trực tiếp tại quầy.
-                    {% endif %}
-                </p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">
-                    {% if current_lang == 'en' %}Internal Real-time Communication{% else %}Hệ thống tương tác nội bộ (Real-time Communication){% endif %}
-                </h4>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {% if current_lang == 'en' %}
-                        Constructed a scalable peer-to-peer internal chat module for organizational personnel, securing high-throughput concurrent data flows while protecting information isolation.
-                    {% else %}
-                        Xây dựng chức năng Chat nội bộ giữa các nhân viên, đảm bảo luồng truyền tải dữ liệu tức thời, chịu tải tốt và bảo mật thông tin liên lạc trong doanh nghiệp.
-                    {% endif %}
-                </p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center text-violet-600 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">
-                    {% if current_lang == 'en' %}Conversational AI Assistant (UI/UX){% else %}Tích hợp Trợ lý ảo thông minh (Conversational UI/UX){% endif %}
-                </h4>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {% if current_lang == 'en' %}
-                        Developed an advanced context-aware Chatbot module enabling direct conversational analytics. Users can seamlessly query operational records and pull aggregated sales revenue reports via natural language.
-                    {% else %}
-                        Phát triển module Chatbot cho phép người dùng truy vấn thông tin (sản phẩm, đơn hàng, khách hàng) và kết xuất trực quan các báo cáo doanh thu trực tiếp bằng ngôn ngữ tự nhiên.
-                    {% endif %}
-                </p>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-md transition-shadow md:col-span-2">
-                <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                </div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">
-                    {% if current_lang == 'en' %}Conversational Action Execution (ChatOps){% else %}Xử lý nghiệp vụ qua Chat (ChatOps / Conversational Actions){% endif %}
-                </h4>
-                <p class="text-slate-600 text-sm leading-relaxed">
-                    {% if current_lang == 'en' %}
-                        Designed a secure backend translation architecture that intercepts chat inputs and securely maps conversational directives to structured data queries (CRUD). This enforces rigorous schema compliance, ensuring accurate and transactional state mutations while maximizing system throughput for operators.
-                    {% else %}
-                        Thiết kế kiến trúc phần mềm cho phép thực hiện các lệnh CRUD (thêm, sửa, xóa dữ liệu) trực tiếp thông qua cửa sổ chat một cách chính xác và an toàn. Hệ thống ánh xạ các chỉ thị ngôn ngữ tự nhiên thành truy vấn cấu trúc, tối ưu hóa triệt để tốc độ và quy trình vận hành thực tế cho nhân viên.
-                    {% endif %}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 pb-24">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200">
-            <div class="flex items-center gap-2.5 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 tracking-tight">
-                    {% if current_lang == 'en' %}Application Interface Showcase{% else %}Giao diện hệ thống & Luồng tương tác trực quan{% endif %}
-                </h3>
-            </div>
+        <div class="bg-slate-900 rounded-2xl p-8 md:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-blue-500/5 blur-3xl"></div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="relative rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center min-h-[250px] hover:border-indigo-400/50 transition-colors p-4 group">
-                    <img src="" alt="POS Interface Screenshot" class="max-w-full max-h-[350px] object-contain rounded-lg shadow-sm hidden group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:block">
-                    <div class="text-center group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:hidden">
-                        <p class="text-sm font-medium text-slate-600">{% if current_lang == 'en' %}POS & Counter Interface Preview{% else %}Giao diện Bán hàng tại quầy (POS){% endif %}</p>
-                        <p class="text-xs text-slate-400 mt-1">{% if current_lang == 'en' %}Insert POS view image link{% else %}Chèn ảnh giao diện bán hàng tại đây{% endif %}</p>
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-400 relative z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                Hệ thống RAG & Cơ sở dữ liệu Vector
+            </h3>
+            <p class="text-slate-400 mb-8 max-w-3xl relative z-10">Quy trình xử lý Retrieval-Augmented Generation cốt lõi được tối ưu hóa qua 6 bước để đảm bảo khả năng truy xuất theo ngữ cảnh và suy luận chính xác nhất.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-blue-500/50 transition-colors group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-sm">01</div>
+                            <h4 class="font-bold text-slate-200">Query</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                     </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Nhận <span class="text-blue-300">query text</span> từ các module hệ thống để bắt đầu chu trình xử lý.</p>
                 </div>
 
-                <div class="relative rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center min-h-[250px] hover:border-indigo-400/50 transition-colors p-4 group">
-                    <img src="" alt="AI Chatbot Interface Screenshot" class="max-w-full max-h-[350px] object-contain rounded-lg shadow-sm hidden group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:block">
-                    <div class="text-center group-[:has(img[src^='http']),:has(img[src^='/']),:has(img[src^='{%'])]]:hidden">
-                        <p class="text-sm font-medium text-slate-600">{% if current_lang == 'en' %}AI Chatbot & ChatOps Workflow{% else %}Giao diện Trợ lý ảo & Luồng ChatOps{% endif %}</p>
-                        <p class="text-xs text-slate-400 mt-1">{% if current_lang == 'en' %}Insert Chatbot workflow image link{% else %}Chèn ảnh giao diện Chatbot/ChatOps tại đây{% endif %}</p>
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-colors group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">02</div>
+                            <h4 class="font-bold text-slate-200">Embedding</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Chuyển đổi query text thành vector đa chiều (Sử dụng model mặc định: <span class="text-purple-300 font-mono text-xs">all-MiniLM-L6-v2</span>).</p>
                 </div>
+
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition-colors group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">03</div>
+                            <h4 class="font-bold text-slate-200">Search</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Tìm kiếm <span class="text-emerald-300">Top K</span> các vector tương đồng nhất trong <strong class="text-slate-300">ChromaDB</strong> (đo lường bằng khoảng cách L2).</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-colors group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">04</div>
+                            <h4 class="font-bold text-slate-200">Retrieval</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Trích xuất nội dung văn bản thô (raw text content) từ Top K kết quả truy xuất được.</p>
+                </div>
+
+                <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-pink-500/50 transition-colors group">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-sm">05</div>
+                            <h4 class="font-bold text-slate-200">Augmentation</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-slate-500 group-hover:text-pink-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Kết hợp ngữ cảnh thô (<span class="text-pink-300">Context</span>) và văn bản truy vấn (<span class="text-pink-300">Query</span>) thành một Prompt hoàn chỉnh.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-5 rounded-xl border border-blue-500/30 hover:border-blue-400 transition-colors group shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500 text-white flex items-center justify-center font-bold text-sm shadow-md">06</div>
+                            <h4 class="font-bold text-blue-100">Generation</h4>
+                        </div>
+                        <svg class="w-5 h-5 text-blue-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">Gửi Prompt hoàn chỉnh đến LLM (<strong class="text-white">Gemini 3.1 Flash-Lite preview</strong>) để mô hình suy luận và tạo ra câu trả lời cuối cùng.</p>
+                </div>
+
             </div>
         </div>
+
     </section>
 {% endblock %}
