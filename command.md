@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "sửa lại skill 2 lỗi click bị di chuyển lên"
+git commit -m "sửa lại phần footer và phần năng lực chuyên môn"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere

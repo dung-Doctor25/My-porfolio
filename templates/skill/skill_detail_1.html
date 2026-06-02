@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="max-w-4xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
         
         <div class="mb-8">
             <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors group">
@@ -15,301 +15,232 @@
         <div class="mb-12 pb-6 border-b border-slate-200">
             <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Technical Deep Dive</span>
             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                {% if current_lang == 'en' %}Web Scraping & Data Extraction Systems{% else %}Hệ thống Thu thập & Khai thác Dữ liệu Web{% endif %}
+                {% if current_lang == 'en' %}Data Engineering & Extraction Systems{% else %}Hệ thống Kỹ thuật & Khai thác Dữ liệu Toàn diện{% endif %}
             </h1>
-            <p class="text-slate-500 mt-3 max-w-2xl text-base leading-relaxed">
+            <p class="text-slate-500 mt-3 max-w-3xl text-base leading-relaxed">
                 {% if current_lang == 'en' %}
-                    Detailed production architecture of robust, automated crawlers designed to handle anti-bot layouts, dynamic state changes, and live multi-source data syncs.
+                    Comprehensive production architecture covering automated web crawling, optimized database schema design, and robust ETL pipelines for enterprise intelligence.
                 {% else %}
-                    Kiến trúc chi tiết của các hệ thống thu thập dữ liệu tự động, được tối ưu hóa để vượt qua các cơ chế chặn bot, xử lý thuộc tính động và đồng bộ hóa thời gian thực.
+                    Kiến trúc hoàn chỉnh bao gồm hệ thống thu thập dữ liệu tự động, tối ưu hóa thiết kế cơ sở dữ liệu và xây dựng các đường ống ETL phục vụ phân tích doanh nghiệp.
                 {% endif %}
             </p>
         </div>
 
-        <div class="space-y-6">
+        <div class="space-y-12">
 
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <button type="button" class="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-btn" data-target="system-kalodata">
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-600 border border-blue-100 tracking-wider">E-Commerce</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                            {% if current_lang == 'en' %}Automated E-Commerce Intelligence (Kalodata Scraper){% else %}Hệ thống Thu thập Dữ liệu TMĐT Tự động (Kalodata Scraper){% endif %}
-                        </h3>
-                    </div>
-                    <span class="p-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-400 group-hover:text-slate-600 shrink-0 arrow-icon transition-transform duration-300">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </span>
-                </button>
-                
-                <div id="system-kalodata" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">{% if current_lang == 'en' %}Description{% else %}Mô tả hệ thống{% endif %}</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Designed and developed an asynchronous automated data collection pipeline targeting the Kalodata platform to serve continuous market research for the Fashion & Women's Lingerie sector.
-                            {% else %}
-                                Thiết kế và phát triển pipeline tự động hóa thu thập dữ liệu bất đồng bộ từ nền tảng Kalodata nhằm phục vụ phân tích thị trường ngành hàng Thời trang & Đồ lót nữ.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">{% if current_lang == 'en' %}System Overview & Architecture Diagram{% else %}Tổng quan & Sơ đồ hệ thống{% endif %}</h4>
-                        <div class="bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center min-h-[200px] text-center group/img transition-colors hover:border-blue-400">
-                            {% if current_lang == 'en' %}
-                                <img src="{% static 'images/kalodata scraper eng.png' %}" alt="Kalodata Architecture Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% else %}
-                                <img src="{% static 'images/kalodata scraper vi.png' %}" alt="Kalodata Architecture Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">{% if current_lang == 'en' %}Solutions & Engineering{% else %}Giải pháp & Công nghệ{% endif %}</h4>
-                            <ul class="space-y-2.5 text-sm text-slate-600">
-                                <li class="flex items-start gap-2">
-                                    <span class="text-blue-500 mt-1 shrink-0">•</span>
-                                    <span>{% if current_lang == 'en' %}Automated login procedures, pop-up mitigation, and complex hierarchical routing (Shop List &rarr; Shop Details &rarr; Product Details) via <strong>Selenium WebDriver</strong>.{% else %}Tự động hóa đăng nhập, vượt qua các pop-up quảng cáo và điều hướng phân tầng cấu trúc dữ liệu sâu (Danh sách Shop &rarr; Chi tiết Shop &rarr; Chi tiết Sản phẩm) bằng <strong>Selenium WebDriver</strong>.{% endif %}</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-blue-500 mt-1 shrink-0">•</span>
-                                    <span>{% if current_lang == 'en' %}Implemented a reliable `click_with_retry` method coupled with strategic pagination workflows to accurately catch Stale Element and Timeout exceptions.{% else %}Tối ưu hiệu năng cào bằng phân trang mục tiêu và xây dựng cơ chế click tái thử nghiệm (`click_with_retry`) xử lý triệt để ngoại lệ lỗi tải trang (Stale/Timeout).{% endif %}</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-blue-500 mt-1 shrink-0">•</span>
-                                    <span>{% if current_lang == 'en' %}Configured OS-level system automation via <strong>PyAutoGUI & Pyperclip</strong> to seamlessly download and correctly categorize product images into dynamic local folder paths.{% else %}Tích hợp bộ công cụ <strong>PyAutoGUI & Pyperclip</strong> để cấu hình giả lập hệ điều hành, hỗ trợ tải và tự động phân loại hình ảnh sản phẩm theo ID thư mục cục bộ.{% endif %}</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">{% if current_lang == 'en' %}Data Pipeline & Execution{% else %}Xử lý & Kết quả đầu ra{% endif %}</h4>
-                            <ul class="space-y-2.5 text-sm text-slate-600">
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 mt-1 shrink-0">✓</span>
-                                    <span>{% if current_lang == 'en' %}Cleaned and normalized highly dimensional raw financial metrics (Revenue, volume, commission scales) with <strong>Pandas DataFrames</strong>.{% else %}Chuẩn hóa dữ liệu thô (Doanh thu, sản lượng bán, tỷ lệ hoa hồng) thành tập dữ liệu sạch thông qua <strong>Pandas</strong>.{% endif %}</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 mt-1 shrink-0">✓</span>
-                                    <span>{% if current_lang == 'en' %}Automated real-time upserts directly to cloud architectures via the <strong>Google Sheets API (Gspread)</strong> alongside maintaining localized redundant CSV arrays.{% else %}Đồng bộ hóa dữ liệu thời gian thực trực tiếp lên đám mây qua <strong>Google Sheets API (Gspread)</strong>, kết hợp lưu trữ dự phòng cấu trúc tệp CSV cục bộ.{% endif %}</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 mt-1 shrink-0">✓</span>
-                                    <span>{% if current_lang == 'en' %}Deployed an independent, granular error-logging subsystem ensuring continuous tracking and pipeline structural integrity.{% else %}Vận hành độc lập hệ thống ghi log lỗi tập trung giúp giám sát và ứng phó tức thời khi luồng dữ liệu gặp sự cố.{% endif %}</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <section class="space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <div class="p-2 bg-blue-50 rounded-lg text-blue-600 font-bold text-sm">01</div>
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Web Crawling & Data Extraction{% else %}Thu thập & Khai thác Dữ liệu Web{% endif %}
+                    </h2>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <button type="button" class="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-btn" data-target="system-realestate">
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-50 text-amber-600 border border-amber-100 tracking-wider">PropTech & ML</span>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-6 transition-all duration-300 hover:border-blue-400 hover:shadow-md">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-600 border border-blue-100">E-Commerce</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Kalodata Intelligence Scraper</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                {% if current_lang == 'en' %}
+                                    Asynchronous pipeline bypassing anti-bot/pop-ups via Selenium to extract multi-level TikTok Shop metrics (Revenue, volume), auto-syncing to Google Sheets API and local CSVs.
+                                {% else %}
+                                    Pipeline bất đồng bộ vượt cơ chế chặn bot bằng Selenium để thu thập dữ liệu phân tầng TikTok Shop (Doanh thu, sản lượng), tự động đồng bộ qua Google Sheets API và CSV cục bộ.
+                                {% endif %}
+                            </p>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                            {% if current_lang == 'en' %}Continuous Real Estate Data Harvesting Pipeline{% else %}Hệ thống Thu thập Dữ liệu Bất động sản Liên tục{% endif %}
-                        </h3>
-                    </div>
-                    <span class="p-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-400 group-hover:text-slate-600 shrink-0 arrow-icon transition-transform duration-300">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </span>
-                </button>
-                
-                <div id="system-realestate" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">{% if current_lang == 'en' %}Description & Objectives{% else %}Mô tả & Mục tiêu{% endif %}</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Developed a continuous, non-intrusive scraping infrastructure designed to capture volatile property listings. This pipeline acts as the core upstream engine feeding data straight into Machine Learning training architectures.
-                            {% else %}
-                                Hệ thống được xây dựng để thực hiện thu thập dữ liệu thị trường bất động sản liên tục, liên tục cập nhật các biến động thông tin mới nhất phục vụ cho bài toán huấn luyện các mô hình học máy (Machine Learning).
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">{% if current_lang == 'en' %}System Overview & Architecture Diagram{% else %}Tổng quan & Sơ đồ hệ thống{% endif %}</h4>
-                        <div class="bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center min-h-[200px] text-center group/img transition-colors hover:border-amber-500">
-                            {% if current_lang == 'en' %}
-                                <img src="{% static 'images/BDS eng.png' %}" alt="Real Estate Pipeline Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% else %}
-                                <img src="{% static 'images/BDS vi.png' %}" alt="Real Estate Pipeline Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-50 rounded-lg p-4 border border-slate-100 text-center">
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 text-left">Workflow Sequence</h4>
-                        <div class="flex flex-wrap justify-center items-center gap-2 text-xs md:text-sm font-medium text-slate-700">
-                            <span class="px-2.5 py-1 bg-white border border-slate-200 rounded">Anti-Bot Bypass & Init</span>
-                            <span class="text-slate-400">&rarr;</span>
-                            <span class="px-2.5 py-1 bg-white border border-slate-200 rounded">Lazy-Load URL Crawling</span>
-                            <span class="text-slate-400">&rarr;</span>
-                            <span class="px-2.5 py-1 bg-white border border-slate-200 rounded">Attribute Extraction</span>
-                            <span class="text-slate-400">&rarr;</span>
-                            <span class="px-2.5 py-1 bg-white border border-slate-200 rounded">Media Sync & Append</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider">{% if current_lang == 'en' %}Pipeline Phases{% else %}Các bước triển khai chi tiết{% endif %}</h4>
-                            <div class="space-y-3 text-sm text-slate-600">
-                                <p><strong>1. Anti-Bot Bypass:</strong> {% if current_lang == 'en' %}Configured advanced <strong>Selenium WebDriver</strong> features (`AutomationControlled` flags, customized randomized `User-Agent` strings, and stripped extensions) to optimize scraping stealth and minimize cloud-block barriers.{% else %}Cấu hình <strong>Selenium WebDriver</strong> chuyên sâu (bật cờ ẩn danh `AutomationControlled`, fake `User-Agent`, loại bỏ extension) để tối ưu khả năng vượt các hệ thống tường lửa chống Bot.{% endif %}</p>
-                                <p><strong>2. Link Crawling:</strong> {% if current_lang == 'en' %}Automated dynamic list routing by executing asynchronous JavaScript scroll scripts, triggering lazy-loading image patterns to parse and temporarily cache high-potential target URLs.{% else %}Tự động điều hướng, thực thi các mã kịch bản JavaScript cuộn trang liên tục (Scroll Down) kích hoạt tải ảnh trễ (lazy-loading), trích xuất và lưu trữ toàn bộ URL bài đăng vào bộ nhớ đệm.{% endif %}</p>
-                                <p><strong>3. Rich Data Extraction:</strong> {% if current_lang == 'en' %}Iterated active queues using <strong>ActionChains</strong> to mimic human behaviors (mouse hovers, slow clicks on hidden details) to safely fetch nested fields like Total Area, Rooms, and Legal Certification status.{% else %}Sử dụng <strong>ActionChains</strong> giả lập chính xác hành vi người dùng (di chuột, click mở rộng) để thu thập các trường thông tin bị ẩn sâu bên trong như Diện tích, Số phòng, Tình trạng pháp lý...{% endif %}</p>
+                        
+                        <div class="space-y-3 pt-4 border-t border-slate-100 mt-auto">
+                            <div class="bg-slate-50 rounded-lg p-2 text-center text-xs text-slate-500">
+                                {% if current_lang == 'en' %}System Architecture Diagram{% else %}Sơ đồ kiến trúc hệ thống{% endif %}
+                            </div>
+                            <div class="w-full aspect-[16/10] overflow-hidden rounded border border-slate-100 bg-slate-50/50 flex items-center justify-center p-2">
+                                {% if current_lang == 'en' %}
+                                    <img src="{% static 'images/kalodata scraper eng.png' %}" alt="Kalodata Architecture Diagram" class="max-w-full max-h-full object-contain">
+                                {% else %}
+                                    <img src="{% static 'images/kalodata scraper vi.png' %}" alt="Kalodata Architecture Diagram" class="max-w-full max-h-full object-contain">
+                                {% endif %}
                             </div>
                         </div>
+                    </div>
 
-                        <div class="space-y-4">
-                            <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider">{% if current_lang == 'en' %}System Resilience & Media{% else %}Kiến trúc Lưu trữ & Điểm nhấn Công nghệ{% endif %}</h4>
-                            <div class="space-y-3 text-sm text-slate-600">
-                                <p><strong>4. Media Downloader:</strong> {% if current_lang == 'en' %}Orchestrated native OS controls with <strong>PyAutoGUI</strong> to invoke background save routines (`Ctrl + S`), bypassing programmatic media blocks to safely route full-resolution CDN media down to dynamic directories.{% else %}Kết hợp <strong>PyAutoGUI</strong> điều khiển phím tắt hệ thống (`Ctrl + S`), tự động hóa quy trình tải và phân loại hình ảnh bất động sản chất lượng cao trực tiếp từ CDN về máy chủ cục bộ.{% endif %}</p>
-                                
-                                <div class="mt-4 p-4 rounded-lg bg-blue-50/50 border border-blue-100">
-                                    <span class="text-xs font-bold text-blue-700 uppercase block mb-1">💡 Engineering Highlight</span>
-                                    <p class="text-xs text-blue-900 leading-relaxed">
-                                        {% if current_lang == 'en' %}
-                                            <strong>Dynamic Schema Adaptation:</strong> Developed a custom file handler that dynamically alters data schemas on-the-fly. Upon discovering undocumented property attributes, it auto-appends structural headers directly into the existing CSV / Pandas data frames without disrupting active streams.
-                                        {% else %}
-                                            <strong>Xử lý thuộc tính động:</strong> Tự động nhận diện và cập nhật mở rộng cấu trúc cột (Schema) của file dữ liệu một cách linh hoạt. Khi phát hiện các thông số kỹ thuật mới xuất hiện của bất động sản, hệ thống tự động thêm cột và tiếp tục ghi nối tiếp (Append) dữ liệu mà không làm gián đoạn luồng chạy.
-                                        {% endif %}
-                                    </p>
-                                </div>
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-6 transition-all duration-300 hover:border-amber-400 hover:shadow-md">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-50 text-amber-600 border border-amber-100">PropTech & ML</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Real Estate Harvesting Pipeline</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                {% if current_lang == 'en' %}
+                                    Continuous crawler handling lazy-loaded images, ActionChains human-mimicking actions, and a custom **Dynamic Schema Adaptation** system to handle new undocumented attributes on-the-fly.
+                                {% else %}
+                                    Hệ thống cào liên tục xử lý ảnh lazy-load, giả lập hành vi bằng ActionChains và sở hữu tính năng <strong>Tự động thích ứng Schema</strong> khi phát hiện thuộc tính bất động sản mới phát sinh.
+                                {% endif %}
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-3 pt-4 border-t border-slate-100 mt-auto">
+                            <div class="bg-slate-50 rounded-lg p-2 text-center text-xs text-slate-500">
+                                {% if current_lang == 'en' %}System Architecture Diagram{% else %}Sơ đồ kiến trúc hệ thống{% endif %}
+                            </div>
+                            <div class="w-full aspect-[16/10] overflow-hidden rounded border border-slate-100 bg-slate-50/50 flex items-center justify-center p-2">
+                                {% if current_lang == 'en' %}
+                                    <img src="{% static 'images/BDS eng.png' %}" alt="Real Estate Pipeline Diagram" class="max-w-full max-h-full object-contain">
+                                {% else %}
+                                    <img src="{% static 'images/BDS vi.png' %}" alt="Real Estate Pipeline Diagram" class="max-w-full max-h-full object-contain">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between p-6 transition-all duration-300 hover:border-indigo-400 hover:shadow-md">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-indigo-50 text-indigo-600 border border-indigo-100">Social Mining</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Social Network Data Mining</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                {% if current_lang == 'en' %}
+                                    Behavioral automation utilizing persistent JSON Cookie profiles to mitigate checkpoints, auto-expanding deeply nested DOM comments to extract raw text for NLP/Deep Learning tasks.
+                                {% else %}
+                                    Cơ chế giả lập hành vi sử dụng định danh JSON Cookie chống checkpoint, tự động kích hoạt DOM mở rộng bình luận đa cấp để bóc tách text thô phục vụ mô hình Học sâu (NLP).
+                                {% endif %}
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-3 pt-4 border-t border-slate-100 mt-auto">
+                            <div class="bg-slate-50 rounded-lg p-2 text-center text-xs text-slate-500">
+                                {% if current_lang == 'en' %}System Architecture Diagram{% else %}Sơ đồ kiến trúc hệ thống{% endif %}
+                            </div>
+                            <div class="w-full aspect-[16/10] overflow-hidden rounded border border-slate-100 bg-slate-50/50 flex items-center justify-center p-2">
+                                {% if current_lang == 'en' %}
+                                    <img src="{% static 'images/social crawl eng.png' %}" alt="Social Mining System Diagram" class="max-w-full max-h-full object-contain">
+                                {% else %}
+                                    <img src="{% static 'images/social crawl vi.png' %}" alt="Social Mining System Diagram" class="max-w-full h-full object-contain">
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <button type="button" class="w-full text-left p-6 md:p-8 flex items-center justify-between gap-4 focus:outline-none bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-btn" data-target="system-social">
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-indigo-50 text-indigo-600 border border-indigo-100 tracking-wider">Social Mining</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                            {% if current_lang == 'en' %}Automated Social Network Data Mining Infrastructure{% else %}Hệ thống Khai phá & Cào Dữ liệu Tự động Mạng xã hội{% endif %}
-                        </h3>
-                    </div>
-                    <span class="p-2 rounded-full bg-white border border-slate-200 shadow-sm text-slate-400 group-hover:text-slate-600 shrink-0 arrow-icon transition-transform duration-300">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </span>
-                </button>
-                
-                <div id="system-social" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">{% if current_lang == 'en' %}Description{% else %}Mô tả hệ thống{% endif %}</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Engineered a specialized behavioral automation engine capable of parsing public Facebook Fanpages and private/public Groups, creating massive natural language corpora designed for Deep Learning-driven Web Data Mining models.
-                            {% else %}
-                                Thiết lập công cụ tự động hóa thu thập dữ liệu lớn từ các Fanpage và Group Facebook nhằm cung cấp dữ liệu đầu vào (Web Data Mining) phục vụ huấn luyện các mô hình phân tích ngôn ngữ chuyên sâu bằng Học sâu (Deep Learning).
-                            {% endif %}
-                        </p>
-                    </div>
 
-                    <div>
-                        <h4 class="text-xs font-bold uppercase text-slate-400 tracking-wider mb-3">{% if current_lang == 'en' %}System Overview & Architecture Diagram{% else %}Tổng quan & Sơ đồ hệ thống{% endif %}</h4>
-                        <div class="bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center min-h-[200px] text-center group/img transition-colors hover:border-indigo-500">
-                            {% if current_lang == 'en' %}
-                                <img src="{% static 'images/social crawl eng.png' %}" alt="Social Mining System Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% else %}
-                                <img src="{% static 'images/social crawl vi.png' %}" alt="Social Mining System Diagram" class="max-w-full h-auto rounded-lg shadow-sm border border-slate-100 mb-2 hidden" onload="this.classList.remove('hidden')">
-                            {% endif %}
-                        </div>
-                    </div>
+            <section class="space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <div class="p-2 bg-emerald-50 rounded-lg text-emerald-600 font-bold text-sm">02</div>
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Database Architecture & Schema Design (Example){% else %}Thiết kế Kiến trúc & Sơ đồ Cơ sở Dữ liệu (Ví dụ){% endif %}
+                    </h2>
+                </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
-                            <h5 class="font-bold text-slate-800 text-sm mb-2">{% if current_lang == 'en' %}Session & Token Stability{% else %}Quản lý Phiên (Session Management){% endif %}</h5>
-                            <p class="text-xs text-slate-600 leading-relaxed">
-                                {% if current_lang == 'en' %}
-                                    Maintained structural integrity against account security triggers (checkpoints) by developing a persistent cookie storage algorithm that loads/saves active sessions via custom <strong>JSON Cookie profiles</strong>.
-                                {% else %}
-                                    Duy trì trạng thái đăng nhập ổn định bằng cơ chế trích xuất và tái nạp mã định danh thông qua hệ thống <strong>Cookie JSON</strong>, giúp giảm thiểu tối đa rủi ro quét bảo mật tài khoản (checkpoint).
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
-                            <h5 class="font-bold text-slate-800 text-sm mb-2">{% if current_lang == 'en' %}Deep Content Extraction{% else %}Bóc tách Văn bản Toàn diện{% endif %}</h5>
-                            <p class="text-xs text-slate-600 leading-relaxed">
-                                {% if current_lang == 'en' %}
-                                    Simulated complex user scrolls inside <strong>Selenium WebDriver</strong> to bypass standard content lazy loading. Orchestrated triggers to auto-expand nested "See More" DOM elements, completely extracting dense text payloads.
-                                {% else %}
-                                    Giả lập mượt mà hành động cuộn trang liên tục và tự động kích hoạt sự kiện click các phần tử DOM "Xem thêm" ẩn để bóc tách trọn vẹn nội dung văn bản của các bài viết.
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
-                            <h5 class="font-bold text-slate-800 text-sm mb-2">{% if current_lang == 'en' %}Interaction Mining Engine{% else %}Khai phá Tương tác Sâu{% endif %}</h5>
-                            <p class="text-xs text-slate-600 leading-relaxed">
-                                {% if current_lang == 'en' %}
-                                    Constructed a localized recursive looping scroll routine to map inside active comment layout overlays, effectively expanding deep multi-level nested replies and scraping interaction profiles (Likes/Reactions).
-                                {% else %}
-                                    Xây dựng thuật toán cuộn lặp lồng nhau (Looping Scroll) để quét sâu các cửa sổ Pop-up bình luận, tự động mở rộng mọi luồng phản hồi (Replies) đa cấp và bóc tách dữ liệu tài khoản tương tác.
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm p-6 md:p-8 space-y-6">
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            Example implementation of a production-ready relational and analytical database modeling pattern. Designed to support high-throughput writes from web crawlers while optimizing complex analytical queries (OLAP) via normalization and indexing strategies.
+                        {% else %}
+                            Mô hình ví dụ về thiết kế cơ sở dữ liệu quan hệ và phân tích môi trường thực tế. Được tối ưu hóa để vừa đảm bảo tốc độ ghi dữ liệu lớn từ crawler, vừa tăng tốc truy vấn báo cáo (OLAP) thông qua chuẩn hóa và đánh chỉ mục (Indexing).
+                        {% endif %}
+                    </p>
 
-                    <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
-                        <span class="text-xs font-bold uppercase text-slate-400 tracking-wider mr-2">{% if current_lang == 'en' %}Tech Stack:{% else %}Công nghệ core:{% endif %}</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-medium">Python</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-medium">Selenium WebDriver</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-medium">BeautifulSoup4</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-medium">JSON Session Handling</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-medium">Real-time CSV Append</span>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="border border-slate-100 rounded-xl p-5 bg-slate-50/50">
+                            <h4 class="font-bold text-slate-800 text-sm mb-3">
+                                {% if current_lang == 'en' %}Operational DB (OLTP){% else %}Cơ sở dữ liệu vận hành (OLTP){% endif %}
+                            </h4>
+                            <ul class="space-y-2 text-xs text-slate-600">
+                                <li>• <strong>Schema:</strong> 3NF Normalization for transactional integrity.</li>
+                                <li>• <strong>Primary Keys:</strong> UUIDv4 to eliminate distributed node collisions.</li>
+                                <li>• <strong>Indexing:</strong> B-Tree indexes on composite keys `(shop_id, product_id)`.</li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-slate-100 rounded-xl p-5 bg-slate-50/50">
+                            <h4 class="font-bold text-slate-800 text-sm mb-3">
+                                {% if current_lang == 'en' %}Analytical Modeling (OLAP){% else %}Mô hình hóa kho dữ liệu (OLAP){% endif %}
+                            </h4>
+                            <ul class="space-y-2 text-xs text-slate-600">
+                                <li>• <strong>Architecture:</strong> Star Schema (Fact and Dimension tables).</li>
+                                <li>• <strong>Fact Table:</strong> `fact_daily_sales` storing atomic revenue and volumes.</li>
+                                <li>• <strong>Dimensions:</strong> `dim_products`, `dim_shops`, `dim_time` (SCD Type 2 enabled).</li>
+                            </ul>
+                        </div>
+
+                        <div class="border border-slate-100 rounded-xl p-5 bg-slate-50/50">
+                            <h4 class="font-bold text-slate-800 text-sm mb-3">
+                                {% if current_lang == 'en' %}Performance & Tuning{% else %}Tối ưu hóa hiệu năng truy vấn{% endif %}
+                            </h4>
+                            <ul class="space-y-2 text-xs text-slate-600">
+                                <li>• <strong>Partitioning:</strong> Time-series partitioning by month on Fact tables.</li>
+                                <li>• <strong>Materialized Views:</strong> Pre-aggregated hourly revenue dashboards.</li>
+                                <li>• <strong>Tech Stack Stack:</strong> PostgreSQL / Google BigQuery.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+
+            <section class="space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
+                    <div class="p-2 bg-purple-50 rounded-lg text-purple-600 font-bold text-sm">03</div>
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        {% if current_lang == 'en' %}ETL / ELT Data Pipeline Framework (Example){% else %}Xây dựng Luồng Xử lý Dữ liệu ETL / ELT (Ví dụ){% endif %}
+                    </h2>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm p-6 md:p-8 space-y-6">
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            Example implementation of a resilient data orchestrator designed to ingest raw, un-structured outputs from scraping nodes, execute high-performance transformations, and safely route updates into destination warehouses.
+                        {% else %}
+                            Mô hình thiết kế ví dụ của hệ thống điều phối dữ liệu tự động, nhận dữ liệu thô từ các bot crawler, thực hiện biến đổi dữ liệu hiệu năng cao và đồng bộ an toàn vào kho dữ liệu tập trung.
+                        {% endif %}
+                    </p>
+
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                            <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                                <span class="text-xs font-bold text-purple-600 uppercase block mb-1">Step 1: Extract</span>
+                                <p class="text-xs text-slate-600">Ingest JSON/CSV landing files from MinIO / S3 Buckets triggered by Webhook.</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                                <span class="text-xs font-bold text-purple-600 uppercase block mb-1">Step 2: Transform</span>
+                                <p class="text-xs text-slate-600">Data deduplication, data-type casting, and currency normalization via Pandas/PySpark.</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                                <span class="text-xs font-bold text-purple-600 uppercase block mb-1">Step 3: Validate</span>
+                                <p class="text-xs text-slate-600">Run schema integrity, null-value restrictions, and anomaly filters via Great Expectations.</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+                                <span class="text-xs font-bold text-purple-600 uppercase block mb-1">Step 4: Load</span>
+                                <p class="text-xs text-slate-600">Idempotent incremental upserts (`MERGE INTO`) targeting final Data Warehouse.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-100 flex flex-wrap items-center justify-between gap-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-purple-700 uppercase block">Pipeline Governance & Orchestration Highlight</span>
+                            <p class="text-xs text-purple-900 leading-relaxed">
+                                {% if current_lang == 'en' %}
+                                    Utilizes directed acyclic graphs (DAGs) for monitoring, structured slack notifications for critical state failures, and strict data-quality checkpoints before warehouse commits.
+                                {% else %}
+                                    Sử dụng đồ thị tuần tự (DAG) để giám sát trạng thái luồng dữ liệu, cảnh báo tự động qua Slack khi gặp sự cố, và kiểm định chất lượng nghiêm ngặt trước khi cập nhật kho dữ liệu.
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 text-xs font-semibold shrink-0">
+                            <span class="px-2 py-1 bg-white border border-slate-200 rounded text-slate-700">Apache Airflow</span>
+                            <span class="px-2 py-1 bg-white border border-slate-200 rounded text-slate-700">PySpark</span>
+                            <span class="px-2 py-1 bg-white border border-slate-200 rounded text-slate-700">dbt</span>
+                            <span class="px-2 py-1 bg-white border border-slate-200 rounded text-slate-700">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButtons = document.querySelectorAll('.toggle-btn');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetId = button.getAttribute('data-target');
-                    const targetContent = document.getElementById(targetId);
-                    const arrowIcon = button.querySelector('.arrow-icon');
-                    
-                    if (targetContent) {
-                        const isHidden = targetContent.classList.contains('hidden');
-                        
-                        if (isHidden) {
-                            // Mở nội dung ra
-                            targetContent.classList.remove('hidden');
-                            arrowIcon.classList.add('rotate-180');
-                            button.classList.add('bg-slate-100/70');
-                        } else {
-                            // Đóng nội dung lại
-                            targetContent.classList.add('hidden');
-                            arrowIcon.classList.remove('rotate-180');
-                            button.classList.remove('bg-slate-100/70');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.25s ease-out forwards;
-        }
-    </style>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="max-w-6xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
+    <div class="w-full px-4 md:px-8 pt-28 pb-16 scroll-mt-20">
         
         <div class="mb-8">
             <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors group">
@@ -13,160 +13,335 @@
         </div>
 
         <div class="mb-12 pb-6 border-b border-slate-200">
-            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Data Analytics Depth</span>
+            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Data Engineering & Analytics Depth</span>
             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                {% if current_lang == 'en' %}Data Visualization & Business Intelligence (BI){% else %}Trực quan hóa dữ liệu & Business Intelligence (BI){% endif %}
+                {% if current_lang == 'en' %}Data Querying, Processing & Business Intelligence{% else %}Truy vấn, Xử lý dữ liệu & Business Intelligence (BI){% endif %}
             </h1>
-            <p class="text-slate-500 mt-3 max-w-2xl text-base leading-relaxed">
+            <p class="text-slate-500 mt-3 max-w-4xl text-base leading-relaxed">
                 {% if current_lang == 'en' %}
-                    Interactive dashboards and tailored visualization solutions transforming raw operational and financial metrics into high-impact visual stories.
+                    From raw data querying and rigorous preprocessing to comprehensive visualization pipelines that transform complex metrics into strategic business insights.
                 {% else %}
-                    Các báo cáo phân tích thông minh, tương tác cao giúp chuyển hóa dữ liệu vận hành và tài chính phức tạp thành câu chuyện trực quan có giá trị chiến lược.
+                    Quy trình toàn diện từ truy vấn dữ liệu thô, tiền xử lý nghiêm ngặt đến xây dựng hệ thống báo cáo thông minh giúp chuyển hóa dữ liệu phức tạp thành giá trị chiến lược.
                 {% endif %}
             </p>
         </div>
 
-        <div class="space-y-8">
+        <div class="space-y-12">
 
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-                        <div>
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-50 text-orange-600 border border-orange-100 tracking-wider">Tableau Desktop</span>
+            <div class="space-y-6">
+                <div class="pt-2">
+                    <span class="text-xs font-bold text-cyan-600 uppercase tracking-widest block mb-1">Step 01 / Pipeline</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        <span class="w-2 h-6 bg-cyan-500 rounded-full inline-block"></span>
+                        {% if current_lang == 'en' %}Advanced Data Querying{% else %}Truy vấn dữ liệu chuyên sâu (SQL){% endif %}
+                    </h2>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                    <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                            {% if current_lang == 'en' %}Monthly Sales Category Probability Analysis{% else %}Phân tích Xác suất Đơn hàng theo Danh mục Sản phẩm từng Tháng{% endif %}
+                        </h3>
+                        <p class="text-slate-500 text-sm mt-1">
+                            {% if current_lang == 'en' %}Utilizing Common Table Expressions (CTEs) and conditional aggregation to evaluate customer purchasing trends and market penetration.{% else %}Sử dụng các bảng tạm thời (CTEs) và hàm tổng hợp có điều kiện để tính toán tỷ lệ đơn hàng, phục vụ phân tích xu hướng và hành vi tiêu dùng.{% endif %}
+                        </p>
+                    </div>
+                
+                <div class="p-4 md:p-6 bg-slate-900">
+                    <pre class="text-sm font-mono text-slate-100 overflow-x-auto p-4 bg-slate-950 rounded-lg shadow-inner"><code class="language-sql">WITH 
+    MonthlySales AS (
+        SELECT 
+            strftime('%m', b.time_created) AS month,
+            p.category_id,
+            c.category_code,  
+            c.category_name,  
+            COUNT(DISTINCT b.bill_id) AS unique_orders_per_category  
+        FROM bill b
+        JOIN bill_line bl ON b.bill_id = bl.bill_id
+        JOIN product p ON bl.product_id = p.product_id
+        JOIN category c ON p.category_id = c.category_id
+        GROUP BY strftime('%m', b.time_created), p.category_id, c.category_code, c.category_name 
+    ),
+    TotalMonthlyOrders AS (
+        SELECT 
+            strftime('%m', b.time_created) AS month,  
+            COUNT(DISTINCT b.bill_id) AS total_orders 
+        FROM bill b
+        GROUP BY strftime('%m', b.time_created) 
+    ),
+    Probabilities AS (
+        SELECT 
+            ms.month,
+            ms.category_code,  
+            ms.category_name,  
+            ms.unique_orders_per_category,
+            tm.total_orders,
+            CAST(ms.unique_orders_per_category AS REAL) / tm.total_orders AS sale_probability 
+        FROM MonthlySales ms
+        JOIN TotalMonthlyOrders tm ON ms.month = tm.month 
+    )
+SELECT 
+    "T" || month AS "Tháng",
+    ROUND(MAX(CASE WHEN category_code = 'BOT' THEN sale_probability END) * 100, 1) || "%" AS "[BOT] Bột",
+    ROUND(MAX(CASE WHEN category_code = 'SET' THEN sale_probability END) * 100, 1) || "%" AS "[SET] Set trà",
+    ROUND(MAX(CASE WHEN category_code = 'THO' THEN sale_probability END) * 100, 1) || "%" AS "[THO] Trà hoa",
+    ROUND(MAX(CASE WHEN category_code = 'TMX' THEN sale_probability END) * 100, 1) || "%" AS "[TMX] Trà mix",
+    ROUND(MAX(CASE WHEN category_code = 'TTC' THEN sale_probability END) * 100, 1) || "%" AS "[TTC] Trà củ, quả sấy"
+FROM Probabilities
+GROUP BY month
+ORDER BY month;</code></pre>
+                </div>
+            </div>
+
+
+            <div class="space-y-6">
+                <div class="pt-6 border-t border-slate-200">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest block mb-1">Step 02 / Engineering</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        <span class="w-2 h-6 bg-emerald-500 rounded-full inline-block"></span>
+                        {% if current_lang == 'en' %}Data Preprocessing Pipeline{% else %}Xử lý & Làm sạch dữ liệu{% endif %}
+                    </h2>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                    <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                        <p class="text-slate-500 text-sm mt-1">
+                            {% if current_lang == 'en' %}Robust implementation of techniques preparing multi-source transaction datasets for downstream machine learning and BI nodes.{% else %}Ứng dụng các quy chuẩn tiền xử lý dữ liệu nhằm đảm bảo tính nhất quán của dữ liệu bán hàng và hành vi khách hàng trước khi đưa vào mô hình.{% endif %}
+                        </p>
+                    </div>
+                
+                <div class="p-6 md:p-8 bg-white grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Cleaning</strong>
+                                <span class="text-slate-500 text-xs md:text-sm">Xử lý giá trị khuyết thiếu (Imputation), loại bỏ dữ liệu trùng lặp và lọc bỏ nhiễu/ngoại lệ (Outliers).</span>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                                {% if current_lang == 'en' %}Interactive Enterprise Analytics Dashboard{% else %}Báo cáo Phân tích Doanh nghiệp Tương tác Cao{% endif %}
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Transformation</strong>
+                                <span class="text-slate-500 text-xs md:text-sm">Trích xuất đặc trưng thời gian (Datetime extract), mã hóa biến phân loại (One-Hot Encoding) và ánh xạ danh mục.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold text-sm md:text-base">Data Normalization</strong>
+                                <span class="text-slate-500 text-xs md:text-sm">Chuẩn hóa dữ liệu số (Min-Max Scaling, Z-score) đưa các chỉ số doanh số và sản lượng về cùng một thang đo.</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <strong class="text-slate-900 block font-semibold text-sm md:text-base">Dimensionality Reduction</strong>
+                                <span class="text-slate-500 text-xs md:text-sm">Giảm chiều dữ liệu hiệu quả, tối ưu hóa các cụm tính năng đặc trưng giúp mô hình hóa hành vi khách hàng nhanh chóng.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="space-y-8">
+                <div class="pt-6 border-t border-slate-200">
+                    <span class="text-xs font-bold text-orange-600 uppercase tracking-widest block mb-1">Step 03 / Downstream Delivery</span>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+                        <span class="w-2 h-6 bg-orange-500 rounded-full inline-block"></span>
+                        {% if current_lang == 'en' %}Data Visualization & Business Intelligence{% else %}Trực quan hóa dữ liệu & Hệ thống Báo cáo (BI){% endif %}
+                    </h2>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                    <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-orange-50 text-orange-600 border border-orange-100 tracking-wider">Tableau Desktop</span>
+                                </div>
+                                <h3 id="tableau-title" class="text-xl font-bold text-slate-900 tracking-tight">
+                                    {% if current_lang == 'en' %}Global Labor Market Analysis Report{% else %}Báo cáo phân tích tình hình thị trường việc làm của thế giới{% endif %}
+                                </h3>
+                                <p id="tableau-desc" class="text-slate-500 text-sm mt-1">
+                                    {% if current_lang == 'en' %}Live interactive dashboard embedded directly from Tableau Public to analyze global labor trends and employment metrics.{% else %}Báo cáo trực quan tương tác trực tiếp từ Tableau Public phục vụ phân tích xu hướng thị trường việc làm toàn cầu và các chỉ số lao động.{% endif %}
+                                </p>
+                            </div>
+                            
+                            <div class="flex bg-slate-100 p-1 rounded-lg self-start sm:self-center border border-slate-200">
+                                <button onclick="switchTableau('market')" id="tab-market" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm">
+                                    {% if current_lang == 'en' %}Global Labor Market{% else %}Thị trường việc làm thế giới{% endif %}
+                                </button>
+                                <button onclick="switchTableau('business')" id="tab-business" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900">
+                                    {% if current_lang == 'en' %}Tea Sales & Customers{% else %}Dữ liệu bán trà & Khách hàng{% endif %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
+                        <div id="tableau-render-container" class="w-full overflow-auto rounded-lg shadow-inner bg-white">
+                            <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto; width: 100%;'>
+                                <noscript>
+                                    <a href='#'><img alt='Dashboard 1_N ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1_rss.png' style='border: none' /></a>
+                                </noscript>
+                                <object class='tableauViz' style='display:none;'>
+                                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                                    <param name='embed_code_version' value='3' /> 
+                                    <param name='site_root' value='' />
+                                    <param name='name' value='Data_Viz_17495813142900&#47;Dashboard1_N' />
+                                    <param name='tabs' value='no' />
+                                    <param name='toolbar' value='yes' />
+                                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1.png' /> 
+                                    <param name='animate_transition' value='yes' />
+                                    <param name='display_static_image' value='yes' />
+                                    <param name='display_spinner' value='yes' />
+                                    <param name='display_overlay' value='yes' />
+                                    <param name='display_count' value='yes' />
+                                    <param name='language' value='en-US' />
+                                </object>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                    <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-yellow-50 text-yellow-600 border border-yellow-100 tracking-wider">Microsoft Power BI</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                            {% if current_lang == 'en' %}Tea Sales Performance & Consumer Behavior Dashboard{% else %}Dashboard Tổng hợp Dữ liệu Bán Trà & Hành vi Khách hàng{% endif %}
+                        </h3>
+                        <p class="text-slate-500 text-sm mt-1">
+                            {% if current_lang == 'en' %}Comprehensive data modeling using DAX and Power Query to analyze sales performance across different timeframes and tea categories.{% else %}Mô hình hóa dữ liệu chuyên sâu bằng DAX và Power Query nhằm phân tích hiệu suất bán trong các khung thời gian khác nhau và doanh thu của các loại trà.{% endif %}
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
+                        <div class="w-full rounded-lg shadow-inner bg-slate-800 overflow-hidden" style="height: 800px;">
+                            <iframe 
+                                src="{% static 'pdf/power BI.pdf' %}" 
+                                class="w-full h-full border-0 rounded-lg"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                    <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-600 border border-blue-100 tracking-wider">Google Looker Studio</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                            {% if current_lang == 'en' %}Tea Sales Performance & Consumer Behavior Dashboard{% else %}Dashboard Tổng hợp Dữ liệu Bán Trà & Hành vi Khách hàng{% endif %}
+                        </h3>
+                        <p class="text-slate-500 text-sm mt-1">
+                            {% if current_lang == 'en' %}Connected directly with Google BigQuery to evaluate customer behaviors, overall sales volume, and multi-period revenue growth.{% else %}Kết nối trực tiếp kho dữ liệu BigQuery nhằm phân tích hành vi khách hàng, tổng sản lượng bán ra và doanh số các loại trà theo nhiều khung thời gian.{% endif %}
+                        </p>
+                    </div>
+                    
+                    <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
+                        <div class="w-full rounded-lg shadow-inner bg-slate-800 overflow-hidden" style="height: 800px;">
+                            <iframe 
+                                src="https://lookerstudio.google.com/embed/reporting/fd8d26d7-bf3f-4b79-a11e-6c2b2d30ca84" 
+                                loading="lazy"
+                                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox text/html"
+                                style="border:0; width:100%; height:750px;" 
+                                allowfullscreen 
+                                webkitallowfullscreen 
+                                mozallowfullscreen 
+                                oallowfullscreen 
+                                msallowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300 flex flex-col justify-between">
+                        <div class="p-6 border-b border-slate-100 bg-slate-50/50">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-teal-50 text-teal-600 border border-teal-100 tracking-wider">Python Data Science</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 tracking-tight">
+                                {% if current_lang == 'en' %}Tea Sales Performance & Consumer Behavior Dashboard{% else %}Dashboard Tổng hợp Dữ liệu Bán Trà & Hành vi Khách hàng{% endif %}
                             </h3>
                             <p class="text-slate-500 text-sm mt-1">
-                                {% if current_lang == 'en' %}Live interactive dashboard embedded directly from Tableau Public for real-time market deep-dives.{% else %}Báo cáo trực quan tương tác trực tiếp nhúng từ Tableau Public phục vụ phân tích chuyên sâu.{% endif %}
+                                {% if current_lang == 'en' %}Statistical distributions and revenue patterns of tea products across peak operational timeframes programmed via Matplotlib.{% else %}Trực quan phân phối thống kê, doanh số các loại trà và phân tích hành vi mua sắm của khách hàng trong các khung thời gian bằng Python.{% endif %}
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 border-t border-slate-100 flex-grow flex items-center justify-center relative min-h-[400px]">
+                            <div class="w-full text-center">
+                                <img id="python-viz-img-1" src="{% static 'images/python visualization/1.png' %}" alt="Python Visualization 1" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain block mx-auto">
+                                <img id="python-viz-img-2" src="{% static 'images/python visualization/2.png' %}" alt="Python Visualization 2" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-3" src="{% static 'images/python visualization/3.png' %}" alt="Python Visualization 3" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-4" src="{% static 'images/python visualization/4.png' %}" alt="Python Visualization 4" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-5" src="{% static 'images/python visualization/5.png' %}" alt="Python Visualization 5" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-6" src="{% static 'images/python visualization/6.png' %}" alt="Python Visualization 6" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-7" src="{% static 'images/python visualization/7.png' %}" alt="Python Visualization 7" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-8" src="{% static 'images/python visualization/8.png' %}" alt="Python Visualization 8" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-9" src="{% static 'images/python visualization/9.png' %}" alt="Python Visualization 9" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-10" src="{% static 'images/python visualization/10.png' %}" alt="Python Visualization 10" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-11" src="{% static 'images/python visualization/11.png' %}" alt="Python Visualization 11" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                                <img id="python-viz-img-12" src="{% static 'images/python visualization/12.png' %}" alt="Python Visualization 12" class="python-gallery-img rounded-lg border border-slate-200 bg-white max-h-[600px] w-full object-contain hidden mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 border-t border-slate-100 flex flex-wrap justify-center gap-2">
+                            <button onclick="switchPythonViz(1)" id="btn-viz-1" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-teal-600 text-white border-teal-600 shadow-sm">1</button>
+                            <button onclick="switchPythonViz(2)" id="btn-viz-2" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">2</button>
+                            <button onclick="switchPythonViz(3)" id="btn-viz-3" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">3</button>
+                            <button onclick="switchPythonViz(4)" id="btn-viz-4" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">4</button>
+                            <button onclick="switchPythonViz(5)" id="btn-viz-5" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">5</button>
+                            <button onclick="switchPythonViz(6)" id="btn-viz-6" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">6</button>
+                            <button onclick="switchPythonViz(7)" id="btn-viz-7" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">7</button>
+                            <button onclick="switchPythonViz(8)" id="btn-viz-8" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">8</button>
+                            <button onclick="switchPythonViz(9)" id="btn-viz-9" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">9</button>
+                            <button onclick="switchPythonViz(10)" id="btn-viz-10" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">10</button>
+                            <button onclick="switchPythonViz(11)" id="btn-viz-11" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">11</button>
+                            <button onclick="switchPythonViz(12)" id="btn-viz-12" class="python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50">12</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
+                        <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-50 text-purple-600 border border-purple-100 tracking-wider">Web-based Custom Viz By D3.js</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 tracking-tight">
+                                {% if current_lang == 'en' %}Tea Sales Performance & Consumer Behavior Dashboard{% else %}Dashboard Tổng hợp Dữ liệu Bán Trà & Hành vi Khách hàng{% endif %}
+                            </h3>
+                            <p class="text-slate-500 text-sm mt-1">
+                                {% if current_lang == 'en' %}SVG-driven interactive data binding for custom multi-period workflows and tea category performance pipelines.{% else %}Ràng buộc dữ liệu DOM thông qua SVG, kiến tạo đồ thị tương tác cao phân tích chuỗi hành vi mua sắm và doanh thu chi tiết các loại trà.{% endif %}
                             </p>
                         </div>
                         
-                        <div class="flex bg-slate-100 p-1 rounded-lg self-start sm:self-center border border-slate-200">
-                            <button onclick="switchTableau('market')" id="tab-market" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm">
-                                {% if current_lang == 'en' %}Market Analytics{% else %}Phân tích Thị trường{% endif %}
-                            </button>
-                            <button onclick="switchTableau('business')" id="tab-business" class="px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900">
-                                {% if current_lang == 'en' %}Tea Business Sales{% else %}Kinh doanh Trà{% endif %}
-                            </button>
+                        <div class="p-4 md:p-6 bg-white border-t border-slate-100">
+                            <div class="w-full rounded-lg border border-slate-200 shadow-inner bg-slate-50 overflow-hidden" style="height: 850px;">
+                                <iframe 
+                                    src="https://dung-doctor25.github.io/D3_home_work/D1" 
+                                    class="w-full h-full border-0 rounded-lg"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
-                    <div id="tableau-render-container" class="w-full overflow-auto rounded-lg shadow-inner bg-white">
-                        <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto;'>
-                            <noscript>
-                                <a href='#'><img alt='Dashboard 1_N ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1_rss.png' style='border: none' /></a>
-                            </noscript>
-                            <object class='tableauViz' style='display:none;'>
-                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                                <param name='embed_code_version' value='3' /> 
-                                <param name='site_root' value='' />
-                                <param name='name' value='Data_Viz_17495813142900&#47;Dashboard1_N' />
-                                <param name='tabs' value='no' />
-                                <param name='toolbar' value='yes' />
-                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;Data_Viz_17495813142900&#47;Dashboard1_N&#47;1.png' /> 
-                                <param name='animate_transition' value='yes' />
-                                <param name='display_static_image' value='yes' />
-                                <param name='display_spinner' value='yes' />
-                                <param name='display_overlay' value='yes' />
-                                <param name='display_count' value='yes' />
-                                <param name='language' value='en-US' />
-                            </object>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-yellow-50 text-yellow-600 border border-yellow-100 tracking-wider">Microsoft Power BI</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                        {% if current_lang == 'en' %}Financial Performance & Operations Monitor{% else %}Hệ thống Giám sát Hiệu suất Tài chính & Vận hành{% endif %}
-                    </h3>
-                    <p class="text-slate-500 text-sm mt-1">
-                        {% if current_lang == 'en' %}Comprehensive data modeling using DAX and Power Query to optimize dynamic profit margins.{% else %}Mô hình hóa dữ liệu chuyên sâu bằng DAX và Power Query tối ưu hóa biên lợi nhuận động.{% endif %}
-                    </p>
-                </div>
-                <div class="p-4 bg-slate-50 border-t border-slate-100 group/img">
-                    <div class="relative overflow-hidden rounded-lg border border-slate-200 bg-white">
-                        <img src="{% static 'images/powerbi_dashboard.png' %}" alt="Power BI Dashboard" class="w-full h-auto object-cover max-h-[500px] transition-transform duration-500 group-hover/img:scale-[1.01]">
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300">
-                <div class="p-6 md:p-8 border-b border-slate-100 bg-slate-50/50">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-50 text-blue-600 border border-blue-100 tracking-wider">Google Looker Studio</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 tracking-tight">
-                        {% if current_lang == 'en' %}Marketing ROI & BigQuery Big Data Dashboard{% else %}Báo cáo Tối ưu ROI Marketing & BigData BigQuery{% endif %}
-                    </h3>
-                    <p class="text-slate-500 text-sm mt-1">
-                        {% if current_lang == 'en' %}Connected directly with Google BigQuery to track advertising conversion funnels asynchronously.{% else %}Kết nối trực tiếp kho dữ liệu BigQuery xử lý bất đồng bộ phễu chuyển đổi chiến dịch quảng cáo.{% endif %}
-                    </p>
-                </div>
-                
-                <div class="p-4 md:p-6 bg-slate-900 flex justify-center">
-                    <div class="w-full rounded-lg shadow-inner bg-slate-800 overflow-hidden" style="height: 650px;">
-                        <iframe 
-                            src="https://lookerstudio.google.com/embed/reporting/fd8d26d7-bf3f-4b79-a11e-6c2b2d30ca84" 
-                            class="w-full h-full border-0 rounded-lg"
-                            allowfullscreen 
-                            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300 flex flex-col justify-between">
-                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-teal-50 text-teal-600 border border-teal-100 tracking-wider">Python Data Science</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 tracking-tight">
-                            {% if current_lang == 'en' %}Exploratory Data Analysis (EDA) & Financial Indicators{% else %}Phân tích Khám phá Dữ liệu (EDA) & Chỉ báo Tài chính{% endif %}
-                        </h3>
-                        <p class="text-slate-500 text-xs mt-1">
-                            {% if current_lang == 'en' %}Statistical distributions, heatmaps, and rolling averages (MACD/RSI) programmed via Matplotlib.{% else %}Trực quan phân phối thống kê, biểu đồ nhiệt và đường trung bình động (MACD/RSI) bằng mã Python.{% endif %}
-                        </p>
-                    </div>
-                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex-grow flex items-center justify-center">
-                        <img src="{% static 'images/matplotlib_chart.png' %}" alt="Matplotlib Financial Analysis" class="rounded-lg border border-slate-200 bg-white max-h-[300px] w-full object-contain">
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-300 hover:border-slate-300 flex flex-col justify-between">
-                    <div class="p-6 border-b border-slate-100 bg-slate-50/50">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-50 text-purple-600 border border-purple-100 tracking-wider">Web-based Custom Viz</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-900 tracking-tight">
-                            {% if current_lang == 'en' %}Custom Dynamic Web Charts (D3.js){% else %}Biểu đồ Web Tùy biến Động (D3.js){% endif %}
-                        </h3>
-                        <p class="text-slate-500 text-xs mt-1">
-                            {% if current_lang == 'en' %}SVG-driven interactive data binding for customized interactive web network hierarchies.{% else %}Ràng buộc dữ liệu DOM thông qua SVG, kiến tạo đồ thị mạng lưới phân tầng có tính tương tác cao.{% endif %}
-                        </p>
-                    </div>
-                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex-grow flex items-center justify-center">
-                        <img src="{% static 'images/d3_chart.png' %}" alt="D3.js Custom Visualization" class="rounded-lg border border-slate-200 bg-white max-h-[300px] w-full object-contain">
-                    </div>
-                </div>
-
-            </div>
-
         </div>
     </div>
 
-   <script type='text/javascript'>
-        // Lưu trữ chuỗi HTML gốc của 2 mã nhúng nhằm giữ nguyên vẹn cấu trúc ban đầu của bạn
+    <script type='text/javascript'>
+        const currentLang = "{{ current_lang }}";
+
         const embeds = {
             market: `
                 <div class='tableauPlaceholder' id='viz1779455382110' style='position: relative; margin: 0 auto;'>
@@ -195,13 +370,12 @@
             `
         };
 
-        // Hàm thực thi chạy các script tính toán kích thước đi kèm của từng báo cáo
         function executeTableauScript(type) {
             if (type === 'market') {
                 var divElement = document.getElementById('viz1779455382110');                    
                 var vizElement = divElement.getElementsByTagName('object')[0];                    
                 if ( divElement.offsetWidth > 800 ) { 
-                    vizElement.style.width='100%';vizElement.style.height='650px';
+                    vizElement.style.width='100%';vizElement.style.height='750px';
                 } else if ( divElement.offsetWidth > 500 ) { 
                     vizElement.style.width='100%';vizElement.style.height='550px';
                 } else { 
@@ -212,42 +386,94 @@
                 vizElement.parentNode.insertBefore(scriptElement, vizElement);
             } 
             else if (type === 'business') {
-                // GIỮ NGUYÊN GỐC TOÀN BỘ LOGIC TÍNH TOÁN CỦA DASHBOARD KINH DOANH TRÀ TRÁNH LỖI
                 var divElement = document.getElementById('viz1779961811119');                    
                 var vizElement = divElement.getElementsByTagName('object')[0];                    
-                if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.minWidth='1200px';vizElement.style.maxWidth='100%';vizElement.style.minHeight='3450px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='100%';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='100%';vizElement.style.maxWidth='100%';vizElement.style.minHeight='850px';vizElement.style.maxHeight=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.minWidth='100%';vizElement.style.maxWidth='100%';vizElement.style.minHeight='3450px';vizElement.style.maxHeight=(divElement.offsetWidth*1.77)+'px';}                     
                 var scriptElement = document.createElement('script');                    
                 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
                 vizElement.parentNode.insertBefore(scriptElement, vizElement);
             }
         }
 
-        // Khởi tạo chạy dashboard đầu tiên khi trang web vừa load xong
-        executeTableauScript('market');
+        // Tải Tableau ban đầu sau khi trang sẵn sàng
+        document.addEventListener("DOMContentLoaded", () => {
+            executeTableauScript('market');
+        });
 
-        // Hàm chuyển tab chủ động
         function switchTableau(type) {
             const tabMarket = document.getElementById('tab-market');
             const tabBusiness = document.getElementById('tab-business');
             const container = document.getElementById('tableau-render-container');
+            const titleElement = document.getElementById('tableau-title');
+            const descElement = document.getElementById('tableau-desc');
 
-            // 1. Thay thế nội dung HTML trống bằng mã nhúng được chọn
             container.innerHTML = embeds[type];
 
-            // 2. Cập nhật giao diện nút bấm hoạt động
             if(type === 'market') {
                 tabMarket.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm";
                 tabBusiness.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900";
+                
+                if (currentLang === 'en') {
+                    titleElement.innerText = "Global Labor Market Analysis Report";
+                    descElement.innerText = "Live interactive dashboard embedded directly from Tableau Public to analyze global labor trends and employment metrics.";
+                } else {
+                    titleElement.innerText = "Báo cáo phân tích tình hình thị trường việc làm của thế giới";
+                    descElement.innerText = "Báo cáo trực quan tương tác trực tiếp từ Tableau Public phục vụ phân tích xu hướng thị trường việc làm toàn cầu và các chỉ số lao động.";
+                }
             } else {
                 tabBusiness.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 bg-white text-blue-600 shadow-sm";
                 tabMarket.className = "px-3 py-1.5 text-xs font-semibold rounded-md transition-all duration-200 text-slate-600 hover:text-slate-900";
+                
+                if (currentLang === 'en') {
+                    titleElement.innerText = "Tea Sales Performance & Consumer Behavior Dashboard";
+                    descElement.innerText = "Live interactive dashboard embedded directly from Tableau Public to analyze multi-period sales and tea revenue.";
+                } else {
+                    titleElement.innerText = "Dashboard Tổng hợp Dữ liệu Bán Trà & Hành vi Khách hàng";
+                    descElement.innerText = "Báo cáo trực quan tương tác trực tiếp từ Tableau Public phục vụ phân tích hiệu suất theo khung thời gian và doanh thu loại trà.";
+                }
             }
 
-            // 3. Kích hoạt chạy script tương ứng ngay khi mã vừa nạp vào khung hiển thị thực tế
             executeTableauScript(type);
         }
 
-        // --- BỔ SUNG: XỬ LÝ CHỐNG GIẬT TRANG (SCROLL JUMP) CHO LOOKER STUDIO ---
+        // --- GIẢI PHÁP CHỐNG TỰ ĐỘNG CUỘN DO IFRAME FOCUS ---
+        (function() {
+            // 1. Ép trình duyệt không tự khôi phục vị trí cuộn cũ khi ép F5
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
+            let pageLoaded = false;
+            let userInteracted = false;
+
+            // Đưa trang về đầu vị trí 0 ngay lập tức khi load
+            window.scrollTo(0, 0);
+
+            // Ghi nhận khi người dùng chủ động cuộn hoặc click chuột
+            const activateUserScroll = () => { userInteracted = true; };
+            window.addEventListener('wheel', activateUserScroll, { passive: true });
+            window.addEventListener('touchmove', activateUserScroll, { passive: true });
+            window.addEventListener('mousedown', activateUserScroll, { passive: true });
+            window.addEventListener('keydown', activateUserScroll, { passive: true });
+
+            // Lắng nghe sự kiện cuộn của hệ thống
+            window.addEventListener('scroll', () => {
+                // Nếu người dùng chưa hề chạm vào màn hình mà trang tự cuộn -> Trình duyệt đang bị iframe kéo đi
+                if (!userInteracted && window.scrollY > 0) {
+                    window.scrollTo(window.scrollX, 0);
+                }
+            });
+
+            window.addEventListener('load', () => {
+                pageLoaded = true;
+                // Trả lại trạng thái cuộn bình thường sau khi mọi thứ tải xong 500ms
+                setTimeout(() => {
+                    userInteracted = true;
+                }, 500);
+            });
+        })();
+
+        // --- LOOKER STUDIO INTERACTION FIX ---
         document.addEventListener("DOMContentLoaded", function() {
             const lookerIframe = document.querySelector('iframe[src*="lookerstudio.google.com"]');
             if (!lookerIframe) return;
@@ -255,52 +481,59 @@
             let isOverIframe = false;
             let isUserScrolling = false;
             let scrollTimeout;
-            let currentScrollY = window.scrollY;
+            let currentScrollY = 0;
 
-            // 1. Theo dõi khi chuột nằm trong khu vực báo cáo
             lookerIframe.addEventListener('mouseenter', () => {
                 isOverIframe = true;
-                currentScrollY = window.scrollY; // Chốt tọa độ hiện tại
+                currentScrollY = window.scrollY;
             });
 
             lookerIframe.addEventListener('mouseleave', () => {
                 isOverIframe = false;
             });
 
-            // 2. Hàm ghi nhận các thao tác CUỘN CHỦ ĐỘNG của người dùng
             const userScrollHandler = () => {
                 isUserScrolling = true;
-                currentScrollY = window.scrollY; // Cập nhật tọa độ mới do người dùng tự cuộn
+                currentScrollY = window.scrollY;
                 
                 clearTimeout(scrollTimeout);
-                // Reset trạng thái sau khi người dùng dừng cuộn 100ms
                 scrollTimeout = setTimeout(() => {
                     isUserScrolling = false;
-                }, 100); 
+                }, 100);
             };
 
-            // Lắng nghe lăn chuột, vuốt màn hình cảm ứng, hoặc dùng phím mũi tên
             window.addEventListener('wheel', userScrollHandler, { passive: true });
             window.addEventListener('touchmove', userScrollHandler, { passive: true });
-            window.addEventListener('keydown', (e) => {
-                // Các phím cuộn trang: Space, Page Up, Page Down, Up, Down
-                if ([32, 33, 34, 38, 40].includes(e.keyCode)) {
-                    userScrollHandler();
-                }
-            }, { passive: true });
 
-            // 3. Đánh chặn các lệnh cuộn "lén lút" từ Looker Studio
             window.addEventListener('scroll', () => {
-                // Nếu chuột đang ở trong iframe MÀ người dùng KHÔNG hề lăn chuột/vuốt phím
-                // => Chắc chắn là Looker Studio đang cố tình giật trang!
                 if (isOverIframe && !isUserScrolling) {
-                    window.scrollTo(window.scrollX, currentScrollY); // Ép ghim cứng lại vị trí cũ
-                } else if (!isOverIframe) {
-                    // Cập nhật lại vị trí bình thường khi chuột nằm ngoài báo cáo
-                    currentScrollY = window.scrollY;
+                    window.scrollTo(window.scrollX, currentScrollY);
                 }
             });
         });
-    </script>
 
+        function switchPythonViz(index) {
+            const allImages = document.querySelectorAll('.python-gallery-img');
+            allImages.forEach(img => {
+                img.classList.add('hidden');
+                img.classList.remove('block');
+            });
+            
+            const targetImg = document.getElementById(`python-viz-img-${index}`);
+            if (targetImg) {
+                targetImg.classList.remove('hidden');
+                targetImg.classList.add('block');
+            }
+
+            const allButtons = document.querySelectorAll('.python-viz-btn');
+            allButtons.forEach(btn => {
+                btn.className = "python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-white text-slate-600 border-slate-200 hover:bg-slate-50";
+            });
+
+            const targetBtn = document.getElementById(`btn-viz-${index}`);
+            if (targetBtn) {
+                targetBtn.className = "python-viz-btn w-8 h-8 flex items-center justify-center text-xs font-bold rounded-md border transition-all duration-200 bg-teal-600 text-white border-teal-600 shadow-sm";
+            }
+        }
+    </script>
 {% endblock %}
