@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "bản hoàn thành skill 1( cần bổ sung wh, cloud),2 (có thể nói là xong),3( xong chưa biết bổ sung không)"
+git commit -m "hoàn thiện tạm thời còn skill 5 chưa có sơ đồ mối sửa lại mail và chỗ tải cv"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere
