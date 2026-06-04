@@ -20,22 +20,35 @@
             </div>
 
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 leading-tight">
-                Ứng dụng Retrieval-Augmented Generation (RAG) <br class="hidden md:block">
-                <span class="text-blue-600">Xây dựng AI Agent</span>
+                {% if current_lang == 'en' %}
+                    Retrieval-Augmented Generation (RAG) Application <br class="hidden md:block">
+                    <span class="text-blue-600">Building AI Agent</span>
+                {% else %}
+                    Ứng dụng Retrieval-Augmented Generation (RAG) <br class="hidden md:block">
+                    <span class="text-blue-600">Xây dựng AI Agent</span>
+                {% endif %}
             </h1>
             <h2 class="text-2xl font-semibold text-slate-700 mb-6">
-                Agent ra quyết định và thực thi đầu tư tự động
+                {% if current_lang == 'en' %}
+                    Autonomous Investment Decision-Making & Execution Agent
+                {% else %}
+                    Agent ra quyết định và thực thi đầu tư tự động
+                {% endif %}
             </h2>
             
             <p class="text-lg text-slate-600 max-w-4xl leading-relaxed bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm">
-                AI agent kết hợp công nghệ <strong>Retrieval-Augmented Generation (RAG)</strong> giúp tích lũy kinh nghiệm đầu tư phục vụ cho các tác vụ đầu tư trong tương lai thêm chính xác. Agent được tích hợp chặt chẽ cùng với framework <strong>Django</strong>, tạo nên một hệ sinh thái hoàn chỉnh phục vụ cho khách hàng nhằm đưa ra những quyết định đầu tư sinh lời tối ưu nhất.
+                {% if current_lang == 'en' %}
+                    The AI agent combines <strong>Retrieval-Augmented Generation (RAG)</strong> technology to accumulate investment experience, enhancing the accuracy of future investment tasks. Seamlessly integrated with the <strong>Django</strong> framework, it forms a complete ecosystem designed to help clients deliver optimal and profitable investment decisions.
+                {% else %}
+                    AI agent kết hợp công nghệ <strong>Retrieval-Augmented Generation (RAG)</strong> giúp tích lũy kinh nghiệm đầu tư phục vụ cho các tác vụ đầu tư trong tương lai thêm chính xác. Agent được tích hợp chặt chẽ cùng với framework <strong>Django</strong>, tạo nên một hệ sinh thái hoàn chỉnh phục vụ cho khách hàng nhằm đưa ra những quyết định đầu tư sinh lời tối ưu nhất.
+                {% endif %}
             </p>
         </div>
 
         <div class="mb-16">
             <h3 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                Kiến trúc tổng thể của Agent
+                {% if current_lang == 'en' %}Overall Agent Architecture{% else %}Kiến trúc tổng thể của Agent{% endif %}
             </h3>
             
             <div class="w-full bg-white rounded-2xl border-2 border-slate-200 border-dashed p-2 shadow-sm hover:border-blue-400 transition-colors overflow-hidden group flex items-center justify-center min-h-[400px]">
@@ -48,7 +61,7 @@
         <div class="mb-16">
             <h3 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
                 <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                Luồng thực thi đầu tư tự động (Cron Job)
+                {% if current_lang == 'en' %}Automated Investment Execution Workflow (Cron Job){% else %}Luồng thực thi đầu tư tự động (Cron Job){% endif %}
             </h3>
             
             <div class="relative">
@@ -57,32 +70,38 @@
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 relative z-10">
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
                         <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">1</div>
-                        <h4 class="font-bold text-slate-800 mb-2">Thu thập Dữ liệu</h4>
-                        <p class="text-sm text-slate-500">Kích hoạt tại khung giờ cố định hằng ngày để lấy dữ liệu tài chính mới nhất.</p>
+                        <h4 class="font-bold text-slate-800 mb-2">{% if current_lang == 'en' %}Data Collection{% else %}Thu thập Dữ liệu{% endif %}</h4>
+                        <p class="text-sm text-slate-500">{% if current_lang == 'en' %}Triggered daily at a fixed time to fetch the latest financial market data.{% else %}Kích hoạt tại khung giờ cố định hằng ngày để lấy dữ liệu tài chính mới nhất.{% endif %}</p>
                     </div>
 
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
                         <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">2</div>
-                        <h4 class="font-bold text-slate-800 mb-2">Phân tích Thị trường</h4>
-                        <p class="text-sm text-slate-500">Đánh giá bối cảnh và tình hình biến động chung của thị trường.</p>
+                        <h4 class="font-bold text-slate-800 mb-2">{% if current_lang == 'en' %}Market Analysis{% else %}Phân tích Thị trường{% endif %}</h4>
+                        <p class="text-sm text-slate-500">{% if current_lang == 'en' %}Evaluate overall market context and ongoing volatility patterns.{% else %}Đánh giá bối cảnh và tình hình biến động chung của thị trường.{% endif %}</p>
                     </div>
 
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
                         <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">3</div>
-                        <h4 class="font-bold text-slate-800 mb-2">Mô hình hóa Mối quan hệ</h4>
-                        <p class="text-sm text-slate-500">Học và tìm ra quy luật giữa biến động giá cổ phiếu và thông tin thị trường.</p>
+                        <h4 class="font-bold text-slate-800 mb-2">{% if current_lang == 'en' %}Relationship Modeling{% else %}Mô hình hóa Mối quan hệ{% endif %}</h4>
+                        <p class="text-sm text-slate-500">{% if current_lang == 'en' %}Learn and map correlations between stock price actions and market information.{% else %}Học và tìm ra quy luật giữa biến động giá cổ phiếu và thông tin thị trường.{% endif %}</p>
                     </div>
 
                     <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-400 transition-all text-center group">
                         <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold border border-blue-100 group-hover:scale-110 transition-transform">4</div>
-                        <h4 class="font-bold text-slate-800 mb-2">Truy xuất Kinh nghiệm</h4>
-                        <p class="text-sm text-slate-500">Học hỏi các bài học đầu tư từ quá khứ.</p>
+                        <h4 class="font-bold text-slate-800 mb-2">{% if current_lang == 'en' %}Experience Retrieval{% else %}Truy xuất Kinh nghiệm{% endif %}</h4>
+                        <p class="text-sm text-slate-500">{% if current_lang == 'en' %}Extract historical trading context and past investment lessons.{% else %}Học hỏi các bài học đầu tư từ quá khứ.{% endif %}</p>
                     </div>
 
                     <div class="bg-blue-600 p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-center text-white">
                         <div class="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
-                        <h4 class="font-bold mb-2">Quyết định Cuối cùng</h4>
-                        <p class="text-sm text-blue-100">Tổng hợp lý luận để đưa ra Action chuẩn xác: <br><strong>MUA - BÁN - GIỮ</strong>.</p>
+                        <h4 class="font-bold mb-2">{% if current_lang == 'en' %}Final Decision{% else %}Quyết định Cuối cùng{% endif %}</h4>
+                        <p class="text-sm text-blue-100">
+                            {% if current_lang == 'en' %}
+                                Synthesize reasoning to generate precise actions: <br><strong>BUY - SELL - HOLD</strong>.
+                            {% else %}
+                                Tổng hợp lý luận để đưa ra Action chuẩn xác: <br><strong>MUA - BÁN - GIỮ</strong>.
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -93,9 +112,15 @@
             
             <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-blue-400 relative z-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                Hệ thống RAG & Cơ sở dữ liệu Vector
+                {% if current_lang == 'en' %}RAG System & Vector Database{% else %}Hệ thống RAG & Cơ sở dữ liệu Vector{% endif %}
             </h3>
-            <p class="text-slate-400 mb-8 max-w-3xl relative z-10">Quy trình xử lý Retrieval-Augmented Generation cốt lõi được tối ưu hóa qua 6 bước để đảm bảo khả năng truy xuất theo ngữ cảnh và suy luận chính xác nhất.</p>
+            <p class="text-slate-400 mb-8 max-w-3xl relative z-10">
+                {% if current_lang == 'en' %}
+                    The core Retrieval-Augmented Generation processing pipeline is optimized through 6 structural steps to guarantee context-aware retrieval and precise logic reasoning.
+                {% else %}
+                    Quy trình xử lý Retrieval-Augmented Generation cốt lõi được tối ưu hóa qua 6 bước để đảm bảo khả năng truy xuất theo ngữ cảnh và suy luận chính xác nhất.
+                {% endif %}
+            </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                 
@@ -107,7 +132,9 @@
                         </div>
                         <svg class="w-5 h-5 text-slate-500 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Nhận <span class="text-blue-300">query text</span> từ các module hệ thống để bắt đầu chu trình xử lý.</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        {% if current_lang == 'en' %}Receive <span class="text-blue-300">query text</span> from system modules to trigger the processing cycle.{% else %}Nhận <span class="text-blue-300">query text</span> từ các module hệ thống để bắt đầu chu trình xử lý.{% endif %}
+                    </p>
                 </div>
 
                 <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-colors group">
@@ -118,7 +145,9 @@
                         </div>
                         <svg class="w-5 h-5 text-slate-500 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Chuyển đổi query text thành vector đa chiều (Sử dụng model mặc định: <span class="text-purple-300 font-mono text-xs">all-MiniLM-L6-v2</span>).</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        {% if current_lang == 'en' %}Convert query text into high-dimensional vector embeddings (Default model: <span class="text-purple-300 font-mono text-xs">all-MiniLM-L6-v2</span>).{% else %}Chuyển đổi query text thành vector đa chiều (Sử dụng model mặc định: <span class="text-purple-300 font-mono text-xs">all-MiniLM-L6-v2</span>).{% endif %}
+                    </p>
                 </div>
 
                 <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-emerald-500/50 transition-colors group">
@@ -129,7 +158,9 @@
                         </div>
                         <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Tìm kiếm <span class="text-emerald-300">Top K</span> các vector tương đồng nhất trong <strong class="text-slate-300">ChromaDB</strong> (đo lường bằng khoảng cách L2).</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        {% if current_lang == 'en' %}Query the <span class="text-emerald-300">Top K</span> most relevant vector matches within <strong class="text-slate-300">ChromaDB</strong> via L2 distance calculation.{% else %}Tìm kiếm <span class="text-emerald-300">Top K</span> các vector tương đồng nhất trong <strong class="text-slate-300">ChromaDB</strong> (đo lường bằng khoảng cách L2).{% endif %}
+                    </p>
                 </div>
 
                 <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-colors group">
@@ -140,7 +171,9 @@
                         </div>
                         <svg class="w-5 h-5 text-slate-500 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Trích xuất nội dung văn bản thô (raw text content) từ Top K kết quả truy xuất được.</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        {% if current_lang == 'en' %}Extract raw text content payloads mapped to the retrieved Top K results.{% else %}Trích xuất nội dung văn bản thô (raw text content) từ Top K kết quả truy xuất được.{% endif %}
+                    </p>
                 </div>
 
                 <div class="bg-slate-800/80 p-5 rounded-xl border border-slate-700 hover:border-pink-500/50 transition-colors group">
@@ -151,7 +184,9 @@
                         </div>
                         <svg class="w-5 h-5 text-slate-500 group-hover:text-pink-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Kết hợp ngữ cảnh thô (<span class="text-pink-300">Context</span>) và văn bản truy vấn (<span class="text-pink-300">Query</span>) thành một Prompt hoàn chỉnh.</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        {% if current_lang == 'en' %}Merge the raw retrieved <span class="text-pink-300">Context</span> with the target <span class="text-pink-300">Query</span> into an augmented engineered Prompt.{% else %}Kết hợp ngữ cảnh thô (<span class="text-pink-300">Context</span>) và văn bản truy vấn (<span class="text-pink-300">Query</span>) thành một Prompt hoàn chỉnh.{% endif %}
+                    </p>
                 </div>
 
                 <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-5 rounded-xl border border-blue-500/30 hover:border-blue-400 transition-colors group shadow-[0_0_15px_rgba(59,130,246,0.1)]">
@@ -162,7 +197,9 @@
                         </div>
                         <svg class="w-5 h-5 text-blue-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <p class="text-sm text-slate-300 leading-relaxed">Gửi Prompt hoàn chỉnh đến LLM (<strong class="text-white">Gemini 3.1 Flash-Lite preview</strong>) để mô hình suy luận và tạo ra câu trả lời cuối cùng.</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        {% if current_lang == 'en' %}Stream the structural prompt to the LLM (<strong class="text-white">Gemini 3.1 Flash-Lite preview</strong>) for logical reasoning and generation.{% else %}Gửi Prompt hoàn chỉnh đến LLM (<strong class="text-white">Gemini 3.1 Flash-Lite preview</strong>) để mô hình suy luận và tạo ra câu trả lời cuối cùng.{% endif %}
+                    </p>
                 </div>
 
             </div>

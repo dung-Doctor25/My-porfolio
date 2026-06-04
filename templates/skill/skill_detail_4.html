@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="max-w-5xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 pt-28 pb-16 scroll-mt-20">
         
+        <!-- Nút quay lại -->
         <div class="mb-8">
             <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-blue-600 transition-colors group">
                 <svg class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -12,6 +13,7 @@
             </a>
         </div>
 
+        <!-- Tiêu đề lớn của trang -->
         <div class="mb-12 pb-6 border-b border-slate-200">
             <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Technical Deep Dive</span>
             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -26,600 +28,182 @@
             </p>
         </div>
 
-        <section class="mb-16 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
-            <div class="flex items-center space-x-3 mb-6">
+        <!-- ================================================================================= -->
+        <!-- PHẦN 1: TỔNG QUAN CẤU TRÚC HỆ THỐNG END-TO-END (Đã đưa tiêu đề ra ngoài như Module) -->
+        <!-- ================================================================================= -->
+        <div class="space-y-6 mb-16">
+            <!-- Tiêu đề ở ngoài -->
+            <div class="flex items-center space-x-3 pb-3 border-b border-slate-200">
                 <div class="p-2.5 bg-blue-50 text-blue-600 rounded-xl">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                     </svg>
                 </div>
-                <h2 class="text-xl md:text-2xl font-bold text-slate-900">
+                <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
                     {% if current_lang == 'en' %}End-to-End System Architecture Overview{% else %}Tổng Quan Cấu Trúc Hệ Thống End-to-End{% endif %}
                 </h2>
             </div>
             
-            <p class="text-slate-600 leading-relaxed mb-6">
-                {% if current_lang == 'en' %}
-                    The system is designed following an event-driven model with strict functional layering. Data flows linearly through 5 core stages to form a closed loop: <strong class="text-slate-900">Web Scraping</strong> &rarr; <strong class="text-slate-900">LLM Processing</strong> &rarr; <strong class="text-slate-900">QA Automation</strong> &rarr; <strong class="text-slate-900">Structured Evaluation</strong> &rarr; <strong class="text-slate-900">Self-healing & Cloud Sync</strong>. The entire cycle operates seamlessly in the background via a real-time orchestration script, ensuring high data integrity and absolute resilience against network failures.
-                {% else %}
-                    Hệ thống được thiết kế theo mô hình kiến trúc hướng sự kiện và phân lớp chức năng nghiêm ngặt. Dữ liệu luân chuyển tuyến tính qua 5 giai đoạn cốt lõi tạo thành một chu trình khép kín: <strong class="text-slate-900">Thu thập tự động (Web Scraping)</strong> &rarr; <strong class="text-slate-900">Biên tập thông minh (LLM Processing)</strong> &rarr; <strong class="text-slate-900">Kiểm định song song (QA Automation)</strong> &rarr; <strong class="text-slate-900">Phân tích cấu trúc (Structured Evaluation)</strong> &rarr; <strong class="text-slate-900">Tự chữa lành và Đồng bộ (Self-healing & Cloud Sync)</strong>. Toàn bộ chu trình vận hành ngầm thông qua kịch bản điều phối thời gian thực, đảm bảo tính toàn vẹn dữ liệu cao và kháng lỗi mạng tuyệt đối.
-                {% endif %}
-            </p>
+            <!-- Nội dung nằm trong box trắng phía dưới tiêu đề -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+                <p class="text-slate-600 leading-relaxed mb-6 text-sm md:text-base">
+                    {% if current_lang == 'en' %}
+                        The system is designed following an event-driven model with strict functional layering. Data flows linearly through 5 core stages to form a closed loop: <strong class="text-slate-900">Web Scraping</strong> &rarr; <strong class="text-slate-900">LLM Processing</strong> &rarr; <strong class="text-slate-900">QA Automation</strong> &rarr; <strong class="text-slate-900">Structured Evaluation</strong> &rarr; <strong class="text-slate-900">Self-healing & Cloud Sync</strong>. The entire cycle operates seamlessly in the background via a real-time orchestration script, ensuring high data integrity and absolute resilience against network failures.
+                    {% else %}
+                        Hệ thống được thiết kế theo mô hình kiến trúc hướng sự kiện và phân lớp chức năng nghiêm ngặt. Dữ liệu luân chuyển tuyến tính qua 5 giai đoạn cốt lõi tạo thành một chu trình khép kín: <strong class="text-slate-900">Thu thập tự động (Web Scraping)</strong> &rarr; <strong class="text-slate-900">Biên tập thông minh (LLM Processing)</strong> &rarr; <strong class="text-slate-900">Kiểm định song song (QA Automation)</strong> &rarr; <strong class="text-slate-900">Phân tích cấu trúc (Structured Evaluation)</strong> &rarr; <strong class="text-slate-900">Tự chữa lành và Đồng bộ (Self-healing & Cloud Sync)</strong>. Toàn bộ chu trình vận hành ngầm thông qua kịch bản điều phối thời gian thực, đảm bảo tính toàn vẹn dữ liệu cao và kháng lỗi mạng tuyệt đối.
+                    {% endif %}
+                </p>
 
-            <div class="mb-8 bg-slate-50 border border-dashed border-slate-300 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[300px]">
-                <svg class="w-16 h-16 text-slate-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <span class="text-sm font-medium text-slate-700">System Architecture Diagram</span>
-                <span class="text-xs text-slate-400 mt-1">
-                    {% if current_lang == 'en' %}[Insert End-to-End system architecture overview diagram here]{% else %}[Thêm ảnh sơ đồ kiến trúc tổng quan hệ thống End-to-End tại đây]{% endif %}
-                </span>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-xs font-bold text-blue-600 mb-1">{% if current_lang == 'en' %}STAGE 1{% else %}GIAI ĐOẠN 1{% endif %}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">Data Scraping</div>
-                    <div class="text-xs text-slate-500">{% if current_lang == 'en' %}24/7 multi-tier raw data extraction via Selenium.{% else %}Cào trích xuất dữ liệu thô đa tầng 24/7 qua Selenium.{% endif %}</div>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-xs font-bold text-indigo-600 mb-1">{% if current_lang == 'en' %}STAGE 2{% else %}GIAI ĐOẠN 2{% endif %}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">LLM Compilation</div>
-                    <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Batch processing and text compilation using Gemini API.{% else %}Biên tập và xử lý ngôn ngữ hàng loạt bằng Gemini API.{% endif %}</div>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-xs font-bold text-purple-600 mb-1">{% if current_lang == 'en' %}STAGE 3{% else %}GIAI ĐOẠN 3{% endif %}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">Multi-LLM QA</div>
-                    <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Cross-comparison & resilient quality validation loops.{% else %}So sánh chéo, kiểm định chất lượng kháng lỗi vô hạn.{% endif %}</div>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-xs font-bold text-amber-600 mb-1">{% if current_lang == 'en' %}STAGE 4{% else %}GIAI ĐOẠN 4{% endif %}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">Structured Eval</div>
-                    <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Enforcing JSON Schema responses & logic error filtering.{% else %}Ép định dạng phản hồi JSON Schema, lọc lỗi logic.{% endif %}</div>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <div class="text-xs font-bold text-emerald-600 mb-1">{% if current_lang == 'en' %}STAGE 5{% else %}GIAI ĐOẠN 5{% endif %}</div>
-                    <div class="text-sm font-bold text-slate-800 mb-1">Self-Healing</div>
-                    <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Isolating faulty files, cache cleaning & Cloud sync.{% else %}Cô lập file lỗi, dọn dẹp cache và đồng bộ Cloud.{% endif %}</div>
-                </div>
-            </div>
-        </section>
-
-        <div class="space-y-4">
-            <h3 class="text-lg font-bold text-slate-900 mb-4 block">
-                {% if current_lang == 'en' %}Detailed Structure of Component Modules{% else %}Chi Tiết Cấu Trúc Các Module Thành Phần{% endif %}
-            </h3>
-
-            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button type="button" class="w-full text-left px-6 py-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-button" data-target="module-1">
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 01</span>
-                        <h4 class="text-base md:text-lg font-bold text-slate-800">
-                            {% if current_lang == 'en' %}Automated Web Scraping System & Text Data Pipeline{% else %}Hệ Thống Tự Động Hóa Thu Thập & Pipeline Dữ Liệu Truyện Chữ{% endif %}
-                        </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div class="text-xs font-bold text-blue-600 mb-1">{% if current_lang == 'en' %}STAGE 1{% else %}GIAI ĐOẠN 1{% endif %}</div>
+                        <div class="text-sm font-bold text-slate-800 mb-1">Data Scraping</div>
+                        <div class="text-xs text-slate-500">{% if current_lang == 'en' %}24/7 multi-tier raw data extraction via Selenium.{% else %}Cào trích xuất dữ liệu thô đa tầng 24/7 qua Selenium.{% endif %}</div>
                     </div>
-                    <svg class="w-5 h-5 text-slate-400 transform transition-transform arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div class="text-xs font-bold text-indigo-600 mb-1">{% if current_lang == 'en' %}STAGE 2{% else %}GIAI ĐOẠN 2{% endif %}</div>
+                        <div class="text-sm font-bold text-slate-800 mb-1">LLM Compilation</div>
+                        <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Batch processing and text compilation using Gemini API.{% else %}Biên tập và xử lý ngôn ngữ hàng loạt bằng Gemini API.{% endif %}</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div class="text-xs font-bold text-purple-600 mb-1">{% if current_lang == 'en' %}STAGE 3{% else %}GIAI ĐOẠN 3{% endif %}</div>
+                        <div class="text-sm font-bold text-slate-800 mb-1">Multi-LLM QA</div>
+                        <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Cross-comparison & resilient quality validation loops.{% else %}So sánh chéo, kiểm định chất lượng kháng lỗi vô hạn.{% endif %}</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div class="text-xs font-bold text-amber-600 mb-1">{% if current_lang == 'en' %}STAGE 4{% else %}GIAI ĐOẠN 4{% endif %}</div>
+                        <div class="text-sm font-bold text-slate-800 mb-1">Structured Eval</div>
+                        <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Enforcing JSON Schema responses & logic error filtering.{% else %}Ép định dạng phản hồi JSON Schema, lọc lỗi logic.{% endif %}</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                        <div class="text-xs font-bold text-emerald-600 mb-1">{% if current_lang == 'en' %}STAGE 5{% else %}GIAI ĐOẠN 5{% endif %}</div>
+                        <div class="text-sm font-bold text-slate-800 mb-1">Self-Healing</div>
+                        <div class="text-xs text-slate-500">{% if current_lang == 'en' %}Isolating faulty files, cache cleaning & Cloud sync.{% else %}Cô lập file lỗi, dọn dẹp cache và đồng bộ Cloud.{% endif %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================================= -->
+        <!-- PHẦN 2: CHI TIẾT CẤU TRÚC CÁC MODULE THÀNH PHẦN (Cùng form phân cấp hoàn toàn)    -->
+        <!-- ================================================================================= -->
+        <div class="space-y-6">
+            <!-- Tiêu đề ở ngoài -->
+            <div class="flex items-center space-x-3 pb-3 border-b border-slate-200">
+                <div class="p-2.5 bg-blue-50 text-blue-600 rounded-xl">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
                     </svg>
-                </button>
-                <div id="module-1" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
-                        <svg class="w-10 h-10 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path>
-                        </svg>
-                        <span class="text-xs font-semibold text-slate-600">Data Scraping Pipeline Diagram</span>
-                        <span class="text-[11px] text-slate-400 mt-0.5">
-                            {% if current_lang == 'en' %}[Two-Stage Crawler architecture diagram]{% else %}[Ảnh cấu trúc kiến trúc Two-Stage Crawler]{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-50/70 p-4 rounded-lg">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">{% if current_lang == 'en' %}Role{% else %}Vai trò{% endif %}</span>
-                            <span class="text-sm font-semibold text-slate-800 mt-1 block">Developer / Data Engineer</span>
-                        </div>
-                        <div class="bg-slate-50/70 p-4 rounded-lg md:col-span-2">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">Tech Stack</span>
-                            <div class="flex flex-wrap gap-1.5 mt-1.5">
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">Python</span>
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">Selenium WebDriver</span>
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">Windows Batch</span>
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">PowerShell</span>
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">Google Sheets API</span>
-                                <span class="px-2 py-0.5 bg-blue-50 border border-blue-100 text-blue-700 rounded text-xs font-medium">JSON</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-2 tracking-wide">{% if current_lang == 'en' %}System Description{% else %}Mô tả hệ thống{% endif %}</span>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                A continuous 24/7 two-stage scraping pipeline integrating automated scheduling, process monitoring, and smart resource cleanup to guarantee highly robust operations without manual overhead.
-                            {% else %}
-                                Hệ thống cào dữ liệu tự động hai giai đoạn (Two-stage Scraping Pipeline) hoạt động liên tục 24/7, tích hợp cơ chế tự động lập lịch, giám sát tiến trình và dọn dẹp tài nguyên thông minh để đảm bảo hệ thống vận hành bền bỉ không cần sự can thiệp của con người.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🚀 Technical Solutions & 24/7 Operational Architecture{% else %}🚀 Giải Pháp Kỹ Thuật & Kiến Trúc Vận Hành 24/7{% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Two-Stage Scraping Architecture:</strong> Decouples the process into 2 independent modules: Multi-tier link structure extraction (Link Crawler) and a detail content download/processing module (Detail Crawler) to optimize performance and resource management.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">UI Automation & Pagination Mimicking:</strong> Automates scrolling, index page jumping, and chapter navigating actions using Selenium, bypassing heavy dynamic client-side rendering bottlenecks.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">JavaScript Injection & Data Cleaning:</strong> Executes raw JS blocks directly in browser sessions to completely strip out DOM noise (ads, nav bars, hidden tracking scripts) before text extraction, ensuring pristine structured outputs.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Atomic Write Mechanism:</strong> Writes streaming logs to temporary `.tmp` buffers before atomically overwriting the main JSON database, preventing structural corruptions if scripts terminate abruptly.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Real-time Sync & API Throttling Optimization:</strong> Connects to the Google Sheets API to log progress intervals every 30 seconds. Implements delta matching and `batch_update` requests to strictly respect Google's global Rate Limits.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Two-Stage Scraping Architecture:</strong> Tách biệt quy trình thành 2 module độc lập: Cào trích xuất cấu trúc liên kết đa tầng (Link Crawler) và Module tải/xử lý nội dung chi tiết (Detail Crawler) giúp tối ưu hóa hiệu năng và quản lý tài nguyên hệ thống.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Mô Phỏng Tương Tác & Phân Trang (UI Automation):</strong> Tự động hóa hành vi cuộn, click chuyển trang danh mục và trang chương lẻ bằng Selenium, vượt qua các rào cản render động của website.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">JavaScript Injection & Data Cleaning:</strong> Thực thi trực tiếp mã JavaScript trên trình duyệt để xóa bỏ hoàn toàn các phần tử HTML rác (quảng cáo, thanh điều hướng, mã ẩn) trước khi trích xuất text, đảm bảo dữ liệu lưu trữ là văn bản hoàn toàn sạch.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Cơ Chế Ghi File An Toàn (Atomic Write):</strong> Áp dụng kỹ thuật ghi dữ liệu qua file trung gian .tmp trước khi đồng bộ vào file JSON chính, ngăn ngừa triệt để tình trạng hỏng cấu trúc file khi script bị ngắt đột ngột.</li>
-                                <li class="pl-4 border-l-2 border-blue-500"><strong class="text-slate-800">Đồng Bộ Real-time & Tối Ưu Tần Suất API:</strong> Tích hợp Google Sheets API để cập nhật tiến độ tự động sau mỗi 30 giây. Sử dụng thuật toán so khớp dữ liệu cũ-mới và thực hiện batch_update nhằm giảm tối đa số lượng request, tránh vượt ngưỡng hạn mức (Rate Limit) của Google.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🔄 Automation & Resilience (24/7 Operations){% else %}🔄 Cơ Chế Vận Hành Tự Động Hóa 24/7 (Automation & Resilience){% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Cron-like Scheduling:</strong> Configures a background real-time tracking daemon loop that automatically triggers the Link Crawler on a fixed day (e.g., Friday) at exactly 00:00. Mutex flags (`last_run_date`) prevent redundant thread executions.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Process Monitoring & Orchestration:</strong> Employs continuous watchdog scripts (every 10s) using PowerShell (`Get-CimInstance`) to inspect actual operational states of underlying headless Python workers.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Race Condition Prevention:</strong> To avoid bandwidth and CPU starvation, the system implements mutual exclusion logic. If the Link Crawler updates tree branches, the system kills background processes (`Process Tree Kill`) across all related Python/Chrome instances to free core resources.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Self-healing & Retry Engine:</strong> Once memory leaks are flushed and links settle, the orchestration script reactivates the Detail Crawler. Execution errors are isolated into localized fallback logs for scoped retries in subsequent loops without causing total system failures.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Lập Lịch Định Kỳ Kháng Đột Biến (Cron-like Scheduling):</strong> Thiết lập script quản lý vòng lặp thời gian thực, tự động kích hoạt Link Crawler định kỳ vào một ngày cố định trong tuần (ví dụ: Thứ Sáu) ngay khi bước qua 00:00. Cơ chế chặn trùng lặp (last_run_date) đảm bảo kịch bản chỉ chạy duy nhất một lần mỗi ngày.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Giám Sát & Điều Phối Tiến Trình Theo Thời Gian Thực (Orchestration):</strong> Xây dựng kịch bản giám sát liên tục (vòng lặp 10 giây/lần) sử dụng PowerShell (Get-CimInstance) để kiểm tra trạng thái thực tế của các tiến trình Python nền.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Giải Quyết Xung Đột Tài Nguyên (Race Condition Prevention):</strong> Nhằm tối ưu hóa băng thông và CPU, hệ thống áp dụng logic loại trừ lẫn nhau (Mutual Exclusion). Nếu phát hiện Link Crawler đang cập nhật cấu trúc link, hệ thống sẽ tự động cô lập và hủy diệt tận gốc cây tiến trình (Process Tree Kill) bao gồm file Python chi tiết và các tiến trình Chrome/WebDriver con đang chạy ngầm để giải phóng tài nguyên.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Tự Phục Hồi & Kháng Lỗi Hệ Thống (Self-healing & Retry Mechanism):</strong> Khi Link Crawler hoàn thành nhiệm vụ và giải phóng bộ nhớ, hệ thống giám sát sẽ tự động kích hoạt lại Detail Crawler để tiếp tục tải nội dung. Mọi lỗi phát sinh ở tầng kịch bản hoặc tầng ứng dụng đều được cô lập vào file lỗi riêng để tự động quét lại (Retry) trong các phiên sau mà không làm sập toàn bộ hệ thống.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
                 </div>
+                <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+                    {% if current_lang == 'en' %}Detailed Structure of Component Modules{% else %}Chi Tiết Cấu Trúc Các Module Thành Phần{% endif %}
+                </h2>
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button type="button" class="w-full text-left px-6 py-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-button" data-target="module-2">
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 02</span>
-                        <h4 class="text-base md:text-lg font-bold text-slate-800">
-                            {% if current_lang == 'en' %}Massive Text Processing & Bulk LLM Editorial System{% else %}Hệ Thống Automation Biên Tập Truyện Hàng Loạt Qua LLM API{% endif %}
-                        </h4>
-                    </div>
-                    <svg class="w-5 h-5 text-slate-400 transform transition-transform arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="module-2" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
-                        <svg class="w-10 h-10 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                        </svg>
-                        <span class="text-xs font-semibold text-slate-600">LLM Editorial Pipeline Diagram</span>
-                        <span class="text-[11px] text-slate-400 mt-0.5">
-                            {% if current_lang == 'en' %}[Bulk text processing architecture with integrated API Rotation]{% else %}[Ảnh cấu trúc luồng xử lý văn bản hàng loạt tích hợp API Rotation]{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-50/70 p-4 rounded-lg md:col-span-3">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">{% if current_lang == 'en' %}Technologies Used{% else %}Công nghệ sử dụng{% endif %}</span>
-                            <div class="flex flex-wrap gap-1.5 mt-1.5">
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">Python</span>
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">google-genai (gemini-3.1-flash-lite-preview)</span>
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">Google Sheets API (gspread)</span>
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">JSON</span>
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">Batch Script (.bat)</span>
-                                <span class="px-2 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded text-xs font-medium">Windows Environment</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-2 tracking-wide">{% if current_lang == 'en' %}System Description{% else %}Mô tả hệ thống{% endif %}</span>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                A massive text processing engine integrated with LLMs (Gemini API) and real-time state synchronization to completely automate raw text compilation and high-volume content editorial workflows.
-                            {% else %}
-                                Hệ thống tự động hóa xử lý dữ liệu văn bản lớn (Massive Text Processing), tích hợp mô hình ngôn ngữ lớn (Gemini API) và đồng bộ trạng thái thời gian thực để tự động hóa hoàn toàn luồng chỉnh sửa, biên tập nội dung truyện chữ thô.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🚀 Core Features & Technical Solutions{% else %}🚀 Tính năng & Giải pháp Kỹ thuật cốt lõi{% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Asynchronous Batch Processing:</strong> Automatically crawls deeply nested file directories, reading and parsing thousands of raw `.txt` payloads sequentially without manual overhead.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500">
-                                    <strong class="text-slate-800">Smart API Key Rotation & Rate-limiting Bypass:</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Monitors quota thresholds and active limits across arrays of API credentials.</li>
-                                        <li>Triggers zero-downtime hot-swapping to backup keys upon intercepting HTTP 429 errors.</li>
-                                        <li>Logs exhausted keys to JSON state maps, flushing cool-down flags automatically at 16:00 the next day.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Recursive Content Chunking Algorithm:</strong> Resolves prompt token overflow limits (&gt;45k characters) by dividing long blocks along logical line breaks to preserve context, stitched smoothly on response validation.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500">
-                                    <strong class="text-slate-800">Fault Tolerance & Error Resilience:</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Intercepts 503 Service Unavailable API errors and forces progressive backoff attempts.</li>
-                                        <li>Handles model safety blocks dynamically by chunk-splitting content blocks to clear LLM safety policies.</li>
-                                        <li>Saves detailed error stacks with traceback strings to structural logs to ensure non-blocking loops.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Real-time Dashboard Sync:</strong> Updates execution KPIs (success ratios, failed offsets, key status mapping) every 10s to cloud-hosted spreadsheets via Google Sheets API.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Cost & Resource Optimization:</strong> Checks filesystem footprints before invocation to skip previously compiled records, maximizing token economy on cold restarts.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Tự động hóa xử lý bất đồng bộ hàng loạt (Batch Processing):</strong> Tự động quét cấu trúc thư mục lồng nhau, nhận diện và xử lý hàng nghìn tệp tin văn bản (.txt) theo thứ tự tự nhiên mà không cần can thiệp thủ công.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500">
-                                    <strong class="text-slate-800">Cơ chế Xoay vòng & Quản lý API Key thông minh (API Key Rotation & Rate-limiting Bypass):</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Tự động theo dõi trạng thái hạn mức (Quota/Limit) của danh sách API Keys.</li>
-                                        <li>Tự động chuyển đổi sang Key dự phòng khi gặp lỗi 429 (Rate Limit) hoặc Quota Exhausted.</li>
-                                        <li>Lưu log trạng thái cạn kiệt của Key vào JSON và tự động giải phóng (Reset) sau 16:00 ngày hôm sau.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Thuật toán Đệ quy Chia nhỏ Văn bản (Recursive Content Chunking):</strong> Xử lý triệt để giới hạn Token/Ký tự của prompt (&gt;45k ký tự) bằng cách tự động chia đôi văn bản tại các điểm xuống dòng phù hợp để tránh mất ngữ cảnh, sau đó gộp kết quả một cách mượt mà.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500">
-                                    <strong class="text-slate-800">Cơ chế Kháng lỗi linh hoạt (Error Resilience & Fault Tolerance):</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Tự động bắt lỗi Server bận (503 Unavailable) và kích hoạt cơ chế thử lại (Retry Logic).</li>
-                                        <li>Xử lý thông minh khi gặp lỗi Safety/Blocked bằng cách tự động chia nhỏ đoạn văn để vượt qua bộ lọc an toàn của LLM.</li>
-                                        <li>Lưu vết lỗi chi tiết kèm Traceback ra file JSON để dễ dàng debug mà không làm gián đoạn toàn bộ hệ thống.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Giám sát và Đồng bộ Thời gian thực (Real-time Dashboard):</strong> Tích hợp Google Sheets API để cập nhật tiến độ (Số file thành công, file lỗi, trạng thái) sau mỗi 10 giây, giúp người vận hành theo dõi trực quan từ xa.</li>
-                                <li class="pl-4 border-l-2 border-indigo-500"><strong class="text-slate-800">Tối ưu hóa Chi phí & Tài nguyên:</strong> Tận dụng cơ chế kiểm tra file đã tồn tại để bỏ qua (Skip processed files), giúp tiết kiệm số lượng request API và chi phí vận hành khi script phải khởi động lại.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-                    <div class="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100">
-                        <span class="text-xs font-bold text-indigo-700 uppercase block mb-1.5 tracking-wide">📈 {% if current_lang == 'en' %}Impact{% else %}Kết quả Đạt được (Impact){% endif %}</span>
-                        <p class="text-sm text-indigo-900 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Transformed a multi-week manual editorial process into a reliable, single-click 24/7 automated pipeline via `<code class="text-xs font-mono bg-indigo-100/80 px-1 py-0.5 rounded text-indigo-800">run_autochecking.bat</code>`. The framework handles self-healing loops, sleeps when encountering strict rate limit caps, and auto-resumes once resources clear.
-                            {% else %}
-                                Chuyển đổi quy trình biên tập thủ công tốn hàng tuần thành hệ thống tự động chạy 24/7 ổn định chỉ bằng 1 cú click (<code class="text-xs font-mono bg-indigo-100/80 px-1 py-0.5 rounded text-indigo-800">run_autochecking.bat</code>). Hệ thống có khả năng tự phục hồi (Self-healing), tự ngủ đông khi hết tài nguyên và tự động chạy lại sau khi API reset.
-                            {% endif %}
-                        </p>
-                    </div>
+            <!-- Module 01 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 01</span>
+                    <h4 class="text-lg font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Automated Web Scraping System & High-Volume Content Data Pipeline{% else %}Hệ Thống Tự Động Hóa Thu Thập & Pipeline Dữ Liệu Nội Dung Số Quy Mô Lớn{% endif %}
+                    </h4>
                 </div>
+
+                <div class="space-y-3">
+                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[130px]">
+                            <img src="{% static 'images/AUTOMATION/LINK CRAWLER.png' %}" alt="Link Crawler Architecture Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">            
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed bg-blue-50/20 px-4 py-2.5 rounded-xl border border-blue-100/30">
+                        🔗 <strong>Link Crawler:</strong> 
+                        {% if current_lang == 'en' %}Automates multi-tier URL discovery and catalog index tree rendering via <strong>Selenium</strong>, periodically scheduled to extract and store deep destination link maps into local configurations.{% else %}Tự động hóa việc duyệt cây danh mục và trích xuất cấu trúc URL đa tầng bằng <strong>Selenium</strong>, hoạt động theo lịch trình định kỳ để lập bản đồ liên kết đích và lưu trữ tập trung vào cấu hình hệ thống.{% endif %}
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[130px]">
+                        <img src="{% static 'images/AUTOMATION/Detail crawler.png' %}" alt="Detail Crawler Architecture Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed bg-blue-50/20 px-4 py-2.5 rounded-xl border border-blue-100/30">
+                        📦 <strong>Detail Crawler:</strong> 
+                        {% if current_lang == 'en' %}Ingests the mapped URLs to download raw text streams, injecting native <strong>JavaScript</strong> to strip DOM noise on-the-fly and enforcing an <strong>Atomic Write mechanism (.tmp buffer)</strong> to ensure clean local JSON storage.{% else %}Tiếp nhận danh sách URL mục tiêu để tải luồng văn bản thô, nhúng mã <strong>JavaScript</strong> trực tiếp nhằm xóa bỏ thành phần HTML rác và áp dụng cơ chế ghi file an toàn <strong>(Atomic Write qua file `.tmp`)</strong> để bảo toàn dữ liệu JSON cục bộ.{% endif %}
+                    </p>
+                </div>
+
+                <p class="text-xs font-medium text-slate-500 bg-slate-50 px-4 py-3 rounded-xl border border-slate-100">
+                    ⚙️ <strong>{% if current_lang == 'en' %}Orchestration Mechanism:{% else %}Cơ chế điều phối:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Both sub-modules operate sequentially within a strict mutual exclusion model, monitored by a background <strong>PowerShell watchdog loop</strong> to auto-kill leaked processes and resume ingestion data flows seamlessly 24/7.{% else %}Cả hai tiểu mô-đun vận hành tuần tự theo mô hình loại trừ lẫn nhau (Mutual Exclusion), được kiểm soát ngầm bởi kịch bản <strong>PowerShell watchdog loop</strong> giúp tự động giải phóng tài nguyên rác và tái khởi động luồng cào dữ liệu 24/7.{% endif %}
+                </p>
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button type="button" class="w-full text-left px-6 py-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-button" data-target="module-3">
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 03</span>
-                        <h4 class="text-base md:text-lg font-bold text-slate-800">
-                            {% if current_lang == 'en' %}Data QA Automation & Multi-LLM Verification System{% else %}Hệ Thống Automation Kiểm Định Chất Lượng Văn Bản (Data QA Automation){% endif %}
-                        </h4>
-                    </div>
-                    <svg class="w-5 h-5 text-slate-400 transform transition-transform arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="module-3" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
-                        <svg class="w-10 h-10 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                        <span class="text-xs font-semibold text-slate-600">Quality Assurance Network Diagram</span>
-                        <span class="text-[11px] text-slate-400 mt-0.5">
-                            {% if current_lang == 'en' %}[Worker-Pool Pattern with Incremental Backoff flow diagram]{% else %}[Ảnh mô hình Worker-Pool Pattern kết hợp Incremental Backoff]{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-50/70 p-4 rounded-lg md:col-span-3">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">{% if current_lang == 'en' %}Technologies Used{% else %}Công nghệ sử dụng{% endif %}</span>
-                            <div class="flex flex-wrap gap-1.5 mt-1.5">
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">Python</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">Windows Batch Script (.bat)</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">google-genai (gemini-3.1-flash-lite-preview)</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">Google Sheets API</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">JSON</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">Worker-Pool Pattern</span>
-                                <span class="px-2 py-0.5 bg-purple-50 border border-purple-100 text-purple-700 rounded text-xs font-medium">Token Bucket / Strategy Pattern</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-2 tracking-wide">{% if current_lang == 'en' %}System Description{% else %}Mô tả hệ thống{% endif %}</span>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                An automated cross-comparison and large-scale validation engine powered by Multi-LLM APIs, featuring advanced distributed fault-tolerance and real-time dashboard analytics tracking.
-                            {% else %}
-                                Hệ thống tự động hóa so sánh chéo, kiểm định chất lượng nội dung văn bản quy mô lớn sử dụng Multi-LLM API, tích hợp cơ chế chịu lỗi phân tán nâng cao và giám sát hiệu năng thời gian thực.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🚀 Core Features & Technical Solutions{% else %}🚀 Tính năng & Giải pháp Kỹ thuật cốt lõi{% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-purple-500"><strong class="text-slate-800">Infinite Network Resilience (Google Sheets API):</strong> Overcomes Google Server timeouts (HTTP 500/502/503/504) entirely via an infinite monitoring loop coupled with an incremental backoff algorithm, ensuring network request durability.</li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Dynamic Key Rotation & Step-Skipping:</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Implements a step-based jumps rotation design (+10 stride steps) over long lists of API keys to balance systemic call distribution.</li>
-                                        <li>Maintains a Blacklisted Key pool: isolates keys reaching rate limitations, deferring cooldown releases programmatically to exactly 16:00 the following day.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Smart Rate-Limiting Control & Bandwidth Optimization:</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Pins working keys across subsequent payloads rather than forcing round-robin swaps, reducing connection handshake delays.</li>
-                                        <li>Puts workers into Deep Sleep when the active key array completely hits quota thresholds, calculating wakeup times dynamically based on the nearest cooldown expiry.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Smart Caching & Exception Handling:</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Maintains execution state maps via local cache sets (`review_results.json`) to skip processed records on thread initialization.</li>
-                                        <li>Categorizes lower-level structural anomalies (UTF-8 encoding mismatches, permissions, token truncation thresholds) to capture logs without interrupting the main pipeline.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500"><strong class="text-slate-800">Continuous Integration via Batch Scripts:</strong> Sets up self-executing automation triggers that initiate virtual environments (`venv`), verify `requirements.txt` dependencies, and maintain a 60-second periodic scan loop for a zero-touch deployment.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-purple-500"><strong class="text-slate-800">Cơ chế Kháng lỗi Vô hạn Google Sheets API (Infinite Network Resilience):</strong> Khắc phục triệt để các lỗi phản hồi từ máy chủ Google (500/502/503/504) bằng cấu trúc vòng lặp vô hạn kết hợp thuật toán tăng thời gian chờ lũy tiến (Incremental Backoff), đảm bảo luồng ghi dữ liệu không bao giờ bị ngắt quãng.</li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Cơ chế Xoay vòng API Key Nâng cao (Dynamic Key Rotation & Step-Skipping):</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Triển khai thuật toán xoay vòng danh sách API Key lớn theo bước nhảy cố định (+10) để phân phối đều tải trọng hệ thống.</li>
-                                        <li>Hệ thống hóa cơ chế "Sổ bìa đen" (Blacklist Key): Tự động cô lập các key cạn hạn mức (Rate Limit / Quota Exhausted), đưa vào tệp cấu hình tạm thời và thiết lập mốc tự động mở khóa chính xác vào 16:00 ngày hôm sau.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Tối ưu hóa Băng thông & Tần suất Gọi API (Smart Rate-Limiting Control):</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>If gọi API thành công, giữ nguyên Key hiện tại cho các request tiếp theo thay vì xoay liên tục, giúp tối ưu hóa số lượng kết nối và giảm thiểu tỷ lệ bị dính hạn mức ngẫu nhiên.</li>
-                                        <li>Tự động đưa toàn bộ hệ thống vào trạng thái "Ngủ đông" (Deep Sleep) khi tất cả các Key đều cạn tài nguyên, tự tính toán thời gian thức dậy theo mốc gỡ khóa gần nhất.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500">
-                                    <strong class="text-slate-800">Hệ thống Quản lý Cache & Nhận diện Lỗi Phân loại (Smart Caching & Exception Handling):</strong>
-                                    <ul class="list-disc pl-5 mt-1 space-y-1 text-xs text-slate-500">
-                                        <li>Sử dụng cơ chế lưu vết trạng thái tệp tin bằng cấu trúc Cache (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded">review_results.json</code>) để tự động bỏ qua các tệp đã hoàn thành, tối ưu chi phí API khi tái khởi động.</li>
-                                        <li>Phân loại lỗi chính xác từ tầng hệ thống (Sai định dạng UTF-8 Encoding, Permission Error, Prompt Too Long, Truncated Max Token) để ghi log chuyên biệt thay vì làm sập luồng xử lý chính.</li>
-                                    </ul>
-                                </li>
-                                <li class="pl-4 border-l-2 border-purple-500"><strong class="text-slate-800">Vận hành Tự động Continuous Integration qua Batch Script:</strong> Thiết lập tệp thực thi tự động khởi tạo môi trường ảo (venv), tự cài đặt phụ thuộc hệ thống (requirements.txt) và quản lý vòng lặp quét lỗi tuần hoàn sau mỗi 60 giây, đảm bảo kịch bản vận hành Zero-touch Deployment.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-                    <div class="bg-purple-50/50 rounded-xl p-4 border border-purple-100">
-                        <span class="text-xs font-bold text-purple-700 uppercase block mb-1.5 tracking-wide">📈 {% if current_lang == 'en' %}Impact{% else %}Kết quả Đạt được (Impact){% endif %}</span>
-                        <p class="text-sm text-purple-900 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Engineered an automated data QA tool that eliminates manual inspection by eyes, handling thousands of records concurrently with absolute reliability. Reached a zero-downtime threshold via dynamic recovery, self-routing around rate-blocked tokens, and syncing a real-time progress dashboard for management.
-                            {% else %}
-                                Xây dựng thành công bộ công cụ kiểm định dữ liệu tự động thay thế hoàn toàn quy trình đối soát thủ công bằng mắt, xử lý hàng nghìn tệp tin song song với độ tin cậy tuyệt đối. Đạt trạng thái Zero-downtime nhờ khả năng tự phục hồi, tự đổi tài nguyên khi bị chặn và tự động đồng bộ dashboard tiến độ trực quan cho người quản lý.
-                            {% endif %}
-                        </p>
-                    </div>
+            <!-- Module 02 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 02</span>
+                    <h4 class="text-lg font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Massive Text Processing & Bulk LLM Editorial System{% else %}Hệ Thống Tự Động Hóa Biên Tập & Xử Lý Dữ Liệu Văn Bản Lớn Qua LLM API{% endif %}
+                    </h4>
                 </div>
+                <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[140px]">
+                    <img src="{% static 'images/AUTOMATION/phase 1 biên soạn.png' %}" alt="Text Processing Architecture Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed bg-indigo-50/40 px-4 py-3 rounded-xl border border-indigo-100/50">
+                    💡 <strong>{% if current_lang == 'en' %}Operation Mechanism:{% else %}Cơ chế hoạt động:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Leverages <strong>google-genai SDK (gemini-3.1-flash-lite)</strong> for large-scale text transformations, bypassing HTTP 429 quota blockages through an automated <strong>API Key Rotation matrix</strong> and a recursive semantic text-chunking algorithm.{% else %}Tích hợp <strong>google-genai SDK (gemini-3.1-flash-lite)</strong> để xử lý và xử lý ngôn ngữ hàng loạt, tự động vượt rào cản hạn mức (Rate-Limit) nhờ <strong>ma trận xoay vòng API Key dự phòng</strong> và thuật toán đệ quy cắt nhỏ văn bản ngữ cảnh.{% endif %}
+                </p>
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button type="button" class="w-full text-left px-6 py-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-button" data-target="module-4">
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 04</span>
-                        <h4 class="text-base md:text-lg font-bold text-slate-800">
-                            {% if current_lang == 'en' %}Structured Data Quality Evaluation System{% else %}Hệ Thống Kiểm Định Nội Dung Biên Soạn Tự Động (Structured Data Quality Evaluation){% endif %}
-                        </h4>
-                    </div>
-                    <svg class="w-5 h-5 text-slate-400 transform transition-transform arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="module-4" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
-                        <svg class="w-10 h-10 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                        <span class="text-xs font-semibold text-slate-600">Structured Parsing & Data Validation Diagram</span>
-                        <span class="text-[11px] text-slate-400 mt-0.5">
-                            {% if current_lang == 'en' %}[JSON Schema enforcement and Intermittent Key Rotation blueprint]{% else %}[Ảnh sơ đồ ép định dạng JSON Schema và Intermittent Key Rotation]{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-50/70 p-4 rounded-lg md:col-span-3">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">{% if current_lang == 'en' %}Technologies Used{% else %}Công nghệ sử dụng{% endif %}</span>
-                            <div class="flex flex-wrap gap-1.5 mt-1.5">
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">Python</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">Windows Batch Script (.bat)</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">google-genai (gemini-3.1-flash-lite-preview)</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">Structured Outputs</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">JSON Schema</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">Google Sheets API</span>
-                                <span class="px-2 py-0.5 bg-amber-50 border border-amber-100 text-amber-700 rounded text-xs font-medium">Long-path Handling (\\\\?\\\\)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-2 tracking-wide">{% if current_lang == 'en' %}System Description{% else %}Mô tả hệ thống{% endif %}</span>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                An independent, automated processing engine focusing on compiled-only text evaluation at scale, leveraging Structured Outputs LLM APIs and stable decentralized syncing mechanisms.
-                            {% else %}
-                                Hệ thống tự động hóa phân tích, đánh giá độc lập chất lượng văn bản sau biên soạn (Compiled-only Reviewing) quy mô lớn sử dụng Structured Outputs LLM API và cơ chế đồng bộ phi tập trung ổn định cao.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🚀 Core Features & Technical Solutions{% else %}🚀 Tính năng & Giải pháp Kỹ thuật cốt lõi{% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Structured Outputs & Strict Parsing:</strong> Configures `response_mime_type="application/json"` parameters backed by system instructions to force a 100% consistent JSON layout from the LLM. Integrates localized syntax handlers to catch malformed nodes, shifting raw files into clean datasets.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Dual-Layer Fault Tolerance:</strong> On the Cloud tier, resolves Google 500/429 limits through continuous retries with an incremental backoff delay (minimum 10s step-out). Locally, registers structural failures into an isolated log (`review_written_only_log.json`), flushing clean tokens on the next sweep cycle.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Intermittent Jump Key Rotation Strategy:</strong> Implements a modulus index strategy: `((index + 10) % len(api_keys))` to dynamically pivot across keys. Links real-time counters to block rate-hit keys until automated global releases execute at 16:00 the next day.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Long-path OS Handling:</strong> Prefixes absolute path references with the Windows extended-length utility `\\\\?\\\\`, eliminating runtime IO crashes caused by the operating system's default 260-character constraint on deeply nested structures.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Continuous Processing Engine:</strong> Directs automated batch process loops to check folder trees every 60s, comparing local signatures with active cache structures to optimize external API call distributions.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Định hình Phản hồi AI bằng JSON chuẩn hóa (Structured Outputs & Strict Parsing):</strong> Tận dụng tính năng <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">response_mime_type="application/json"</code> phối hợp với instruction hệ thống để ép buộc LLM trả về cấu trúc dữ liệu JSON đồng nhất 100%. Triển khai bộ phân tách lỗi độc lập để xử lý các tệp tin lỗi cú pháp, giúp chuyển đổi văn bản thô thành kho dữ liệu sạch.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Cơ chế Kháng lỗi Ghi dữ liệu Đa tầng (Dual-Layer Fault Tolerance):</strong> Tại tầng Cloud, triển khai thuật toán chống nghẽn Google (500/429) bằng cơ chế lặp vô hạn kết hợp thời gian chờ lũy tiến (Incremental Backoff), tự động giãn cách tối thiểu 10 giây. Tại tầng Local, tự động ghi nhận tệp lỗi vào log riêng (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">review_written_only_log.json</code>) và tự động giải phóng khi xử lý thành công ở chu kỳ kế tiếp.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Cơ chế Xoay Key Tịnh tiến Cách quãng (Intermittent Jump Key Rotation):</strong> Triển khai chiến lược xoay vòng API Key nâng cao dựa trên bước nhảy số dư: <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">((index + 10) % len(api_keys))</code>. Kết hợp bộ đếm thời gian thực để đưa các Key dính hạn mức vào danh sách đen tạm thời và mở khóa tự động sau 16:00 ngày hôm sau.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Giải quyết Giới hạn Đường dẫn Hệ điều hành (Long-path OS Handling):</strong> Tích hợp hàm xử lý tiền tố đường dẫn mở rộng <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">\\\\?\\\\</code> trên môi trường Windows, giải quyết triệt để lỗi sập script do giới hạn 260 ký tự khi truy cập các cấu trúc thư mục lồng nhau sâu của kho tệp.</li>
-                                <li class="pl-4 border-l-2 border-amber-500"><strong class="text-slate-800">Vận hành Khép kín Tuần hoàn (Continuous Processing Engine):</strong> Điều phối vòng lặp tự động tái khởi động sau mỗi 60 giây qua Batch Script, sử dụng kỹ thuật so sánh tập hợp (Cache Set Comparison) để bỏ qua các tệp thành công, tốiưu hóa băng thông gọi API.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-                    <div class="bg-amber-50/50 rounded-xl p-4 border border-amber-100">
-                        <span class="text-xs font-bold text-amber-700 uppercase block mb-1.5 tracking-wide">📈 {% if current_lang == 'en' %}Impact{% else %}Kết quả Đạt được (Impact){% endif %}</span>
-                        <p class="text-sm text-amber-900 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Digitized the entire manuscript validation lifecycle into an automated end-to-end data pipeline, delivering clean tabular outputs. Reached a highly robust operational state (zero-touch deployment), fixing internal processing anomalies and providing live data synchronization to cloud reporting dashboards.
-                            {% else %}
-                                Số hóa toàn bộ quy trình kiểm định chất lượng bản dịch/bản thảo thành một đường ống dữ liệu (Data Pipeline) tự động khép kín, trả ra dữ liệu dạng bảng có cấu trúc sạch. Đạt độ ổn định vận hành tối đa (Zero-touch & High Resilience), tự sửa lỗi logic và cung cấp báo cáo Dashboard thời gian thực.
-                            {% endif %}
-                        </p>
-                    </div>
+            <!-- Module 03 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 03</span>
+                    <h4 class="text-lg font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Data QA Automation & Multi-LLM Verification System{% else %}Hệ Thống Kiểm Định Chất Lượng Văn Bản & Đối Soát Tự Động (Data QA Automation){% endif %}
+                    </h4>
                 </div>
+                <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[140px]">
+                    <img src="{% static 'images/AUTOMATION/phase 2 kiểm tra chéo với file gốc.png' %}" alt="Worker-Pool Architecture Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed bg-purple-50/40 px-4 py-3 rounded-xl border border-purple-100/50">
+                    💡 <strong>{% if current_lang == 'en' %}Operation Mechanism:{% else %}Cơ chế hoạt động:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Executes parallel multi-source quality cross-checks using a high-throughput <strong>Worker-Pool architectural pattern</strong>, applying an infinite network backoff algorithm and a step-stride key jumping design to maximize multi-key loading maps.{% else %}Triển khai mô hình <strong>Worker-Pool đa luồng</strong> song song để đối soát chéo chất lượng dữ liệu, tích hợp thuật toán lặp chờ mạng lũy tiến và cơ chế xoay Key theo bước nhảy tịnh tiến nhằm phân phối đều tải trọng API.{% endif %}
+                </p>
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
-                <button type="button" class="w-full text-left px-6 py-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition-colors toggle-button" data-target="module-5">
-                    <div>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 05</span>
-                        <h4 class="text-base md:text-lg font-bold text-slate-800">
-                            {% if current_lang == 'en' %}Self-Healing Data Recovery & Real-time Progress Management System{% else %}Hệ Thống Tự Động Khôi Phục Dữ Liệu & Quản Lý Tiến Độ Thời Gian Thực{% endif %}
-                        </h4>
-                    </div>
-                    <svg class="w-5 h-5 text-slate-400 transform transition-transform arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div id="module-5" class="hidden border-t border-slate-100 p-6 md:p-8 space-y-6 bg-white animate-fade-in">
-                    <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center min-h-[180px]">
-                        <svg class="w-10 h-10 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121 12h-4.5"></path>
-                        </svg>
-                        <span class="text-xs font-semibold text-slate-600">Self-Healing Loop & Circuit Breaker Diagram</span>
-                        <span class="text-[11px] text-slate-400 mt-0.5">
-                            {% if current_lang == 'en' %}[Auto-Recovery pipeline with Cloud Validation Dashboard flow chart]{% else %}[Ảnh minh họa luồng Auto-Recovery kết hợp Cloud Validation Dashboard]{% endif %}
-                        </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-slate-50/70 p-4 rounded-lg md:col-span-3">
-                            <span class="text-xs font-bold text-slate-500 block uppercase">{% if current_lang == 'en' %}Technologies Used{% else %}Công nghệ sử dụng{% endif %}</span>
-                            <div class="flex flex-wrap gap-1.5 mt-1.5">
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">Python</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">Windows Batch Script (.bat)</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">gspread (Google Sheets API)</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">Pathlib (File I/O)</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">tqdm Engine</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">RegEx (re)</span>
-                                <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-700 rounded text-xs font-medium">Exponential Backoff Pattern</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-2 tracking-wide">{% if current_lang == 'en' %}System Description{% else %}Mô tả hệ thống{% endif %}</span>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                An automated anomaly scanning and data quarantine engine (Self-healing & Clean-up Pipeline) cross-referencing multi-source JSON records, syncing verification logs into Cloud dashboards.
-                            {% else %}
-                                Hệ thống tự động hóa quét lỗi, cô lập dữ liệu không đạt tiêu chuẩn (Self-healing & Clean-up Pipeline) phối hợp đa nguồn dữ liệu JSON, đồng bộ và cập nhật trạng thái kiểm định lên Cloud Dashboard.
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase block mb-3 tracking-wide">
-                            {% if current_lang == 'en' %}🚀 Core Features & Technical Solutions{% else %}🚀 Tính năng & Giải pháp Kỹ thuật cốt lõi{% endif %}
-                        </span>
-                        <ul class="space-y-2.5 text-sm text-slate-600">
-                            {% if current_lang == 'en' %}
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Advanced Exponential Backoff Retry (Google Sheets API):</strong> Implements an `execute_with_retry` wrapper enclosing all Google API network requests. Detects server disruptions or rate exceptions (HTTP 503/429/500) to fire up to 5 progressive retry attempts using an exponential time delay backoff equation: <span class="font-serif italic font-semibold text-blue-600">delay = base &times; 2<sup>attempt</sup></span>.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Self-healing & Cache Clean-up Engine:</strong> Performs dual verification over response tokens from two disparate LLM evaluation structures (`review_results.json` and `review_rewritten_only.json`) to isolate files marked as `is_accepted = False`. Triggers local file removals (`unlink`) to queue records back into the pipeline for recrawling and cache cleansing.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Circuit Breaker Logic & Failure Tracking:</strong> Monitors failure recurrence limits per entity using tracking matrices (`recompile_tracking.json`). If anomaly frequencies cross strict caps (50 retries), the worker pins a hard `FAIL` status flag, opening the circuit breaker to preserve global API limits and prevent infinite processing loops.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Smart Cloud Dashboard Sync:</strong> Indexes normalized row offsets directly onto Google Sheets platforms. Calculates multi-source valid records and coordinates conditional switches (`Recheck Required = TRUE` or `Compilation Completed = TRUE`). Asserts 10-second sleep metrics after row adjustments to prevent rate caps.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">CLI Monitoring & Execution Management:</strong> Combines real-time terminal progress visuals via the `tqdm` processing engine with recurring 60s processing loops controlled by native Windows Batch structures.</li>
-                            {% else %}
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Thuật toán Kháng lỗi Google Sheets API (Advanced Exponential Backoff Retry):</strong> Thiết kế hàm wrapper <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">execute_with_retry</code> bọc toàn bộ các yêu cầu gọi Google API. Tự động bắt mã lỗi máy chủ hoặc vượt giới hạn request (503/429/500/502/504) để tự động kích hoạt cơ chế thử lại tối đa 5 lần với thời gian chờ nhân đôi lũy tiến: <span class="font-serif italic font-semibold text-blue-600">delay = base &times; 2<sup>attempt</sup></span>.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Cơ chế Tự phục hồi dữ liệu lỗi (Self-healing & Cache Clean-up Engine):</strong> Đối soát song song dữ liệu phản hồi từ 2 bộ lọc LLM độc lập (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">review_results.json</code> và <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">review_rewritten_only.json</code>) để trích xuất các tệp tin văn bản có thuộc tính <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">is_accepted = False</code>. Tự động xóa bỏ (unlink) tệp tin thô lỗi tại cục bộ để kích hoạt lại chu kỳ biên tập từ đầu, dọn dẹp bộ nhớ đệm chính xác.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Hệ thống Tracking Trạng thái & Cơ chế Ngắt An toàn (Circuit Breaker Logic):</strong> Quản lý số lần tái xử lý lỗi từng tệp tin thông qua <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">recompile_tracking.json</code>. Nếu phát hiện tệp bị lỗi lặp lại vượt quá giới hạn cấu hình (50 lần), hệ thống tự động khóa trạng thái tệp sang <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">FAIL</code> để bảo toàn tài nguyên API và ngăn chặn vòng lặp vô hạn.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Đồng bộ Logic Điều kiện nâng cao lên Cloud (Smart Cloud Dashboard Sync):</strong> Dựa trên tên thực thể đã chuẩn hóa, tự động định vị chính xác số dòng trên Google Sheets. Thu thập, tính toán so sánh chéo tổng lượng tệp đạt chuẩn để tự động chuyển cờ trạng thái thông minh (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">Cần recheck = TRUE</code> hoặc <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">Truyện đã hoàn thành = TRUE</code>). Áp dụng thời gian nghỉ 10 giây sau mỗi lần ghi cell để chống Rate Limit.</li>
-                                <li class="pl-4 border-l-2 border-emerald-500"><strong class="text-slate-800">Hệ thống Giám sát CLI & Tự động hóa Vận hành:</strong> Tích hợp bộ đếm tiến độ trực quan <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 text-slate-800">tqdm</code> đồng bộ thời gian thực xuất ra terminal; điều phối chu kỳ quét tuần hoàn hoàn chỉnh 60 giây khép kín thông qua Windows Batch Script.</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-                    <div class="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100">
-                        <span class="text-xs font-bold text-emerald-700 uppercase block mb-1.5 tracking-wide">📈 {% if current_lang == 'en' %}Impact{% else %}Kết quả Đạt được (Impact){% endif %}</span>
-                        <p class="text-sm text-emerald-900 leading-relaxed">
-                            {% if current_lang == 'en' %}
-                                Built a closed-loop error handling process that eliminates manual data cleaning operations from massive file repositories. The system achieves high fault tolerance, reducing script crashes from network fluctuations to 0% through advanced backoff metrics.
-                            {% else %}
-                                Tạo dựng quy trình xử lý lỗi khép kín (Closed-loop Error Handling), loại bỏ hoàn toàn việc tìm kiếm và xóa tệp lỗi bằng tay khỏi kho dữ liệu khổng lồ. Hệ thống đạt khả năng chịu lỗi cực cao (High Fault Tolerance), giảm tỷ lệ sập script do lỗi mạng xuống 0% nhờ thuật toán Backoff nâng cao.
-                            {% endif %}
-                        </p>
-                    </div>
+            <!-- Module 04 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 04</span>
+                    <h4 class="text-lg font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Structured Data Quality Evaluation System{% else %}Hệ Thống Kiểm Định & Cấu Trúc Hóa Dữ Liệu Tự Động (Structured Data Quality Evaluation){% endif %}
+                    </h4>
                 </div>
+                <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[140px]">
+                    <img src="{% static 'images/AUTOMATION/phase 3 kiểm tra đơn lẻ.png' %}" alt="Structured Parsing & Data Validation Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed bg-amber-50/40 px-4 py-3 rounded-xl border border-amber-100/50">
+                    💡 <strong>{% if current_lang == 'en' %}Operation Mechanism:{% else %}Cơ chế hoạt động:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Forces a 100% consistent output format via Gemini's <strong>Structured Outputs feature (`application/json`)</strong> and strict <strong>JSON Schemas</strong>, using extended-path utilities (`\\\\?\\\\`) to bypass Windows native 260-character directory limits during data validation loops.{% else %}Ép buộc mô hình sinh dữ liệu chính xác 100% nhờ tính năng <strong>Structured Outputs (`application/json`)</strong> kết hợp định nghĩa <strong>JSON Schema</strong>, sử dụng tiền tố mở rộng (`\\\\?\\\\`) để triệt tiêu lỗi giới hạn đường dẫn 260 ký tự trên hệ điều hành Windows.{% endif %}
+                </p>
+            </div>
+
+            <!-- Module 05 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
+                <div>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">Module 05</span>
+                    <h4 class="text-lg font-bold text-slate-900">
+                        {% if current_lang == 'en' %}Self-Healing Data Recovery & Real-time Progress Management System{% else %}Hệ Thống Tự Động Khôi Phục Dữ Liệu (Self-Healing) & Quản Lý Tiến Độ Thời Gian Thực{% endif %}
+                    </h4>
+                </div>
+                <div class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center text-center min-h-[140px]">
+                    <img src="{% static 'images/AUTOMATION/phase 4 dọn sạch phần lỗi sai.png' %}" alt="Self-Healing & Circuit Breaker Diagram" class="mt-2 rounded-md border border-slate-200 shadow-sm">
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed bg-emerald-50/40 px-4 py-3 rounded-xl border border-emerald-100/50">
+                    💡 <strong>{% if current_lang == 'en' %}Operation Mechanism:{% else %}Cơ chế hoạt động:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Achieves autonomous recovery by unlinking corrupted file segments to re-queue them into the processing loop, using <strong>Advanced Exponential Backoff equations</strong> to counter server drops and strict <strong>Circuit Breaker matrices</strong> to intercept processing lock threads.{% else %}Xây dựng vòng lặp tự phục hồi lỗi bằng cách xóa bỏ cục bộ (`unlink`) các phân đoạn tệp lỗi để đẩy ngược lại pipeline xử lý thô, tích hợp thuật toán <strong>Exponential Backoff nhân đôi thời gian chờ</strong> và <strong>logic ngắt mạch an toàn (Circuit Breaker)</strong> chống lặp vô hạn.{% endif %}
+                </p>
             </div>
 
         </div>
 
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButtons = document.querySelectorAll('.toggle-button');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetId = button.getAttribute('data-target');
-                    const targetContent = document.getElementById(targetId);
-                    const arrowIcon = button.querySelector('.arrow-icon');
-                    
-                    if (targetContent) {
-                        const isHidden = targetContent.classList.contains('hidden');
-                        
-                        if (isHidden) {
-                            targetContent.classList.remove('hidden');
-                            arrowIcon.classList.add('rotate-180');
-                            button.classList.add('bg-slate-100/70');
-                        } else {
-                            targetContent.classList.add('hidden');
-                            arrowIcon.classList.remove('rotate-180');
-                            button.classList.remove('bg-slate-100/70');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.25s ease-out forwards;
-        }
-    </style>
 {% endblock %}
