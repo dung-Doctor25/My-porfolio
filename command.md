@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "hoàn thiện tạm thời còn skill 5 chưa có sơ đồ mối sửa lại mail và chỗ tải cv"
+git commit -m "Thêm đếm số lượt truy cập để xem ai truy cập và vị trí tương đối"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere
