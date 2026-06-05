@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "Thêm đếm số lượt truy cập để xem ai truy cập và vị trí tương đối"
+git commit -m "cập nhật setting dể sửa admin"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere

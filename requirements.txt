@@ -1,4 +1,4 @@
 Django==6.0.5
-python-dotenv==1.2.2
-django-assets==2.0
+python-dotenv
+django-assets
 requests==2.34.2

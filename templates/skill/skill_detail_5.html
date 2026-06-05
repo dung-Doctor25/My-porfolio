@@ -40,11 +40,13 @@
                         <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold">1</span>
                         <h3 class="font-bold text-slate-800 text-sm md:text-base">Data & Ingestion (Back-end)</h3>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Thu thập dữ liệu thị trường, báo cáo tài chính, tin tức và cấu hình phân bổ vốn độc lập.</p>
+                    <p class="text-xs text-slate-500 mb-4">
+                        {% if current_lang == 'en' %}Ingest market data, financial statements, news, and independent capital allocation configurations.{% else %}Thu thập dữ liệu thị trường, báo cáo tài chính, tin tức và cấu hình phân bổ vốn độc lập.{% endif %}
+                    </p>
                     <ul class="space-y-2 text-xs text-slate-600">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>InvestmentSetup (Khởi tạo vốn)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>PostgreSQL (Lưu trữ quan hệ)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Threading (Bất đồng bộ ngầm)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>InvestmentSetup {% if current_lang == 'en' %}(Capital Initialization){% else %}(Khởi tạo vốn){% endif %}</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>PostgreSQL {% if current_lang == 'en' %}(Relational Storage){% else %}(Lưu trữ quan hệ){% endif %}</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Threading {% if current_lang == 'en' %}(Background Asynchronous){% else %}(Bất đồng bộ ngầm){% endif %}</li>
                     </ul>
                 </div>
                 <div class="mt-4 pt-4 border-t border-slate-200 text-center">
@@ -61,11 +63,13 @@
                         <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">2</span>
                         <h3 class="font-bold text-slate-800 text-sm md:text-base">AI Core Engine (LLM Pipeline)</h3>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Chuỗi xử lý thông minh 4 tầng phối hợp RAG và thị giác máy tính giải mã dữ liệu.</p>
+                    <p class="text-xs text-slate-500 mb-4">
+                        {% if current_lang == 'en' %}4-tier intelligent processing chain coordinating RAG and computer vision to decode data.{% else %}Chuỗi xử lý thông minh 4 tầng phối hợp RAG và thị giác máy tính giải mã dữ liệu.{% endif %}
+                    </p>
                     <ul class="space-y-2 text-xs text-slate-600">
                         <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>ChromaDB (Vector Memory)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Gemini Vision (Đọc đồ thị kỹ thuật)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Structured JSON (Chuẩn hóa lệnh)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Gemini Vision {% if current_lang == 'en' %}(Technical Chart Analysis){% else %}(Đọc đồ thị kỹ thuật){% endif %}</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Structured JSON {% if current_lang == 'en' %}(Order Standardization){% else %}(Chuẩn hóa lệnh){% endif %}</li>
                     </ul>
                 </div>
                 <div class="mt-4 pt-4 border-t border-blue-200 text-center">
@@ -82,11 +86,13 @@
                         <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">3</span>
                         <h3 class="font-bold text-slate-800 text-sm md:text-base">Execution & Portfolio (Front-end)</h3>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">Kiểm tra quy tắc an toàn vốn, khớp lệnh giả lập và hiển thị trực quan hóa dữ liệu.</p>
+                    <p class="text-xs text-slate-500 mb-4">
+                        {% if current_lang == 'en' %}Validate capital protection rules, execute simulated orders, and display data visualization.{% else %}Kiểm tra quy tắc an toàn vốn, khớp lệnh giả lập và hiển thị trực quan hóa dữ liệu.{% endif %}
+                    </p>
                     <ul class="space-y-2 text-xs text-slate-600">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>PortfolioManager (Quy tắc an toàn)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>TradingDecision Snapshot (Lưu NAV)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Chart.js / Recharts (Vẽ đồ thị tăng trưởng)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>PortfolioManager {% if current_lang == 'en' %}(Safety Rules){% else %}(Quy tắc an toàn){% endif %}</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>TradingDecision Snapshot {% if current_lang == 'en' %}(NAV Storage){% else %}(Lưu NAV){% endif %}</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Chart.js / Recharts {% if current_lang == 'en' %}(Growth Charting){% else %}(Vẽ đồ thị tăng trưởng){% endif %}</li>
                     </ul>
                 </div>
                 <div class="mt-4 pt-4 border-t border-slate-200 text-center">
@@ -111,8 +117,16 @@
                     <div class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded border border-blue-100 whitespace-nowrap">Market Intelligence</div>
                 </div>
                 <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">Đọc hiểu vĩ mô và Quản lý Ký ức ngắn/dài hạn (LMI / PMI)</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">Hệ thống quét toàn bộ báo cáo tài chính doanh nghiệp, tin tức thị trường và dữ liệu lịch sử giá. Toàn bộ thông tin thô được nhúng (Embedding) và đẩy vào <strong>ChromaDB Vector DB</strong> làm cơ sở tri thức (RAG) phục vụ phân tích ngữ cảnh.</p>
+                    <p class="text-xs font-medium text-slate-700 mb-1">
+                        {% if current_lang == 'en' %}Macro Understanding & Short/Long-term Memory Management (LMI / PMI){% else %}Đọc hiểu vĩ mô và Quản lý Ký ức ngắn/dài hạn (LMI / PMI){% endif %}
+                    </p>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            The system scans corporate financial reports, market news, and historical price data. All raw information is embedded and ingested into <strong>ChromaDB Vector DB</strong> as a knowledge base (RAG) for contextual analysis.
+                        {% else %}
+                            Hệ thống quét toàn bộ báo cáo tài chính doanh nghiệp, tin tức thị trường và dữ liệu lịch sử giá. Toàn bộ thông tin thô được nhúng (Embedding) và đẩy vào <strong>ChromaDB Vector DB</strong> làm cơ sở tri thức (RAG) phục vụ phân tích ngữ cảnh.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
 
@@ -123,8 +137,16 @@
                     <div class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded border border-indigo-100 whitespace-nowrap">Low-Level Reflection</div>
                 </div>
                 <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">Phân tích Kỹ thuật chuyên sâu & Đồ thị trực quan (LLR)</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">Thư viện <code>mplfinance</code> tự động kết xuất đồ thị nến phiên giao dịch và chuyển tiếp sang <strong>Gemini Vision API</strong>. Module đồng thời tính toán các chỉ báo kỹ thuật cốt lõi: MACD, RSI, KDJ, Z-Score để chuyển hóa tín hiệu toán học thành nhận định xu hướng trực quan.</p>
+                    <p class="text-xs font-medium text-slate-700 mb-1">
+                        {% if current_lang == 'en' %}In-depth Technical Analysis & Chart Visualization (LLR){% else %}Phân tích Kỹ thuật chuyên sâu & Đồ thị trực quan (LLR){% endif %}
+                    </p>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            The <code>mplfinance</code> library automatically renders trading session candlestick charts and forwards them to the <strong>Gemini Vision API</strong>. The module simultaneously calculates core technical indicators: MACD, RSI, KDJ, and Z-Score to convert mathematical signals into visual trend insights.
+                        {% else %}
+                            Thư viện <code>mplfinance</code> tự động kết xuất đồ thị nến phiên giao dịch và chuyển tiếp sang <strong>Gemini Vision API</strong>. Module đồng thời tính toán các chỉ báo kỹ thuật cốt lõi: MACD, RSI, KDJ, Z-Score để chuyển hóa tín hiệu toán học thành nhận định xu hướng trực quan.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
 
@@ -135,8 +157,16 @@
                     <div class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded border border-purple-100 whitespace-nowrap">High-Level Reflection</div>
                 </div>
                 <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">Phản tỉnh & Tự tối ưu hóa chiến thuật (HLR)</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">Tác vụ AI thực hiện cơ chế đối chiếu: So sánh các quyết định giao dịch cũ với biến động thực tế của đường cong lợi nhuận tài sản. Agent tự rút ra bài học kinh nghiệm về các pha "Fomo" hoặc cắt lỗ muộn để tối ưu hóa trọng số cho các phiên kế tiếp.</p>
+                    <p class="text-xs font-medium text-slate-700 mb-1">
+                        {% if current_lang == 'en' %}Reflection & Tactical Self-Optimization (HLR){% else %}Phản tỉnh & Tự tối ưu hóa chiến thuật (HLR){% endif %}
+                    </p>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            The AI agent executes a cross-referencing mechanism: comparing past trading decisions with the actual fluctuations of the asset return curve. The agent self-derives lessons regarding "FOMO" phases or late stop-losses to optimize weights for subsequent sessions.
+                        {% else %}
+                            Tác vụ AI thực hiện cơ chế đối chiếu: So sánh các quyết định giao dịch cũ với biến động thực tế của đường cong lợi nhuận tài sản. Agent tự rút ra bài học kinh nghiệm về các pha "Fomo" hoặc cắt lỗ muộn để tối ưu hóa trọng số cho các phiên kế tiếp.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
 
@@ -147,8 +177,16 @@
                     <div class="px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded whitespace-nowrap shadow-sm">Decision Making</div>
                 </div>
                 <div class="flex-1 md:border-l md:border-blue-200 md:pl-4">
-                    <p class="text-xs font-semibold text-slate-800 mb-1">Bộ lọc Sức khỏe Tài chính & Ra lệnh Đóng gói JSON</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">Tổng hợp toàn diện dữ liệu từ 3 tầng trước phối hợp với mô hình đánh giá rủi ro tài chính doanh nghiệp <strong>Abarbanell & Bushee</strong>. Đầu ra ép cấu trúc nghiêm ngặt qua <strong>Structured Outputs JSON</strong> chứa định mức hành động <code>[BUY, SELL, HOLD]</code> và lý do lập luận chi tiết (final_reasoning).</p>
+                    <p class="text-xs font-semibold text-slate-800 mb-1">
+                        {% if current_lang == 'en' %}Financial Health Filter & JSON Packaged Command{% else %}Bộ lọc Sức khỏe Tài chính & Ra lệnh Đóng gói JSON{% endif %}
+                    </p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        {% if current_lang == 'en' %}
+                            Comprehensive synthesis of data from the previous 3 tiers combined with the <strong>Abarbanell & Bushee</strong> corporate financial risk assessment model. The output is strictly enforced via <strong>Structured Outputs JSON</strong> containing the action rating <code>[BUY, SELL, HOLD]</code> and detailed reasoning (final_reasoning).
+                        {% else %}
+                            Tổng hợp toàn diện dữ liệu từ 3 tầng trước phối hợp với mô hình đánh giá rủi ro tài chính doanh nghiệp <strong>Abarbanell & Bushee</strong>. Đầu ra ép cấu trúc nghiêm ngặt qua <strong>Structured Outputs JSON</strong> chứa định mức hành động <code>[BUY, SELL, HOLD]</code> và lý do lập luận chi tiết (final_reasoning).
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
@@ -161,20 +199,27 @@
         </h2>
         
         <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
-            <p>Ứng dụng Client tương tác khép kín với cụm máy chủ Back-end thông qua Django Rest Framework qua các bước:</p>
+            <p>
+                {% if current_lang == 'en' %}The client application interacts cohesively with the back-end server cluster through Django Rest Framework via the following steps:{% else %}Ứng dụng Client tương tác khép kín với cụm máy chủ Back-end thông qua Django Rest Framework qua các bước:{% endif %}
+            </p>
             <ol class="list-decimal pl-5 space-y-3 text-xs md:text-sm">
                 <li>
-                    <strong>Thiết lập & Phân bổ vốn:</strong> Người dùng chỉ định cấu hình mã cổ phiếu và giới hạn ngân sách đầu tư thông qua phương thức 
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/investment-setups/</code>.
+                    <strong>{% if current_lang == 'en' %}Setup & Capital Allocation:{% else %}Thiết lập & Phân bổ vốn:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Users specify stock tickers and investment budget limits via the {% else %}Người dùng chỉ định cấu hình mã cổ phiếu và giới hạn ngân sách đầu tư thông qua phương thức {% endif %}
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/investment-setups/</code>{% if current_lang == 'en' %} method.{% else %}.{% endif %}
                 </li>
                 <li>
-                    <strong>Kích hoạt Pipeline AI bất đồng bộ:</strong> Khi bấm khởi chạy, Client gọi 
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/agent/run-demo/</code>. Hệ thống kích hoạt luồng <code>threading</code> chạy ngầm phân tích mà không gây nghẽn UI.
+                    <strong>{% if current_lang == 'en' %}Trigger Asynchronous AI Pipeline:{% else %}Kích hoạt Pipeline AI bất đồng bộ:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Upon launching, the client calls {% else %}Khi bấm khởi chạy, Client gọi {% endif %}
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/agent/run-demo/</code>. 
+                    {% if current_lang == 'en' %}The system triggers a background <code>threading</code> workflow to analyze data without blocking the UI.{% else %}Hệ thống kích hoạt luồng <code>threading</code> chạy ngầm phân tích mà không gây nghẽn UI.{% endif %}
                 </li>
                 <li>
-                    <strong>Trực quan hóa Dashboard:</strong> Khi các Agent hoàn tất khớp lệnh, Client thực hiện lệnh gọi 
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/portfolios/</code> để tính toán ROI thực tế và 
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/decisions/</code> lấy mảng dữ liệu lịch sử biến động <code>snapshot_total_assets</code> đưa vào thư viện biểu đồ vẽ đường cong tăng trưởng NAV toàn diện.
+                    <strong>{% if current_lang == 'en' %}Dashboard Visualization:{% else %}Trực quan hóa Dashboard:{% endif %}</strong> 
+                    {% if current_lang == 'en' %}Once the agents finish matching orders, the client requests {% else %}Khi các Agent hoàn tất khớp lệnh, Client thực hiện lệnh gọi {% endif %}
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/portfolios/</code> {% if current_lang == 'en' %}to calculate actual ROI and{% else %}để tính toán ROI thực tế và{% endif %}
+                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/decisions/</code> 
+                    {% if current_lang == 'en' %}to fetch the historical fluctuation array <code>snapshot_total_assets</code>, feeding it into the chart library to plot a comprehensive NAV growth curve.{% else %}lấy mảng dữ liệu lịch sử biến động <code>snapshot_total_assets</code> đưa vào thư viện biểu đồ vẽ đường cong tăng trưởng NAV toàn diện.{% endif %}
                 </li>
             </ol>
         </div>
