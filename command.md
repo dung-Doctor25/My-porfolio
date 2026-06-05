@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "cập nhật setting dể sửa admin"
+git commit -m "cập nhật setting sửa lỗi css cho admin"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere
