@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="max-w-6xl mx-auto px-4 pt-28 pb-16">
+<div class="max-w-7xl mx-auto px-4 pt-28 pb-16">
+    
     <div class="mb-8">
         <a href="{% url 'home' %}#skills" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors mb-4 group">
             <svg class="w-4 h-4 mr-1.5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -9,7 +10,7 @@
             </svg>
             {% if current_lang == 'en' %}Back to Skills{% else %}Quay lại trang năng lực{% endif %}
         </a>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             {% if current_lang == 'en' %}AI Financial Advisor Systems & Portfolio Simulation{% else %}Hệ thống Cố vấn AI & Giả lập Danh mục Tài chính{% endif %}
         </h1>
     </div>
@@ -18,7 +19,7 @@
         <h2 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
             {% if current_lang == 'en' %}Project Overview{% else %}Tổng quan dự án{% endif %}
         </h2>
-        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base max-w-5xl">
             {% if current_lang == 'en' %}
                 An intelligent financial advisor system leveraging an orchestrator-agent framework to process complex market variables. From automated database ingestion (PostgreSQL) to building long-term memory structures (ChromaDB), the system transforms multi-dimensional inputs into actionable investment strategies with built-in capital protection rulebooks and robust historical backtesting frameworks.
             {% else %}
@@ -29,200 +30,364 @@
 
     <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
         <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
-            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-            {% if current_lang == 'en' %}Overall System Architecture{% else %}Sơ đồ cấu trúc tổng thể hệ thống{% endif %}
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path></svg>
+            {% if current_lang == 'en' %}Database Design & System Architecture{% else %}Thiết kế Database & Kiến trúc hệ thống{% endif %}
         </h2>
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold">1</span>
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base">Data & Ingestion (Back-end)</h3>
+        <div class="flex flex-col gap-6">
+            <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                
+                <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Entity Relationship Diagram (ERD){% else %}Mô hình Thực thể Quan hệ (ERD){% endif %}
+                        </span>
                     </div>
-                    <p class="text-xs text-slate-500 mb-4">
-                        {% if current_lang == 'en' %}Ingest market data, financial statements, news, and independent capital allocation configurations.{% else %}Thu thập dữ liệu thị trường, báo cáo tài chính, tin tức và cấu hình phân bổ vốn độc lập.{% endif %}
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-600">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>InvestmentSetup {% if current_lang == 'en' %}(Capital Initialization){% else %}(Khởi tạo vốn){% endif %}</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>PostgreSQL {% if current_lang == 'en' %}(Relational Storage){% else %}(Lưu trữ quan hệ){% endif %}</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Threading {% if current_lang == 'en' %}(Background Asynchronous){% else %}(Bất đồng bộ ngầm){% endif %}</li>
-                    </ul>
+                    
+                    <div class="flex items-center bg-white border border-slate-200 rounded shadow-sm text-sm overflow-hidden select-none">
+                        <button class="btn-zoom-out p-1.5 px-2.5 hover:bg-slate-100 text-slate-600 transition outline-none" title="Thu nhỏ">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+                        </button>
+                        <div class="zoom-percent w-14 text-center font-mono text-slate-700 text-xs font-bold border-x border-slate-200 py-1.5 cursor-default">
+                            100%
+                        </div>
+                        <button class="btn-zoom-in p-1.5 px-2.5 hover:bg-slate-100 text-slate-600 transition outline-none" title="Phóng to">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                        <button class="btn-zoom-reset p-1.5 px-3 hover:bg-slate-100 text-slate-600 transition outline-none border-l border-slate-200 text-xs font-semibold" title="Khôi phục gốc">
+                            Reset
+                        </button>
+                    </div>
                 </div>
-                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
-                    <span class="text-[10px] uppercase tracking-wider font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Trigger $\rightarrow$ Pipeline</span>
+                
+                <div class="pan-zoom-container relative w-full h-[500px] md:h-[700px] overflow-hidden bg-[#f8fafc] cursor-grab flex justify-center items-center select-none">
+                    <img src="{% static 'images/ERD.svg' %}" alt="Entity Relationship Diagram (ERD)" draggable="false" class="pan-zoom-img max-w-full max-h-full object-contain origin-center pointer-events-none transition-none shadow-sm rounded bg-white">
+                    
+                    <div class="instruction-overlay absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-800/70 backdrop-blur text-white px-4 py-2 rounded-full text-xs flex items-center gap-2 shadow pointer-events-none transition-opacity duration-500">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                        {% if current_lang == 'en' %}Scroll to zoom, drag to move{% else %}Cuộn chuột để zoom, giữ để kéo thả{% endif %}
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-blue-50/40 border border-blue-200 rounded-lg p-5 flex flex-col justify-between relative">
-                <div class="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm">
-                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </div>
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold">2</span>
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base">AI Core Engine (LLM Pipeline)</h3>
-                    </div>
-                    <p class="text-xs text-slate-500 mb-4">
-                        {% if current_lang == 'en' %}4-tier intelligent processing chain coordinating RAG and computer vision to decode data.{% else %}Chuỗi xử lý thông minh 4 tầng phối hợp RAG và thị giác máy tính giải mã dữ liệu.{% endif %}
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-600">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>ChromaDB (Vector Memory)</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Gemini Vision {% if current_lang == 'en' %}(Technical Chart Analysis){% else %}(Đọc đồ thị kỹ thuật){% endif %}</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>Structured JSON {% if current_lang == 'en' %}(Order Standardization){% else %}(Chuẩn hóa lệnh){% endif %}</li>
-                    </ul>
-                </div>
-                <div class="mt-4 pt-4 border-t border-blue-200 text-center">
-                    <span class="text-[10px] uppercase tracking-wider font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Decision (BUY/SELL/HOLD)</span>
-                </div>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 flex flex-col justify-between relative">
-                <div class="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm">
-                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </div>
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">3</span>
-                        <h3 class="font-bold text-slate-800 text-sm md:text-base">Execution & Portfolio (Front-end)</h3>
-                    </div>
-                    <p class="text-xs text-slate-500 mb-4">
-                        {% if current_lang == 'en' %}Validate capital protection rules, execute simulated orders, and display data visualization.{% else %}Kiểm tra quy tắc an toàn vốn, khớp lệnh giả lập và hiển thị trực quan hóa dữ liệu.{% endif %}
-                    </p>
-                    <ul class="space-y-2 text-xs text-slate-600">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>PortfolioManager {% if current_lang == 'en' %}(Safety Rules){% else %}(Quy tắc an toàn){% endif %}</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>TradingDecision Snapshot {% if current_lang == 'en' %}(NAV Storage){% else %}(Lưu NAV){% endif %}</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Chart.js / Recharts {% if current_lang == 'en' %}(Growth Charting){% else %}(Vẽ đồ thị tăng trưởng){% endif %}</li>
-                    </ul>
-                </div>
-                <div class="mt-4 pt-4 border-t border-slate-200 text-center">
-                    <span class="text-[10px] uppercase tracking-wider font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">Real-time Visualization</span>
-                </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-6 text-sm text-slate-600 leading-relaxed w-full">
+                <h4 class="font-bold text-slate-800 text-base mb-3 border-b border-slate-200 pb-2">
+                    {% if current_lang == 'en' %}Database Core Specifications{% else %}Phân tích cấu trúc cơ sở dữ liệu và hệ thống{% endif %}
+                </h4>
+                <p>
+                    {% if current_lang == 'en' %}
+                        The database schema is optimized for financial time-series data and multi-agent transaction execution tracking. The system models strict 1-to-many relationships between investment configurations, historical asset snapshots, and structured LLM reasoning JSON packs.
+                    {% else %}
+                        Mô hình thực thể quan hệ (ERD) được thiết kế tối ưu cho dữ liệu chuỗi thời gian tài chính (Financial Time-series) và theo dõi trạng thái giao dịch. Cơ sở dữ liệu ràng buộc chặt chẽ quan hệ 1-N giữa cấu hình danh mục đầu tư (Investment Setup), các lát cắt tài sản lịch sử (Asset Snapshots), và nhật ký lập luận đa tầng của Agent.
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
 
-    <!-- START: 4-Tier Multi-Agent & LLM Core Processing Flow -->
     <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
         <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
-            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-            {% if current_lang == 'en' %}4-Tier Multi-Agent & LLM Core Processing Flow{% else %}Quy trình xử lý cốt lõi của Module LLM 4 tầng{% endif %}
+            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            {% if current_lang == 'en' %}Django Backend Development{% else %}Phát triển Django Backend{% endif %}
         </h2>
+        
+        <div class="flex flex-col gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Backend API Logic{% else %}Logic xử lý API (Views){% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6">
+                        <img src="{% static 'images/full stack application/backend_api.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Backend API Logic">
+                    </div>
+                </div>
 
-        <div class="space-y-4">
-            <!-- Stage 1 -->
-            <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
-                <div class="flex items-center gap-3 shrink-0 min-w-[180px]">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-14">Stage 1</span>
-                    <div class="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded border border-blue-100 whitespace-nowrap">Market Intelligence</div>
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Data Serializers{% else %}Bộ chuyển đổi dữ liệu (Serializers){% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6">
+                        <img src="{% static 'images/full stack application/backend_api_serilizer.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Data Serializers">
+                    </div>
                 </div>
-                <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">
-                        {% if current_lang == 'en' %}Macro Understanding & Short/Long-term Memory Management (LMI / PMI){% else %}Đọc hiểu vĩ mô và Quản lý Ký ức ngắn/dài hạn (LMI / PMI){% endif %}
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        {% if current_lang == 'en' %}
-                            The system scans corporate financial reports, market news, and historical price data. All raw information is embedded and ingested into <strong>ChromaDB Vector DB</strong> as a knowledge base (RAG) for contextual analysis.
-                        {% else %}
-                            Hệ thống quét toàn bộ báo cáo tài chính doanh nghiệp, tin tức thị trường và dữ liệu lịch sử giá. Toàn bộ thông tin thô được nhúng (Embedding) và đẩy vào <strong>ChromaDB Vector DB</strong> làm cơ sở tri thức (RAG) phục vụ phân tích ngữ cảnh.
-                        {% endif %}
-                    </p>
+
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white lg:col-span-2">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Browsable API Interface (Endpoints){% else %}Giao diện tương tác API (Endpoints){% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-8">
+                        <img src="{% static 'images/full stack application/backend_api_interface.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Browsable API Interface">
+                    </div>
                 </div>
+
             </div>
 
-            <!-- Stage 2 -->
-            <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
-                <div class="flex items-center gap-3 shrink-0 min-w-[180px]">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-14">Stage 2</span>
-                    <div class="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-bold rounded border border-indigo-100 whitespace-nowrap">Low-Level Reflection</div>
-                </div>
-                <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">
-                        {% if current_lang == 'en' %}In-depth Technical Analysis & Chart Visualization (LLR){% else %}Phân tích Kỹ thuật chuyên sâu & Đồ thị trực quan (LLR){% endif %}
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        {% if current_lang == 'en' %}
-                            The <code>mplfinance</code> library automatically renders trading session candlestick charts and forwards them to the <strong>Gemini Vision API</strong>. The module simultaneously calculates core technical indicators: MACD, RSI, KDJ, and Z-Score to convert mathematical signals into visual trend insights.
-                        {% else %}
-                            Thư viện <code>mplfinance</code> tự động kết xuất đồ thị nến phiên giao dịch và chuyển tiếp sang <strong>Gemini Vision API</strong>. Module đồng thời tính toán các chỉ báo kỹ thuật cốt lõi: MACD, RSI, KDJ, Z-Score để chuyển hóa tín hiệu toán học thành nhận định xu hướng trực quan.
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Stage 3 -->
-            <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50/50 transition-colors">
-                <div class="flex items-center gap-3 shrink-0 min-w-[180px]">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400 w-14">Stage 3</span>
-                    <div class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded border border-purple-100 whitespace-nowrap">High-Level Reflection</div>
-                </div>
-                <div class="flex-1 md:border-l md:border-slate-200 md:pl-4">
-                    <p class="text-xs font-medium text-slate-700 mb-1">
-                        {% if current_lang == 'en' %}Reflection & Tactical Self-Optimization (HLR){% else %}Phản tỉnh & Tự tối ưu hóa chiến thuật (HLR){% endif %}
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        {% if current_lang == 'en' %}
-                            The AI agent executes a cross-referencing mechanism: comparing past trading decisions with the actual fluctuations of the asset return curve. The agent self-derives lessons regarding "FOMO" phases or late stop-losses to optimize weights for subsequent sessions.
-                        {% else %}
-                            Tác vụ AI thực hiện cơ chế đối chiếu: So sánh các quyết định giao dịch cũ với biến động thực tế của đường cong lợi nhuận tài sản. Agent tự rút ra bài học kinh nghiệm về các pha "Fomo" hoặc cắt lỗ muộn để tối ưu hóa trọng số cho các phiên kế tiếp.
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Stage 4 -->
-            <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border border-blue-100 rounded-lg bg-blue-50/20">
-                <div class="flex items-center gap-3 shrink-0 min-w-[180px]">
-                    <span class="text-xs font-bold uppercase tracking-wider text-blue-500 w-14">Stage 4</span>
-                    <div class="px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded whitespace-nowrap shadow-sm">Decision Making</div>
-                </div>
-                <div class="flex-1 md:border-l md:border-blue-200 md:pl-4">
-                    <p class="text-xs font-semibold text-slate-800 mb-1">
-                        {% if current_lang == 'en' %}Financial Health Filter & JSON Packaged Command{% else %}Bộ lọc Sức khỏe Tài chính & Ra lệnh Đóng gói JSON{% endif %}
-                    </p>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        {% if current_lang == 'en' %}
-                            Comprehensive synthesis of data from the previous 3 tiers combined with the <strong>Abarbanell & Bushee</strong> corporate financial risk assessment model. The output is strictly enforced via <strong>Structured Outputs JSON</strong> containing the action rating <code>[BUY, SELL, HOLD]</code> and detailed reasoning (final_reasoning).
-                        {% else %}
-                            Tổng hợp toàn diện dữ liệu từ 3 tầng trước phối hợp với mô hình đánh giá rủi ro tài chính doanh nghiệp <strong>Abarbanell & Bushee</strong>. Đầu ra ép cấu trúc nghiêm ngặt qua <strong>Structured Outputs JSON</strong> chứa định mức hành động <code>[BUY, SELL, HOLD]</code> và lý do lập luận chi tiết (final_reasoning).
-                        {% endif %}
-                    </p>
-                </div>
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-6 text-sm text-slate-600 leading-relaxed w-full">
+                <h4 class="font-bold text-slate-800 text-base mb-3 border-b border-slate-200 pb-2">
+                    {% if current_lang == 'en' %}Asynchronous Execution & Business Logic{% else %}Xử lý bất đồng bộ và Logic nghiệp vụ backend{% endif %}
+                </h4>
+                <p>
+                    {% if current_lang == 'en' %}
+                        Built entirely on Django Rest Framework (DRF), the core backend cluster coordinates complex financial calculations and multi-agent data feeds. Utilizing Python Background Threading, it prevents server timeout bottlenecks during deep LLM reasoning.
+                    {% else %}
+                        Hệ thống Backend xây dựng dựa trên nền tảng Django Rest Framework (DRF), chịu trách nhiệm điều phối toàn bộ logic tính toán tài chính phức tạp và nạp dữ liệu từ các Agent. Sử dụng cơ chế Background Threading của Python để xử lý các tác vụ phân tích nặng mà không làm gián đoạn API Gateway.
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
-    <!-- END: 4-Tier Multi-Agent & LLM Core Processing Flow -->
+
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-10 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-3 flex items-center gap-2">
+            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+            {% if current_lang == 'en' %}Frontend Development & UI/UX Design{% else %}Phát triển Frontend & Thiết kế UI/UX{% endif %}
+        </h2>
+        
+        <div class="flex flex-col gap-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Authentication & Login{% else %}Giao diện Đăng nhập{% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6 flex justify-center items-center h-full">
+                        <img src="{% static 'images/full stack application/login-aiagent-vibecode.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Login Interface">
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Wallet Dashboard{% else %}Giao diện Quản lý Ví{% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6 flex justify-center items-center h-full">
+                        <img src="{% static 'images/full stack application/wallet-aiagent-vibecode.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Wallet Dashboard">
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Investment Portfolios{% else %}Danh mục Đầu tư{% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6 flex justify-center items-center h-full">
+                        <img src="{% static 'images/full stack application/mucdautu_aiagent_vibecode.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Investment Portfolios">
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Stock Market Tickers{% else %}Mã Chứng khoán (Tickers){% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-6 flex justify-center items-center h-full">
+                        <img src="{% static 'images/full stack application/mck-aiagent-vibecode.png' %}" class="w-full h-auto shadow-sm rounded border border-slate-100 block" alt="Stock Tickers">
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-lg shadow-sm w-full overflow-hidden flex flex-col bg-white lg:col-span-2">
+                    <div class="bg-slate-50 border-b border-slate-200 px-4 py-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <span class="font-semibold text-slate-700 text-sm">
+                            {% if current_lang == 'en' %}Detailed Analytics Report{% else %}Báo cáo Phân tích Chi tiết{% endif %}
+                        </span>
+                    </div>
+                    <div class="w-full bg-[#f8fafc] p-4 md:p-8 flex justify-center items-center h-full">
+                        <img src="{% static 'images/full stack application/chitiet-aiagent-vibecode.png' %}" class="w-full h-auto md:w-3/4 lg:w-2/3 shadow-sm rounded border border-slate-100 block mx-auto" alt="Detailed Analytics Report">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-slate-50 border border-slate-100 rounded-lg p-6 text-sm text-slate-600 leading-relaxed w-full mt-2">
+                <h4 class="font-bold text-slate-800 text-base mb-3 border-b border-slate-200 pb-2">
+                    {% if current_lang == 'en' %}Data Visualization & User Experience{% else %}Trực quan hóa dữ liệu và Trải nghiệm người dùng tương tác{% endif %}
+                </h4>
+                <p>
+                    {% if current_lang == 'en' %}
+                        The responsive client interface focuses on dense data rendering and seamless user interaction. Financial return charts and real-time decision chains are plotted dynamically to deliver intuitive insights to the portfolio simulator dashboard.
+                    {% else %}
+                        Giao diện Client được tối ưu hóa hiển thị trực quan, tập trung vào khả năng phản hồi thời gian thực và cấu trúc bố cục dữ liệu tài chính mật độ cao. Các đồ thị đường cong tài sản và nhật ký quyết định mua/bán được kết xuất mượt mà, giúp người dùng theo dõi chính xác biến động danh mục giả lập.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
 
     <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 shadow-sm">
         <h2 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
             {% if current_lang == 'en' %}Frontend Integration & Endpoints{% else %}Luồng tương tác Frontend và Hệ thống API{% endif %}
         </h2>
         
-        <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+        <div class="space-y-4 text-sm text-slate-600 leading-relaxed max-w-5xl">
             <p>
                 {% if current_lang == 'en' %}The client application interacts cohesively with the back-end server cluster through Django Rest Framework via the following steps:{% else %}Ứng dụng Client tương tác khép kín với cụm máy chủ Back-end thông qua Django Rest Framework qua các bước:{% endif %}
             </p>
-            <ol class="list-decimal pl-5 space-y-3 text-xs md:text-sm">
-                <li>
+            <ol class="list-decimal pl-5 space-y-4 text-xs md:text-sm">
+                <li class="bg-slate-50/60 p-3 rounded-lg border border-slate-100">
                     <strong>{% if current_lang == 'en' %}Setup & Capital Allocation:{% else %}Thiết lập & Phân bổ vốn:{% endif %}</strong> 
                     {% if current_lang == 'en' %}Users specify stock tickers and investment budget limits via the {% else %}Người dùng chỉ định cấu hình mã cổ phiếu và giới hạn ngân sách đầu tư thông qua phương thức {% endif %}
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/investment-setups/</code>{% if current_lang == 'en' %} method.{% else %}.{% endif %}
+                    <code class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/investment-setups/</code>{% if current_lang == 'en' %} method.{% else %}.{% endif %}
                 </li>
-                <li>
+                <li class="bg-slate-50/60 p-3 rounded-lg border border-slate-100">
                     <strong>{% if current_lang == 'en' %}Trigger Asynchronous AI Pipeline:{% else %}Kích hoạt Pipeline AI bất đồng bộ:{% endif %}</strong> 
                     {% if current_lang == 'en' %}Upon launching, the client calls {% else %}Khi bấm khởi chạy, Client gọi {% endif %}
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/agent/run-demo/</code>. 
+                    <code class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-xs text-pink-600">POST /api/agent/run-demo/</code>. 
                     {% if current_lang == 'en' %}The system triggers a background <code>threading</code> workflow to analyze data without blocking the UI.{% else %}Hệ thống kích hoạt luồng <code>threading</code> chạy ngầm phân tích mà không gây nghẽn UI.{% endif %}
                 </li>
-                <li>
+                <li class="bg-slate-50/60 p-3 rounded-lg border border-slate-100">
                     <strong>{% if current_lang == 'en' %}Dashboard Visualization:{% else %}Trực quan hóa Dashboard:{% endif %}</strong> 
                     {% if current_lang == 'en' %}Once the agents finish matching orders, the client requests {% else %}Khi các Agent hoàn tất khớp lệnh, Client thực hiện lệnh gọi {% endif %}
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/portfolios/</code> {% if current_lang == 'en' %}to calculate actual ROI and{% else %}để tính toán ROI thực tế và{% endif %}
-                    <code class="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/decisions/</code> 
+                    <code class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/portfolios/</code> {% if current_lang == 'en' %}to calculate actual ROI and{% else %}để tính toán ROI thực tế và{% endif %}
+                    <code class="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-mono text-xs text-pink-600">GET /api/decisions/</code> 
                     {% if current_lang == 'en' %}to fetch the historical fluctuation array <code>snapshot_total_assets</code>, feeding it into the chart library to plot a comprehensive NAV growth curve.{% else %}lấy mảng dữ liệu lịch sử biến động <code>snapshot_total_assets</code> đưa vào thư viện biểu đồ vẽ đường cong tăng trưởng NAV toàn diện.{% endif %}
                 </li>
             </ol>
         </div>
     </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mt-10 shadow-sm">
+        <h2 class="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
+            {% if current_lang == 'en' %}DevOps & Production Deployment{% else %}DevOps & Triển khai Sản phẩm{% endif %}
+        </h2>
+        
+        
+    </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.pan-zoom-container').forEach(container => {
+            const wrapper = container.closest('.shadow-sm'); 
+            const img = container.querySelector('.pan-zoom-img');
+            const percentDisplay = wrapper.querySelector('.zoom-percent');
+            const btnIn = wrapper.querySelector('.btn-zoom-in');
+            const btnOut = wrapper.querySelector('.btn-zoom-out');
+            const btnReset = wrapper.querySelector('.btn-zoom-reset');
+            const overlay = container.querySelector('.instruction-overlay');
+
+            let scale = 1;
+            let panX = 0;
+            let panY = 0;
+            let isDragging = false;
+            let startX, startY;
+            
+            const MIN_SCALE = 0.5;
+            const MAX_SCALE = 5;
+
+            const updateTransform = () => {
+                img.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+                percentDisplay.textContent = Math.round(scale * 100) + '%';
+                
+                if (scale === 1 && panX === 0 && panY === 0) {
+                    container.classList.add('cursor-grab');
+                    container.classList.remove('cursor-grabbing');
+                } else {
+                    container.classList.remove('cursor-grab');
+                    container.classList.toggle('cursor-grabbing', isDragging);
+                }
+            };
+
+            const hideOverlay = () => {
+                if (overlay && !overlay.classList.contains('opacity-0')) {
+                    overlay.classList.add('opacity-0');
+                }
+            };
+
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault(); 
+                hideOverlay();
+                
+                const zoomIntensity = 0.1;
+                const delta = e.deltaY < 0 ? 1 : -1;
+                const prevScale = scale;
+                
+                scale += delta * zoomIntensity * scale; 
+                scale = Math.max(MIN_SCALE, Math.min(scale, MAX_SCALE));
+
+                const rect = container.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - rect.width / 2;
+                const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                const ratio = 1 - scale / prevScale;
+                panX += (mouseX - panX) * ratio;
+                panY += (mouseY - panY) * ratio;
+
+                updateTransform();
+            }, { passive: false });
+
+            container.addEventListener('mousedown', (e) => {
+                e.preventDefault(); 
+                hideOverlay();
+                isDragging = true;
+                startX = e.clientX - panX;
+                startY = e.clientY - panY;
+                updateTransform();
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                panX = e.clientX - startX;
+                panY = e.clientY - startY;
+                updateTransform();
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    updateTransform();
+                }
+            });
+            
+            window.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    updateTransform();
+                }
+            });
+
+            btnIn.addEventListener('click', () => { 
+                hideOverlay(); 
+                scale = Math.min(scale * 1.25, MAX_SCALE); 
+                updateTransform(); 
+            });
+            
+            btnOut.addEventListener('click', () => { 
+                hideOverlay(); 
+                scale = Math.max(scale / 1.25, MIN_SCALE); 
+                updateTransform(); 
+            });
+            
+            btnReset.addEventListener('click', () => { 
+                scale = 1; 
+                panX = 0; 
+                panY = 0; 
+                updateTransform(); 
+            });
+            
+            updateTransform();
+        });
+    });
+</script>
 {% endblock %}
