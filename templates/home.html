@@ -1,245 +1,357 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <section id="about" class="max-w-6xl mx-auto px-4 pt-16 pb-16 scroll-mt-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            
-            <div class="text-left order-2 md:order-1">
-                <div class="flex flex-wrap gap-2.5 mb-6">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-100">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                        {% if current_lang == 'en' %}Continuous Learner{% else %}Đam mê học hỏi{% endif %}
-                    </span>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        {% if current_lang == 'en' %}Challenge Conqueror{% else %}Chinh phục thử thách{% endif %}
-                    </span>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"></path></svg>
-                        {% if current_lang == 'en' %}Senior Vision (2 Yrs){% else %}Khát vọng Senior trong 2 năm{% endif %}
-                    </span>
-                </div>
+<section id="about" class="max-w-6xl mx-auto px-4 pt-16 pb-16 scroll-mt-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                    {% if current_lang == 'en' %}Hi, I am{% else %}Xin chào, tôi là{% endif %} <span class="text-blue-600">Phạm Tiến Dũng</span>
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-medium text-slate-600 mb-6">
-                    {% if current_lang == 'en' %}Analytics Engineer{% else %}Analytics Engineer{% endif %}
-                </h2>
-                <p class="text-lg text-slate-500 mb-10 max-w-2xl leading-relaxed">
+        <div class="text-left order-2 md:order-1">
+            <div class="flex flex-wrap gap-2.5 mb-6">
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-100">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg>
+                    {% if current_lang == 'en' %}Continuous Learner{% else %}Đam mê học hỏi{% endif %}
+                </span>
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    {% if current_lang == 'en' %}Challenge Conqueror{% else %}Chinh phục thử thách{% endif %}
+                </span>
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"></path>
+                    </svg>
+                    {% if current_lang == 'en' %}Senior Vision (2 Yrs){% else %}Khát vọng Senior trong 2 năm{% endif %}
+                </span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                {% if current_lang == 'en' %}Hi, I am{% else %}Xin chào, tôi là{% endif %} <span
+                    class="text-blue-600">Phạm Tiến Dũng</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-medium text-slate-600 mb-6">
+                {% if current_lang == 'en' %}Analytics Engineer{% else %}Analytics Engineer{% endif %}
+            </h2>
+            <p class="text-lg text-slate-500 mb-10 max-w-2xl leading-relaxed">
+                {% if current_lang == 'en' %}
+                I specialize in building data pipelines, modeling, and transforming raw data into strategic insights.
+                Fueled by a passion for continuous learning and tackling challenges, I believe that the most complex
+                problems always find their optimal solutions when leveraging collective strength. I am constantly
+                upgrading my skills and mindset daily, striving to become a seasoned Senior Engineer within the next 2
+                years.
+                {% else %}
+                Tôi chuyên xây dựng đường ống dữ liệu, mô hình hóa và chuyển đổi dữ liệu thô thành giá trị chiến lược.
+                Với niềm đam mê học hỏi và thích chinh phục thử thách, tôi tin rằng những bài toán phức tạp luôn có lời
+                giải tối ưu khi kết hợp sức mạnh tập thể. Hiện tôi đang không ngừng nâng cấp tư duy và kỹ năng mỗi ngày
+                để hướng tới mục tiêu trở thành một Senior dày dặn kinh nghiệm trong 2 năm tới.
+                {% endif %}
+            </p>
+
+            <div class="flex justify-start">
+                <a href="https://drive.google.com/file/d/1QV2ptB23JqlpOavQaXtlFHaJSpe3nHYG/view?usp=drive_link"
+                    target="_blank"
+                    class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-colors text-center inline-flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                    {% if current_lang == 'en' %}View CV{% else %}Xem CV{% endif %}
+                </a>
+            </div>
+        </div>
+
+        <div class="order-1 md:order-2 flex justify-center items-center">
+            <div
+                class="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-xl shadow-blue-100 transform md:rotate-2 hover:rotate-0 transition-transform duration-300">
+                <div
+                    class="w-full h-full bg-slate-50 rounded-xl overflow-hidden flex items-center justify-center border-4 border-white">
+                    <img src="{% static 'images/anhdaidien.png' %}" alt="Profile Picture"
+                        class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="skills" class="max-w-6xl mx-auto px-4 py-20 border-t border-slate-100">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200">
+        <div>
+            <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Expertise</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
+                {% if current_lang == 'en' %}Core Capabilities{% else %}Năng lực chuyên môn{% endif %}
+            </h2>
+        </div>
+        <p class="text-slate-500 mt-2 md:mt-0 max-w-md text-sm leading-relaxed">
+            {% if current_lang == 'en' %}
+            Technical competencies and frameworks specialized in modern data architecture.
+            {% else %}
+            Các nền tảng công nghệ và giải pháp chuyên sâu trong quy trình xử lý dữ liệu hiện đại.
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="space-y-6">
+
+        <div
+            class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
+            <div class="border-l-4 border-blue-600 pl-3">
+                <h3
+                    class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
+                    {% if current_lang == 'en' %}Web Crawling, Database Design & ETL Pipeline{% else %}Web Crawling,
+                    Thiết kế Database & Xây dựng ETL Pipeline{% endif %}
+                </h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">BeautifulSoup</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Selenium</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">PostgreSQL</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">MongoDB</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Database
+                        Design</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Data
+                        warehouse</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">ETL
+                        Pipeline</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
+                <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
                     {% if current_lang == 'en' %}
-                        I specialize in building data pipelines, modeling, and transforming raw data into strategic insights. Fueled by a passion for continuous learning and tackling challenges, I believe that the most complex problems always find their optimal solutions when leveraging collective strength. I am constantly upgrading my skills and mindset daily, striving to become a seasoned Senior Engineer within the next 2 years.
+                    Build automated systems to extract data from complex websites, design optimal relational/NoSQL
+                    database structures, and deploy clean end-to-end ETL pipelines.
                     {% else %}
-                        Tôi chuyên xây dựng đường ống dữ liệu, mô hình hóa và chuyển đổi dữ liệu thô thành giá trị chiến lược. Với niềm đam mê học hỏi và thích chinh phục thử thách, tôi tin rằng những bài toán phức tạp luôn có lời giải tối ưu khi kết hợp sức mạnh tập thể. Hiện tôi đang không ngừng nâng cấp tư duy và kỹ năng mỗi ngày để hướng tới mục tiêu trở thành một Senior dày dặn kinh nghiệm trong 2 năm tới.
+                    Xây dựng hệ thống tự động thu thập dữ liệu từ các website phức tạp, thiết kế cấu trúc cơ sở dữ liệu
+                    quan hệ/NoSQL tối ưu và triển khai các đường ống ETL làm sạch dữ liệu hoàn chỉnh.
                     {% endif %}
                 </p>
-                
-                <div class="flex justify-start">
-                    <a href="https://drive.google.com/drive/folders/1ifq49WEkp0zoyqgyDKIJ4VnIwoWsPhAc?usp=drive_link" target="_blank" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-colors text-center inline-flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        {% if current_lang == 'en' %}View CV{% else %}Xem CV{% endif %}
+                <div class="flex justify-end shrink-0">
+                    <a href="{% url 'skill_detail' 1 %}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
+                        {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
                     </a>
                 </div>
             </div>
-
-            <div class="order-1 md:order-2 flex justify-center items-center">
-                <div class="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-xl shadow-blue-100 transform md:rotate-2 hover:rotate-0 transition-transform duration-300">
-                    <div class="w-full h-full bg-slate-50 rounded-xl overflow-hidden flex items-center justify-center border-4 border-white">
-                        <img src="{% static 'images/anhdaidien.png' %}" alt="Profile Picture" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
 
-    <section id="skills" class="max-w-6xl mx-auto px-4 py-20 border-t border-slate-100">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-slate-200">
-            <div>
-                <span class="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">Expertise</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">
-                    {% if current_lang == 'en' %}Core Capabilities{% else %}Năng lực chuyên môn{% endif %}
-                </h2>
+        <div
+            class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
+            <div class="border-l-4 border-blue-600 pl-3">
+                <h3
+                    class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
+                    {% if current_lang == 'en' %}SQL Querying, Data Processing & Visualization{% else %}Truy vấn SQL, Xử
+                    lý dữ liệu & Trực quan hóa{% endif %}
+                </h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">SQL</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">BigQuery</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Pandas</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Power
+                        BI</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Tableau</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Looker
+                        Studio</span>
+                </div>
             </div>
-            <p class="text-slate-500 mt-2 md:mt-0 max-w-md text-sm leading-relaxed">
-                {% if current_lang == 'en' %}
-                    Technical competencies and frameworks specialized in modern data architecture.
-                {% else %}
-                    Các nền tảng công nghệ và giải pháp chuyên sâu trong quy trình xử lý dữ liệu hiện đại.
-                {% endif %}
-            </p>
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
+                <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+                    {% if current_lang == 'en' %}
+                    Write optimized SQL queries to exploit cloud data warehouses, process large datasets, and design
+                    multi-dimensional interactive dashboards for business analysis.
+                    {% else %}
+                    Viết truy vấn SQL tối ưu để khai thác kho dữ liệu điện toán đám mây, xử lý các tập dữ liệu lớn và
+                    thiết kế hệ thống báo cáo (Dashboard) tương tác đa chiều phục vụ phân tích.
+                    {% endif %}
+                </p>
+                <div class="flex justify-end shrink-0">
+                    <a href="{% url 'skill_detail' 2 %}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
+                        {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        
-        <div class="space-y-6">
-            
-            <div class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
-                <div class="border-l-4 border-blue-600 pl-3">
-                    <h3 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
-                        {% if current_lang == 'en' %}Web Crawling, Database Design & ETL Pipeline{% else %}Web Crawling, Thiết kế Database & Xây dựng ETL Pipeline{% endif %}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">BeautifulSoup</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Selenium</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">PostgreSQL</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">MongoDB</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Database Design</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Data warehouse</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">ETL Pipeline</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
-                    <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
-                        {% if current_lang == 'en' %}
-                            Build automated systems to extract data from complex websites, design optimal relational/NoSQL database structures, and deploy clean end-to-end ETL pipelines.
-                        {% else %}
-                            Xây dựng hệ thống tự động thu thập dữ liệu từ các website phức tạp, thiết kế cấu trúc cơ sở dữ liệu quan hệ/NoSQL tối ưu và triển khai các đường ống ETL làm sạch dữ liệu hoàn chỉnh.
-                        {% endif %}
-                    </p>
-                    <div class="flex justify-end shrink-0">
-                        <a href="{% url 'skill_detail' 1 %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
-                            {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
-                            <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
+
+        <div
+            class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
+            <div class="border-l-4 border-blue-600 pl-3">
+                <h3
+                    class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
+                    {% if current_lang == 'en' %}Retrieval-Augmented Generation (RAG) & AI Agent Frameworks{% else %}Ứng
+                    dụng Retrieval-Augmented Generation (RAG) xây dựng AI agent{% endif %}
+                </h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">RAG</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">AI
+                        Agents</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">ChromaDB</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Vector
+                        Database</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">LLM
+                        APIs</span>
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
-                <div class="border-l-4 border-blue-600 pl-3">
-                    <h3 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
-                        {% if current_lang == 'en' %}SQL Querying, Data Processing & Visualization{% else %}Truy vấn SQL, Xử lý dữ liệu & Trực quan hóa{% endif %}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">SQL</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">BigQuery</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Pandas</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Power BI</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Tableau</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Looker Studio</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
-                    <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
-                        {% if current_lang == 'en' %}
-                            Write optimized SQL queries to exploit cloud data warehouses, process large datasets, and design multi-dimensional interactive dashboards for business analysis.
-                        {% else %}
-                            Viết truy vấn SQL tối ưu để khai thác kho dữ liệu điện toán đám mây, xử lý các tập dữ liệu lớn và thiết kế hệ thống báo cáo (Dashboard) tương tác đa chiều phục vụ phân tích.
-                        {% endif %}
-                    </p>
-                    <div class="flex justify-end shrink-0">
-                        <a href="{% url 'skill_detail' 2 %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
-                            {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
-                            <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
+                <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+                    {% if current_lang == 'en' %}
+                    Integrate RAG architectures using Vector Databases to develop intelligent AI Agents with
+                    context-aware data processing capabilities.
+                    {% else %}
+                    Tích hợp kiến trúc RAG kết hợp cơ sở dữ liệu Vector để phát triển các AI Agent thông minh, có năng
+                    lực tự động xử lý và phân tích thông tin theo ngữ cảnh chuyên sâu.
+                    {% endif %}
+                </p>
+                <div class="flex justify-end shrink-0">
+                    <a href="{% url 'skill_detail' 3 %}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
+                        {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
                 </div>
             </div>
-
-            <div class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
-                <div class="border-l-4 border-blue-600 pl-3">
-                    <h3 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
-                        {% if current_lang == 'en' %}Retrieval-Augmented Generation (RAG) & AI Agent Frameworks{% else %}Ứng dụng Retrieval-Augmented Generation (RAG) xây dựng AI agent{% endif %}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">RAG</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">AI Agents</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">ChromaDB</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Vector Database</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">LLM APIs</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
-                    <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
-                        {% if current_lang == 'en' %}
-                            Integrate RAG architectures using Vector Databases to develop intelligent AI Agents with context-aware data processing capabilities.
-                        {% else %}
-                            Tích hợp kiến trúc RAG kết hợp cơ sở dữ liệu Vector để phát triển các AI Agent thông minh, có năng lực tự động xử lý và phân tích thông tin theo ngữ cảnh chuyên sâu.
-                        {% endif %}
-                    </p>
-                    <div class="flex justify-end shrink-0">
-                        <a href="{% url 'skill_detail' 3 %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
-                            {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
-                            <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
-                <div class="border-l-4 border-blue-600 pl-3">
-                    <h3 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
-                        {% if current_lang == 'en' %}Task Automation Systems{% else %}Xây dựng hệ thống tự động hóa tác vụ{% endif %}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Python Automation</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Gemini/Ollama API</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Google API</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Structured Outputs</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Logging Framework</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
-                    <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
-                        {% if current_lang == 'en' %}
-                            Design workflows connecting LLM and Cloud APIs, enforce structured JSON data outputs, and build tracking logs to operate autonomous background tasks.
-                        {% else %}
-                            Thiết kế chuỗi quy trình kết nối API (LLM & Cloud), chuẩn hóa dữ liệu đầu ra định dạng JSON và xây dựng hệ thống log kiểm soát để vận hành các tác vụ ngầm tự động.
-                        {% endif %}
-                    </p>
-                    <div class="flex justify-end shrink-0">
-                        <a href="{% url 'skill_detail' 4 %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
-                            {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
-                            <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
-                <div class="border-l-4 border-blue-600 pl-3">
-                    <h3 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
-                        {% if current_lang == 'en' %}Full-Stack AI Web Application Development{% else %}Phát triển ứng dụng Web AI Full-Stack{% endif %}
-                    </h3>
-                    <div class="flex flex-wrap gap-1.5">
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Django</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Django ORM</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Tailwind CSS</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">HTML5/CSS3</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Docker</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
-                    <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
-                        {% if current_lang == 'en' %}
-                            Develop complete full-stack web products, efficiently process database interactions via ORM, create responsive UI/UX, and package applications with Docker.
-                        {% else %}
-                            Phát triển toàn diện sản phẩm web full-stack, xử lý mượt mà tương tác cơ sở dữ liệu qua ORM, thiết kế giao diện responsive tinh tế và đóng gói ứng dụng bằng Docker.
-                        {% endif %}
-                    </p>
-                    <div class="flex justify-end shrink-0">
-                        <a href="{% url 'skill_detail' 5 %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
-                            {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
-                            <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
+
+        <div
+            class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
+            <div class="border-l-4 border-blue-600 pl-3">
+                <h3
+                    class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
+                    {% if current_lang == 'en' %}Task Automation Systems{% else %}Xây dựng hệ thống tự động hóa tác vụ{%
+                    endif %}
+                </h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Python
+                        Automation</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Gemini/Ollama
+                        API</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Google
+                        API</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Structured
+                        Outputs</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Logging
+                        Framework</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
+                <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+                    {% if current_lang == 'en' %}
+                    Design workflows connecting LLM and Cloud APIs, enforce structured JSON data outputs, and build
+                    tracking logs to operate autonomous background tasks.
+                    {% else %}
+                    Thiết kế chuỗi quy trình kết nối API (LLM & Cloud), chuẩn hóa dữ liệu đầu ra định dạng JSON và xây
+                    dựng hệ thống log kiểm soát để vận hành các tác vụ ngầm tự động.
+                    {% endif %}
+                </p>
+                <div class="flex justify-end shrink-0">
+                    <a href="{% url 'skill_detail' 4 %}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
+                        {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="bg-white rounded-xl border border-slate-200/70 hover:border-blue-500 hover:shadow-lg hover:shadow-slate-100/50 transition-all duration-300 p-6 md:p-8 flex flex-col gap-4 group">
+            <div class="border-l-4 border-blue-600 pl-3">
+                <h3
+                    class="text-xl md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors mb-3">
+                    {% if current_lang == 'en' %}Full-Stack AI Web Application Development{% else %}Phát triển ứng dụng
+                    Web AI Full-Stack{% endif %}
+                </h3>
+                <div class="flex flex-wrap gap-1.5">
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Django</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Django
+                        ORM</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Tailwind
+                        CSS</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">HTML5/CSS3</span>
+                    <span
+                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200/60">Docker</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2 border-t border-slate-100">
+                <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+                    {% if current_lang == 'en' %}
+                    Develop complete full-stack web products, efficiently process database interactions via ORM, create
+                    responsive UI/UX, and package applications with Docker.
+                    {% else %}
+                    Phát triển toàn diện sản phẩm web full-stack, xử lý mượt mà tương tác cơ sở dữ liệu qua ORM, thiết
+                    kế giao diện responsive tinh tế và đóng gói ứng dụng bằng Docker.
+                    {% endif %}
+                </p>
+                <div class="flex justify-end shrink-0">
+                    <a href="{% url 'skill_detail' 5 %}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors group/link">
+                        {% if current_lang == 'en' %}View Details{% else %}Xem chi tiết{% endif %}
+                        <svg class="w-4 h-4 ml-1.5 transform group-hover/link:translate-x-1 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 {% endblock %}

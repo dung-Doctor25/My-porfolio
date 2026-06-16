@@ -1,6 +1,6 @@
 # hướng dẫn push lên github mỗi lần sửa đổi
 git add .
-git commit -m "cập nhật file skill 5 hoàn thiện chỉ thiếu deploy"
+git commit -m "cập nhật LẠI LINK CV"
 git push origin main
 
 ### mỗi lần sửa đổi ở trên pythonanywhere
